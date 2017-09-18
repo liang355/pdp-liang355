@@ -8,3 +8,8 @@ Problem 4:
   3. use the random number in ArrayList.get(int n) method to return an element of random index in the ArrayList
 
 Problem 5:
+  1. modified the if condition for checking illegal input (n < 0 instead of 0 <= 0)
+  2. modified the if condition for checking base cases (n < 2 instead of n <= 2)
+  3. modified the recursion based on the property of Fibonacci sequence (plus instead of minus)
+
+Problem 6:
