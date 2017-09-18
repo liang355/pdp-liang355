@@ -9,8 +9,29 @@ package Assignment1;
 // You may not make Ball implement the Comparable interface.
 public class Vehicle {
 
-    private double v;
-    private int d;
+    private double velocity;
+    private int direction;
+
+    /**
+     * Illegal constructor that creates a new vehicle object.
+     */
+    public Vehicle() {
+        throw new IllegalArgumentException("unexpected number of arguments are provided (expecting two arguments)");
+    }
+
+    /**
+     * Illegal constructor that creates a new vehicle object.
+     */
+    public Vehicle(double velocity) {
+        throw new IllegalArgumentException("unexpected number of arguments are provided (expecting two arguments)");
+    }
+
+    /**
+     * Illegal constructor that creates a new vehicle object.
+     */
+    public Vehicle(String velocity, String directiont) {
+        throw new IllegalArgumentException("illegal format of arguments");
+    }
 
     /**
      * Constructor that creates a new vehicle object with the specified velocity and direction.
@@ -21,8 +42,8 @@ public class Vehicle {
         if(direction != 1 && direction != 2) {
             throw new IllegalArgumentException("direction argument " + direction + " is neither 1 nor 2");
         }
-        v = velocity;
-        d = direction;
+        this.velocity = velocity;
+        this.direction = direction;
     }
 
     /**
@@ -30,7 +51,7 @@ public class Vehicle {
      * @return the velocity of the Vehicle.
      */
     public double getVelocity() {
-        return v;
+        return velocity;
     }
 
     /**
@@ -38,6 +59,6 @@ public class Vehicle {
      * @return the direction of the Vehicle.
      */
     public double getDirection() {
-        return d;
+        return direction;
     }
 }

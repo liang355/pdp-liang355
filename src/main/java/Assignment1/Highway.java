@@ -4,10 +4,7 @@
 package Assignment1;
 
 import java.lang.Iterable;
-import java.util.Set;
-import java.util.LinkedHashSet;
-import java.util.Iterator;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * This is a container that can be used to contain Vehicles.
@@ -17,12 +14,30 @@ public class Highway implements Iterable<Vehicle> {
 
     // Contents of the Highway.
     private Set<Vehicle> contents;
+    private Queue<Vehicle> minQueueEast;
+    private Queue<Vehicle> minQueueWest;
+    private int numEast = 0;
+    private int numWest = 0;
 
     /**
      * Constructor that creates a new Highway.
      */
     public Highway() {
         contents = new LinkedHashSet<Vehicle>();
+        minQueueEast = new PriorityQueue<Vehicle>(1, new Comparator<Vehicle>() {
+            public int compare(Vehicle o1, Vehicle o2) {
+                if(o1.getVelocity() < o2.getVelocity()) return -1;
+                if(o1.getVelocity() > o2.getVelocity()) return 1;
+                return 0;
+            }
+        });
+        minQueueWest = new PriorityQueue<Vehicle>(1, new Comparator<Vehicle>() {
+            public int compare(Vehicle o1, Vehicle o2) {
+                if(o1.getVelocity() < o2.getVelocity()) return -1;
+                if(o1.getVelocity() > o2.getVelocity()) return 1;
+                return 0;
+            }
+        });
     }
 
     /**
@@ -53,8 +68,21 @@ public class Highway implements Iterable<Vehicle> {
      * already on the highway.
      */
     public boolean add(Vehicle v) {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        if(v == null) {
+            throw new IllegalArgumentException("query vehicle can not be null");
+        }
+        if(contents.contains(v)) {
+            return false;
+        }
+        if(v.getDirection() == 1) {
+            minQueueEast.add(v);
+            numEast++;
+        } else if (v.getDirection() == 2) {
+            minQueueWest.add(v);
+            numWest++;
+        }
+        contents.add(v);
+        return true;
     }
 
     /**
@@ -70,8 +98,25 @@ public class Highway implements Iterable<Vehicle> {
      * on the highway.
      */
     public boolean remove(Vehicle v) {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        if(v == null) {
+            throw new IllegalArgumentException("vehicle object cannot be null");
+        }
+        Iterator<Vehicle> it = iterator();
+        while(it.hasNext()) {
+            Vehicle curVehicle = it.next();
+            if(curVehicle == v) {
+                if(curVehicle.getDirection() == 1) {
+                    minQueueEast.poll();
+                    numEast--;
+                } else if(curVehicle.getDirection() == 2) {
+                    minQueueWest.poll();
+                    numWest--;
+                }
+                contents.remove(curVehicle);
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -79,8 +124,10 @@ public class Highway implements Iterable<Vehicle> {
      * @return the velocity of the slowest eastbound vehicle
      */
     public double getVelocityEastbound() {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        if(minQueueEast.peek() == null) {
+            throw new IllegalStateException("highway is empty, cannot get minimum eastbound velocity");
+        }
+        return minQueueEast.peek().getVelocity();
     }
 
     /**
@@ -88,8 +135,10 @@ public class Highway implements Iterable<Vehicle> {
      * @return the velocity of the slowest westbound vehicle
      */
     public double getVelocityWestbound() {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        if(minQueueWest.peek() == null) {
+            throw new IllegalStateException("highway is empty, cannot get minimum westbound velocity");
+        }
+        return minQueueWest.peek().getVelocity();
     }
 
     /**
@@ -97,8 +146,7 @@ public class Highway implements Iterable<Vehicle> {
      * @return the number of Vehicles headed Eastbound on the highway
      */
     public int numberVehiclesEastbound() {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        return numEast;
     }
 
     /**
@@ -106,8 +154,7 @@ public class Highway implements Iterable<Vehicle> {
      * @return the number of Vehicles headed Westbound on the highway
      */
     public int numberVehiclesWestbound() {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        return numWest;
     }
 
     /**
@@ -119,8 +166,13 @@ public class Highway implements Iterable<Vehicle> {
      * false, otherwise.
      */
     public boolean contains(Vehicle v) {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        if(v == null) {
+            throw new IllegalArgumentException("query vehicle can not be null");
+        }
+        return contents.contains(v);
     }
 
+    public Set<Vehicle> getContents() {
+        return contents;
+    }
 }

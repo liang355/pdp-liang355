@@ -8,11 +8,38 @@ public class VehicleTest {
     private static Vehicle vehicle = null;
 
     /**
-     * Tests that Vehicle constructor throws an IllegalArgumentException
-     * for a direction argument that is neither 1 nor 2.
+     * Tests that Vehicle constructor throws an IllegalArgumentException for
+     * no inputs are provided for the constructor
      */
     @Test(expected=IllegalArgumentException.class)
-    public void expectedIllegalArgumentException() {
+    public void expectedIllegalArgumentExceptionForNoArgument() {
+        vehicle = new Vehicle();
+    }
+
+    /**
+     * Tests that Vehicle constructor throws an IllegalArgumentException for
+     * number of inputs provided to the constructor is unexpected.
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void expectedIllegalArgumentExceptionForMissingArgument() {
+        vehicle = new Vehicle(10);
+    }
+
+    /**
+     * Tests that Vehicle constructor throws an IllegalArgumentException for
+     * number of inputs provided to the constructor is unexpected.
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void expectedIllegalArgumentExceptionForIncorrectFormat() {
+        vehicle = new Vehicle("0", "1");
+    }
+
+    /**
+     * Tests that Vehicle constructor throws an IllegalArgumentException for
+     * inputs provided to the constructor have an incorrect value.
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void expectedIllegalArgumentExceptionForIncorrectValue() {
         vehicle = new Vehicle(0, 0);
     }
 
@@ -21,7 +48,7 @@ public class VehicleTest {
      * for a direction argument that is either 1 or 2.
      */
     @Test
-    public void testThrowsIllegalArgumentException() {
+    public void unexpectedIllegalArgumentException() {
         //test direction argument for value 1
         try {
             vehicle = new Vehicle(0, 1);
@@ -37,5 +64,4 @@ public class VehicleTest {
                     + ex);
         }
     }
-
 }
