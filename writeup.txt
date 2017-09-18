@@ -13,3 +13,7 @@ Problem 5:
   3. modified the recursion based on the property of Fibonacci sequence (plus instead of minus)
 
 Problem 6:
+
+Are we supposed to, just like problem 5, write a method that takes an Integer as argument and returns a reversed number (e.g., "getReverseNumber(Integer num)"), and ONLY test this method in ReverseNumberTest.java? In this case, I suppose we would use java.util.Scanner outside of getReverseNumber(Integer num) method (maybe in a constructor or main method) and thus the Scanner instance is NOT required to be tested in ReverseNumberTest.java. 
+
+I am confused because you said "You can safely assume that the expected input to your class ReverseNumber is an integer (int)". When you say "input", are you referring to user input through java.util.Scanner or argument for the constructor of class ReverseNumber? If my above assumption is true, then the constructor of class ReverseNumber will take NO argument, and instead will use Scanner class to provide argument for getReverseNumber(Integer num). 

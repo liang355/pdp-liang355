@@ -3,7 +3,7 @@ package Assignment1;
 import java.util.*;
 
 public class RandomHomework {
-    public static void main(String [] argv) {
+    public static void main(String[] argv) {
         RandomHomework randomHomework = new RandomHomework();
         System.out.println(randomHomework.getCourse());
     }
