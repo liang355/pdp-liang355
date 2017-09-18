@@ -4,21 +4,6 @@ import org.junit.Test;
 import org.junit.BeforeClass;
 import static org.junit.Assert.*;
 
-/**
- * FibonacciTest is a glassbox test of the Fibonacci class.
- *
- * Recall that the Fibonacci sequence is a recursive
- * sequence where the first two terms of the sequence are 1 and all subsequent
- * terms are the sum of the previous two terms.
- *
- * Thus, the Fibonacci sequence starts out as 1, 1, 2, 3, 5, 8, 13...
- * The first 1 in the sequence is considered the "0th" term,
- * so the indices that <code>Assignment1.Fibonacci</code> uses are 0-based.
- *
- * @see Assignment1.ReverseNumber
- *
- * @author PDP staff
- */
 public class ReverseNumberTest {
 
     private static ReverseNumber rn = null;

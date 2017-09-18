@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16fde3f3-441b-48a7-98ad-55ce7e40cdaa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Assignment1/RandomHomework.java" afterPath="$PROJECT_DIR$/src/main/java/Assignment1/RandomHomework.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java" afterPath="$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Assignment1/ReverseNumberTest.java" afterPath="$PROJECT_DIR$/src/test/java/Assignment1/ReverseNumberTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/writeup.txt" afterPath="$PROJECT_DIR$/writeup.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -39,16 +39,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReverseNumber.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10">
-              <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FibonacciTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/FibonacciTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -62,15 +52,25 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ReverseNumber.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ReverseNumberTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/ReverseNumberTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+            <state relative-caret-position="135">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2989#2990#0" expanded="true" />
-                <element signature="e#3068#3069#0" expanded="true" />
+                <element signature="e#2467#2468#0" expanded="true" />
+                <element signature="e#2546#2547#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,8 +107,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Assignment1/Fibonacci.java" />
         <option value="$PROJECT_DIR$/src/main/java/Assignment1/RandomHomework.java" />
         <option value="$PROJECT_DIR$/src/test/java/Assignment1/FibonacciTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java" />
         <option value="$PROJECT_DIR$/src/test/java/Assignment1/ReverseNumberTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java" />
       </list>
     </option>
   </component>
@@ -510,20 +510,11 @@
       <workItem from="1505487374565" duration="6837000" />
       <workItem from="1505697434908" duration="820000" />
       <workItem from="1505699415941" duration="13862000" />
-      <workItem from="1505725073985" duration="1055000" />
+      <workItem from="1505725073985" duration="1818000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ReverseNumberTest - 2017.09.18 at 02h 06m 28s.xml">
-      <configuration name="ReverseNumberTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReverseNumberTest - 2017.09.18 at 02h 08m 34s.xml">
-      <configuration name="ReverseNumberTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReverseNumberTest - 2017.09.18 at 02h 08m 45s.xml">
-      <configuration name="ReverseNumberTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ReverseNumberTest - 2017.09.18 at 02h 09m 19s.xml">
       <configuration name="ReverseNumberTest" configurationId="JUnit" />
     </history-entry>
@@ -545,9 +536,18 @@
     <history-entry file="ReverseNumberTest - 2017.09.18 at 02h 15m 12s.xml">
       <configuration name="ReverseNumberTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ReverseNumberTest - 2017.09.18 at 02h 23m 45s.xml">
+      <configuration name="ReverseNumberTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ReverseNumberTest - 2017.09.18 at 02h 27m 57s.xml">
+      <configuration name="ReverseNumberTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ReverseNumberTest - 2017.09.18 at 02h 28m 49s.xml">
+      <configuration name="ReverseNumberTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27435000" />
+    <option name="totallyTimeSpent" value="28198000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="0" />
@@ -636,8 +636,8 @@
           <caret line="26" column="60" lean-forward="true" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2989#2990#0" expanded="true" />
-            <element signature="e#3068#3069#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#2546#2547#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -730,14 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/FibonacciTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-186">
@@ -749,14 +741,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/ReverseNumberTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2989#2990#0" expanded="true" />
-            <element signature="e#3068#3069#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#2546#2547#0" expanded="true" />
           </folding>
         </state>
       </provider>

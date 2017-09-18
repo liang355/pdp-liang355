@@ -3,12 +3,13 @@ package Assignment1;
 import java.util.Scanner;
 
 public class ReverseNumber {
-//    public ReverseNumber() {
-//        while(true) {
-//            Scanner sc = new Scanner(System.in);
-//            System.out.println(getReverseNumber(sc.nextInt()));
-//        }
-//    }
+    public static void main (String[] args) {
+        while(true) {
+            Scanner sc = new Scanner(System.in);
+            ReverseNumber rn = new ReverseNumber();
+            System.out.println(rn.getReverseNumber(sc.nextInt()));
+        }
+    }
 
     /**
      * Calculates the reversed number of the number user entered in console.
