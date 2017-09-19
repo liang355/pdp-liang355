@@ -61,4 +61,8 @@ public class Vehicle {
     public double getDirection() {
         return direction;
     }
+
+    public void updateVelocity(int velocity) {
+        this.velocity = velocity;
+    }
 }

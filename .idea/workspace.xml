@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16fde3f3-441b-48a7-98ad-55ce7e40cdaa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Assignment1/Highway.java" afterPath="$PROJECT_DIR$/src/main/java/Assignment1/Highway.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Assignment1/ScenicRoad.java" afterPath="$PROJECT_DIR$/src/main/java/Assignment1/ScenicRoad.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Assignment1/Vehicle.java" afterPath="$PROJECT_DIR$/src/main/java/Assignment1/Vehicle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Assignment1/VehicleTest.java" afterPath="$PROJECT_DIR$/src/test/java/Assignment1/VehicleTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,14 +43,16 @@
       <file leaf-file-name="Vehicle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/Vehicle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+            <state relative-caret-position="243">
+              <caret line="61" column="25" lean-forward="true" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#1732#1733#0" expanded="true" />
                 <element signature="e#1763#1764#0" expanded="true" />
                 <element signature="e#1905#1906#0" expanded="true" />
                 <element signature="e#1937#1938#0" expanded="true" />
+                <element signature="e#1985#1986#0" expanded="true" />
+                <element signature="e#2025#2026#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Highway.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Highway.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/Highway.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="110" column="59" lean-forward="false" selection-start-line="110" selection-start-column="59" selection-end-line="110" selection-end-column="59" />
+            <state relative-caret-position="132">
+              <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="39" selection-end-column="11" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -103,8 +104,8 @@
       <file leaf-file-name="HighwayTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/HighwayTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+            <state relative-caret-position="-971">
+              <caret line="48" column="4" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,9 +116,27 @@
       <file leaf-file-name="ScenicRoad.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/ScenicRoad.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-              <folding />
+            <state relative-caret-position="272">
+              <caret line="25" column="66" lean-forward="true" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#488#755#0" expanded="true" />
+                <element signature="e#754#755#0" expanded="true" />
+                <element signature="e#811#1078#0" expanded="true" />
+                <element signature="e#1077#1078#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScenicRoadTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/ScenicRoadTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,10 +177,12 @@
         <option value="$PROJECT_DIR$/src/test/java/Assignment1/FibonacciTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/Assignment1/ReverseNumberTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Assignment1/Vehicle.java" />
         <option value="$PROJECT_DIR$/src/test/java/Assignment1/VehicleTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/Assignment1/HighwayTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Assignment1/Highway.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Assignment1/Vehicle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Assignment1/ScenicRoad.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Assignment1/ScenicRoadTest.java" />
       </list>
     </option>
   </component>
@@ -182,6 +203,25 @@
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="827" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Duplicates</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -314,7 +354,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -339,7 +379,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.HighwayTest">
+  <component name="RunManager" selected="JUnit.ScenicRoadTest">
     <configuration name="CalculatorTest.evaluatesExpression" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="pdp-liang355" />
@@ -473,6 +513,31 @@
       <envs />
       <patterns />
     </configuration>
+    <configuration name="ScenicRoadTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Assignment1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="pdp-liang355" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Assignment1" />
+      <option name="MAIN_CLASS_NAME" value="Assignment1.ScenicRoadTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration name="VehicleTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -578,7 +643,7 @@
       <properties />
       <listeners />
     </configuration>
-    <list size="8">
+    <list size="9">
       <item index="0" class="java.lang.String" itemvalue="Application.RandomHomework" />
       <item index="1" class="java.lang.String" itemvalue="Android JUnit.CalculatorTest.evaluatesExpression" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.FibonacciTest" />
@@ -587,6 +652,7 @@
       <item index="5" class="java.lang.String" itemvalue="JUnit.ReverseNumberTest" />
       <item index="6" class="java.lang.String" itemvalue="JUnit.VehicleTest" />
       <item index="7" class="java.lang.String" itemvalue="JUnit.HighwayTest" />
+      <item index="8" class="java.lang.String" itemvalue="JUnit.ScenicRoadTest" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -615,44 +681,44 @@
       <workItem from="1505487374565" duration="6837000" />
       <workItem from="1505697434908" duration="820000" />
       <workItem from="1505699415941" duration="13862000" />
-      <workItem from="1505725073985" duration="25154000" />
+      <workItem from="1505725073985" duration="28846000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HighwayTest - 2017.09.18 at 16h 03m 25s.xml">
-      <configuration name="HighwayTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HighwayTest - 2017.09.18 at 16h 14m 43s.xml">
-      <configuration name="HighwayTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HighwayTest - 2017.09.18 at 16h 15m 06s.xml">
-      <configuration name="HighwayTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HighwayTest - 2017.09.18 at 16h 16m 21s.xml">
-      <configuration name="HighwayTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HighwayTest - 2017.09.18 at 16h 20m 28s.xml">
-      <configuration name="HighwayTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HighwayTest - 2017.09.18 at 16h 28m 00s.xml">
-      <configuration name="HighwayTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HighwayTest - 2017.09.18 at 16h 31m 20s.xml">
-      <configuration name="HighwayTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HighwayTest - 2017.09.18 at 16h 32m 02s.xml">
-      <configuration name="HighwayTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="HighwayTest - 2017.09.18 at 16h 33m 39s.xml">
       <configuration name="HighwayTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="HighwayTest - 2017.09.18 at 16h 33m 53s.xml">
       <configuration name="HighwayTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ScenicRoadTest - 2017.09.18 at 17h 27m 37s.xml">
+      <configuration name="ScenicRoadTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScenicRoadTest - 2017.09.18 at 17h 32m 36s.xml">
+      <configuration name="ScenicRoadTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScenicRoadTest - 2017.09.18 at 17h 33m 58s.xml">
+      <configuration name="ScenicRoadTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScenicRoadTest - 2017.09.18 at 17h 35m 31s.xml">
+      <configuration name="ScenicRoadTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScenicRoadTest - 2017.09.18 at 17h 35m 44s.xml">
+      <configuration name="ScenicRoadTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScenicRoadTest - 2017.09.18 at 17h 36m 06s.xml">
+      <configuration name="ScenicRoadTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScenicRoadTest - 2017.09.18 at 17h 37m 33s.xml">
+      <configuration name="ScenicRoadTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScenicRoadTest - 2017.09.18 at 17h 38m 00s.xml">
+      <configuration name="ScenicRoadTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51534000" />
+    <option name="totallyTimeSpent" value="55226000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="0" />
@@ -671,7 +737,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25486112" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19305556" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -825,14 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/ScenicRoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/ReverseNumberTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -866,20 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/Vehicle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#1732#1733#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-            <element signature="e#1905#1906#0" expanded="true" />
-            <element signature="e#1937#1938#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/ReverseNumber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -906,20 +950,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/HighwayTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/Vehicle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        <state relative-caret-position="243">
+          <caret line="61" column="25" lean-forward="true" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#1732#1733#0" expanded="true" />
+            <element signature="e#1763#1764#0" expanded="true" />
+            <element signature="e#1905#1906#0" expanded="true" />
+            <element signature="e#1937#1938#0" expanded="true" />
+            <element signature="e#1985#1986#0" expanded="true" />
+            <element signature="e#2025#2026#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/Highway.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="110" column="59" lean-forward="false" selection-start-line="110" selection-start-column="59" selection-end-line="110" selection-end-column="59" />
+        <state relative-caret-position="132">
+          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="39" selection-end-column="11" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -933,6 +983,40 @@
             <element signature="e#5721#5722#0" expanded="true" />
             <element signature="e#6285#6286#0" expanded="true" />
             <element signature="e#6316#6317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/HighwayTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-971">
+          <caret line="48" column="4" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Assignment1/ScenicRoad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="66" lean-forward="true" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#488#755#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+            <element signature="e#811#1078#0" expanded="true" />
+            <element signature="e#1077#1078#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Assignment1/ScenicRoadTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
