@@ -24,4 +24,4 @@ Problem 6:
   3. test the method will work correctly for negative, zero, and positive integer as input
 
 Problem 7:
-  I use the read-optimized method for calculating minimum velocity and number of vehicles. That means that every time we call add() or remove() the state of the class is updated
+  I use the read-optimized method for calculating minimum velocity and number of vehicles.That means that every time we call add() or remove() the state of the class is updated. I assume the frequency of read operation is much higher than write operations, so calculating on-the-fly would be costly. I used min-priority queue to keep track of the minimum velocity.
