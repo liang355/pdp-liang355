@@ -1,11 +1,30 @@
 package edu.neu.ccs.cs5010;
 
-public class MyPatient implements Comparable<MyPatient> {
-    public int compareTo(MyPatient o) {
-        return Integer.compare(this.urgency, o.urgency);
+public class MyPatient implements IPatient {
+    @Override
+    public int compareTo(IPatient o) {
+        return Integer.compare(this.urgency, o.getUrgency());
     }
 
-    private int arrivalTime;
+    private long arrivalTime;
     private int urgency;
-    private int duration;
+    private long duration;
+
+    public MyPatient(long arrivalTime, long duration, int urgency) {
+        this.arrivalTime = arrivalTime;
+        this.duration = duration;
+        this.urgency = urgency;
+    }
+
+    public long getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public int getUrgency() {
+        return urgency;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
 }

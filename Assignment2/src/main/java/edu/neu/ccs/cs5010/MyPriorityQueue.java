@@ -88,6 +88,10 @@ public class MyPriorityQueue<E extends Comparable<E>> implements IPriorityQueue<
         return reversedList;
     }
 
+    public int getSize() {
+        return items.size();
+    }
+
     public static void main(String[] args) {
         /* Testing the dynamics of MyPriorityQueue with scanner:
         1. enter integers, each followed by a Enter keystroke, the program will output the current structure of priority queue

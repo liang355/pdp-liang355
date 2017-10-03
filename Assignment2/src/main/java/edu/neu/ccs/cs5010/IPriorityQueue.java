@@ -9,4 +9,5 @@ public interface IPriorityQueue<E> {
     boolean isEmpty();
     List testForwardTraversal();
     List testReverseTraversal();
+    int getSize();
 }
