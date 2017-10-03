@@ -8,14 +8,10 @@ import java.util.*;
 public class StackTest {
     private static IStack stack = null;
 
-    @BeforeClass
-    public static void setupBeforeTests() throws Exception {
-        stack = new MyStack();
-    }
-
     /** Tests isEmpty() method */
     @Test
     public void testIsEmpty() {
+        stack = new MyStack();
         assertTrue(stack.isEmpty());
         stack = stack.push(1);
         assertFalse(stack.isEmpty());
@@ -26,6 +22,7 @@ public class StackTest {
     /** Tests top() method */
     @Test
     public void testTop() {
+        stack = new MyStack();
         stack = stack.push(1);
         assertEquals(1, stack.top());
         stack = stack.push(2);
@@ -50,9 +47,10 @@ public class StackTest {
         assertTrue(s1.equals(s2));
     }
 
-    /** Tests LIFO property of queue */
+    /** Tests LIFO property of stack */
     @Test
     public void testLIFO() {
+        stack = new MyStack();
         List<Integer> expected = new ArrayList<Integer>(Arrays.asList(5, 4, 3, 2, 1));
         List<Integer> actual = new ArrayList<Integer>();
         for(int i = 1; i <= 5; i++) {

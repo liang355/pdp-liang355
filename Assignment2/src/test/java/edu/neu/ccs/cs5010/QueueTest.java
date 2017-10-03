@@ -8,14 +8,10 @@ import java.util.*;
 public class QueueTest {
     private static IQueue queue = null;
 
-    @BeforeClass
-    public static void setupBeforeTests() throws Exception {
-        queue = new MyQueue();
-    }
-
     /** Tests isEmpty() method */
     @Test
     public void testIsEmpty() {
+        queue = new MyQueue();
         assertTrue(queue.isEmpty());
         queue = queue.enqueue(1);
         assertFalse(queue.isEmpty());
@@ -26,6 +22,7 @@ public class QueueTest {
     /** Tests front() method */
     @Test
     public void testFront() {
+        queue = new MyQueue();
         queue = queue.enqueue(1);
         assertEquals(1, queue.front());
         queue = queue.enqueue(2);
@@ -53,6 +50,7 @@ public class QueueTest {
     /** Tests FIFO property of queue */
     @Test
     public void testFIFO() {
+        queue = new MyQueue();
         List<Integer> expected = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5));
         List<Integer> actual = new ArrayList<Integer>();
         for(int i = 1; i <= 5; i++) {

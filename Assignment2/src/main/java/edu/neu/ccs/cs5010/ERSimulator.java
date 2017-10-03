@@ -100,10 +100,10 @@ public class ERSimulator {
                         }, new Date(nextFinishTime));
                     }
                     curTime = nextFinishTime;
+                    printQueues();
                 } catch (Exception e) {
-                    System.out.println("exception caught");
+                    System.out.println("other exception caught");
                 }
-                printQueues();
             }
         }
     }
