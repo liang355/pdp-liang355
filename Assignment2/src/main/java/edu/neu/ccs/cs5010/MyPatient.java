@@ -1,11 +1,6 @@
 package edu.neu.ccs.cs5010;
 
 public class MyPatient implements IPatient {
-    @Override
-    public int compareTo(IPatient o) {
-        return Integer.compare(this.urgency, o.getUrgency());
-    }
-
     private long arrivalTime;
     private int urgency;
     private long duration;
@@ -26,5 +21,10 @@ public class MyPatient implements IPatient {
 
     public long getDuration() {
         return duration;
+    }
+
+    @Override
+    public int compareTo(IPatient o) {
+        return Integer.compare(this.urgency, o.getUrgency());
     }
 }

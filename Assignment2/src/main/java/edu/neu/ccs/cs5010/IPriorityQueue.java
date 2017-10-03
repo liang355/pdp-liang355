@@ -7,7 +7,7 @@ public interface IPriorityQueue<E> {
     E remove();
     E front();
     boolean isEmpty();
-    List testForwardTraversal();
-    List testReverseTraversal();
+    List<E> testForwardTraversal();
+    List<E> testReverseTraversal();
     int getSize();
 }

@@ -76,11 +76,11 @@ public class MyPriorityQueue<E extends Comparable<E>> implements IPriorityQueue<
         return items.isEmpty();
     }
 
-    public List testForwardTraversal() {
+    public List<E> testForwardTraversal() {
         return items;
     }
 
-    public List testReverseTraversal() {
+    public List<E> testReverseTraversal() {
         List<E> reversedList = new ArrayList<>();
         for(E e : items) {
             reversedList.add(0, e);
