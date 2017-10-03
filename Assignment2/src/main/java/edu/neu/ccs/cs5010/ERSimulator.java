@@ -42,6 +42,12 @@ public class ERSimulator {
             while (examQueue.getSize() < numOfRoom && !arrivalQueue.isEmpty()) {
                 examQueue.insert(arrivalQueue.remove());
             }
+            List<IPatient> examList = examQueue.testForwardTraversal();
+            List<Integer> departureTimes = new ArrayList<>();
+            for(int i = 0; i < examList.size(); i++) {
+                departureTimes.add((int)examList.get(i).getDuration());
+            }
+            System.out.println(departureTimes);
         }
     }
 
