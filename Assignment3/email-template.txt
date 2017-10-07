@@ -1,0 +1,10 @@
+[[Date]]
+
+To: [[email]]
+Subject: Please accept our apologies for the [[event]] of your flight
+Dear [[first_name]] [[last_name]], 
+
+We are very sorry for the [[event]] of your flight from [[departure-city]] to [[destination-city]]. As a valued [[rewards]] member of our club your time is important to us and we will strive to improve our service in the future, and make it on time! 
+   
+Sincerely, 
+OnTime airline customer service 
