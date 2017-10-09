@@ -11,13 +11,29 @@ public class TemplateEditor {
         return this.templateString;
     }
 
-    public String generateEmail(Map<String, String> map) {
+    public String makeEmailFromTemplate(Map<String, String> map) {
         // 1. fill
+        String email = this.templateString;
         for(String key : map.keySet()) {
-
+            Pattern p;
+            Matcher m;
+            p = Pattern.compile("\\[\\[" + key + "\\]\\]");
+            m = p.matcher(email);
+            while (m.find()) {
+                String value = map.get(key);
+                email = m.replaceAll(value);
+                m = p.matcher(email);
+            }
         }
-        // 2. check if all are filled
-        return "";
+        // 2. check if all placeholders are filled
+        Pattern p;
+        Matcher m;
+        p = Pattern.compile("\\[\\[.*?\\]\\]");
+        m = p.matcher(email);
+        if(m.find()) {
+            throw new IllegalStateException();
+        }
+        return email;
     }
 
     public String[] getPlaceholders() {
@@ -67,10 +83,6 @@ public class TemplateEditor {
     }
 
     public static void main(String[] args) {
-        String templatePathname = "/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/email-template.txt";
-        TemplateEditor editor = new TemplateEditor(templatePathname);
-        System.out.println(Arrays.toString(editor.getPlaceholders()));
-        //parseTemplateString(templateString);
 
     }
 }
