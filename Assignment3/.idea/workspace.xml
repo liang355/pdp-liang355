@@ -2,564 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="194507ed-bc2b-40d9-85ec-86bcb1d0f199" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/site/xref-test/edu/neu/ccs/cs5010/TemplateParserTest.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/edu/neu/ccs/cs5010/TemplateParserTest.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/neu/ccs/cs5010/CSVReader.class" afterPath="$PROJECT_DIR$/target/classes/edu/neu/ccs/cs5010/CSVReader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/neu/ccs/cs5010/EmailAutomator.class" afterPath="$PROJECT_DIR$/target/classes/edu/neu/ccs/cs5010/EmailAutomator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/jacoco.exec" afterPath="$PROJECT_DIR$/target/jacoco.exec" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment1/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Assignment1/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment2/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Assignment2/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/neu/ccs/cs5010/TemplateEditor.class" afterPath="$PROJECT_DIR$/target/classes/edu/neu/ccs/cs5010/TemplateEditor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/edu/neu/ccs/cs5010/CSVReaderTest.class" afterPath="$PROJECT_DIR$/target/test-classes/edu/neu/ccs/cs5010/CSVReaderTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/edu/neu/ccs/cs5010/TemplateEditorTest.class" afterPath="$PROJECT_DIR$/target/test-classes/edu/neu/ccs/cs5010/TemplateEditorTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email1.txt" afterPath="$PROJECT_DIR$/output/email1.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email10.txt" afterPath="$PROJECT_DIR$/output/email10.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email100.txt" afterPath="$PROJECT_DIR$/output/email100.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email101.txt" afterPath="$PROJECT_DIR$/output/email101.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email102.txt" afterPath="$PROJECT_DIR$/output/email102.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email103.txt" afterPath="$PROJECT_DIR$/output/email103.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email104.txt" afterPath="$PROJECT_DIR$/output/email104.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email105.txt" afterPath="$PROJECT_DIR$/output/email105.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email106.txt" afterPath="$PROJECT_DIR$/output/email106.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email107.txt" afterPath="$PROJECT_DIR$/output/email107.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email108.txt" afterPath="$PROJECT_DIR$/output/email108.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email109.txt" afterPath="$PROJECT_DIR$/output/email109.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email11.txt" afterPath="$PROJECT_DIR$/output/email11.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email110.txt" afterPath="$PROJECT_DIR$/output/email110.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email111.txt" afterPath="$PROJECT_DIR$/output/email111.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email112.txt" afterPath="$PROJECT_DIR$/output/email112.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email113.txt" afterPath="$PROJECT_DIR$/output/email113.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email114.txt" afterPath="$PROJECT_DIR$/output/email114.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email115.txt" afterPath="$PROJECT_DIR$/output/email115.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email116.txt" afterPath="$PROJECT_DIR$/output/email116.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email117.txt" afterPath="$PROJECT_DIR$/output/email117.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email118.txt" afterPath="$PROJECT_DIR$/output/email118.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email119.txt" afterPath="$PROJECT_DIR$/output/email119.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email12.txt" afterPath="$PROJECT_DIR$/output/email12.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email120.txt" afterPath="$PROJECT_DIR$/output/email120.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email121.txt" afterPath="$PROJECT_DIR$/output/email121.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email122.txt" afterPath="$PROJECT_DIR$/output/email122.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email123.txt" afterPath="$PROJECT_DIR$/output/email123.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email124.txt" afterPath="$PROJECT_DIR$/output/email124.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email125.txt" afterPath="$PROJECT_DIR$/output/email125.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email126.txt" afterPath="$PROJECT_DIR$/output/email126.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email127.txt" afterPath="$PROJECT_DIR$/output/email127.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email128.txt" afterPath="$PROJECT_DIR$/output/email128.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email129.txt" afterPath="$PROJECT_DIR$/output/email129.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email13.txt" afterPath="$PROJECT_DIR$/output/email13.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email130.txt" afterPath="$PROJECT_DIR$/output/email130.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email131.txt" afterPath="$PROJECT_DIR$/output/email131.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email132.txt" afterPath="$PROJECT_DIR$/output/email132.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email133.txt" afterPath="$PROJECT_DIR$/output/email133.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email134.txt" afterPath="$PROJECT_DIR$/output/email134.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email135.txt" afterPath="$PROJECT_DIR$/output/email135.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email136.txt" afterPath="$PROJECT_DIR$/output/email136.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email137.txt" afterPath="$PROJECT_DIR$/output/email137.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email138.txt" afterPath="$PROJECT_DIR$/output/email138.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email139.txt" afterPath="$PROJECT_DIR$/output/email139.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email14.txt" afterPath="$PROJECT_DIR$/output/email14.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email140.txt" afterPath="$PROJECT_DIR$/output/email140.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email141.txt" afterPath="$PROJECT_DIR$/output/email141.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email142.txt" afterPath="$PROJECT_DIR$/output/email142.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email143.txt" afterPath="$PROJECT_DIR$/output/email143.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email144.txt" afterPath="$PROJECT_DIR$/output/email144.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email145.txt" afterPath="$PROJECT_DIR$/output/email145.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email146.txt" afterPath="$PROJECT_DIR$/output/email146.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email147.txt" afterPath="$PROJECT_DIR$/output/email147.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email148.txt" afterPath="$PROJECT_DIR$/output/email148.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email149.txt" afterPath="$PROJECT_DIR$/output/email149.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email15.txt" afterPath="$PROJECT_DIR$/output/email15.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email150.txt" afterPath="$PROJECT_DIR$/output/email150.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email151.txt" afterPath="$PROJECT_DIR$/output/email151.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email152.txt" afterPath="$PROJECT_DIR$/output/email152.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email153.txt" afterPath="$PROJECT_DIR$/output/email153.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email154.txt" afterPath="$PROJECT_DIR$/output/email154.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email155.txt" afterPath="$PROJECT_DIR$/output/email155.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email156.txt" afterPath="$PROJECT_DIR$/output/email156.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email157.txt" afterPath="$PROJECT_DIR$/output/email157.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email158.txt" afterPath="$PROJECT_DIR$/output/email158.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email159.txt" afterPath="$PROJECT_DIR$/output/email159.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email16.txt" afterPath="$PROJECT_DIR$/output/email16.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email160.txt" afterPath="$PROJECT_DIR$/output/email160.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email161.txt" afterPath="$PROJECT_DIR$/output/email161.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email162.txt" afterPath="$PROJECT_DIR$/output/email162.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email163.txt" afterPath="$PROJECT_DIR$/output/email163.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email164.txt" afterPath="$PROJECT_DIR$/output/email164.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email165.txt" afterPath="$PROJECT_DIR$/output/email165.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email166.txt" afterPath="$PROJECT_DIR$/output/email166.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email167.txt" afterPath="$PROJECT_DIR$/output/email167.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email168.txt" afterPath="$PROJECT_DIR$/output/email168.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email169.txt" afterPath="$PROJECT_DIR$/output/email169.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email17.txt" afterPath="$PROJECT_DIR$/output/email17.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email170.txt" afterPath="$PROJECT_DIR$/output/email170.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email171.txt" afterPath="$PROJECT_DIR$/output/email171.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email172.txt" afterPath="$PROJECT_DIR$/output/email172.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email173.txt" afterPath="$PROJECT_DIR$/output/email173.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email174.txt" afterPath="$PROJECT_DIR$/output/email174.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email175.txt" afterPath="$PROJECT_DIR$/output/email175.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email176.txt" afterPath="$PROJECT_DIR$/output/email176.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email177.txt" afterPath="$PROJECT_DIR$/output/email177.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email178.txt" afterPath="$PROJECT_DIR$/output/email178.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email179.txt" afterPath="$PROJECT_DIR$/output/email179.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email18.txt" afterPath="$PROJECT_DIR$/output/email18.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email180.txt" afterPath="$PROJECT_DIR$/output/email180.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email181.txt" afterPath="$PROJECT_DIR$/output/email181.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email182.txt" afterPath="$PROJECT_DIR$/output/email182.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email183.txt" afterPath="$PROJECT_DIR$/output/email183.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email184.txt" afterPath="$PROJECT_DIR$/output/email184.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email185.txt" afterPath="$PROJECT_DIR$/output/email185.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email186.txt" afterPath="$PROJECT_DIR$/output/email186.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email187.txt" afterPath="$PROJECT_DIR$/output/email187.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email188.txt" afterPath="$PROJECT_DIR$/output/email188.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email189.txt" afterPath="$PROJECT_DIR$/output/email189.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email19.txt" afterPath="$PROJECT_DIR$/output/email19.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email190.txt" afterPath="$PROJECT_DIR$/output/email190.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email191.txt" afterPath="$PROJECT_DIR$/output/email191.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email192.txt" afterPath="$PROJECT_DIR$/output/email192.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email193.txt" afterPath="$PROJECT_DIR$/output/email193.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email194.txt" afterPath="$PROJECT_DIR$/output/email194.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email195.txt" afterPath="$PROJECT_DIR$/output/email195.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email196.txt" afterPath="$PROJECT_DIR$/output/email196.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email197.txt" afterPath="$PROJECT_DIR$/output/email197.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email198.txt" afterPath="$PROJECT_DIR$/output/email198.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email199.txt" afterPath="$PROJECT_DIR$/output/email199.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email2.txt" afterPath="$PROJECT_DIR$/output/email2.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email20.txt" afterPath="$PROJECT_DIR$/output/email20.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email200.txt" afterPath="$PROJECT_DIR$/output/email200.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email201.txt" afterPath="$PROJECT_DIR$/output/email201.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email202.txt" afterPath="$PROJECT_DIR$/output/email202.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email203.txt" afterPath="$PROJECT_DIR$/output/email203.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email204.txt" afterPath="$PROJECT_DIR$/output/email204.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email205.txt" afterPath="$PROJECT_DIR$/output/email205.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email206.txt" afterPath="$PROJECT_DIR$/output/email206.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email207.txt" afterPath="$PROJECT_DIR$/output/email207.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email208.txt" afterPath="$PROJECT_DIR$/output/email208.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email209.txt" afterPath="$PROJECT_DIR$/output/email209.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email21.txt" afterPath="$PROJECT_DIR$/output/email21.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email210.txt" afterPath="$PROJECT_DIR$/output/email210.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email211.txt" afterPath="$PROJECT_DIR$/output/email211.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email212.txt" afterPath="$PROJECT_DIR$/output/email212.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email213.txt" afterPath="$PROJECT_DIR$/output/email213.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email214.txt" afterPath="$PROJECT_DIR$/output/email214.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email215.txt" afterPath="$PROJECT_DIR$/output/email215.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email216.txt" afterPath="$PROJECT_DIR$/output/email216.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email217.txt" afterPath="$PROJECT_DIR$/output/email217.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email218.txt" afterPath="$PROJECT_DIR$/output/email218.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email219.txt" afterPath="$PROJECT_DIR$/output/email219.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email22.txt" afterPath="$PROJECT_DIR$/output/email22.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email220.txt" afterPath="$PROJECT_DIR$/output/email220.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email221.txt" afterPath="$PROJECT_DIR$/output/email221.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email222.txt" afterPath="$PROJECT_DIR$/output/email222.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email223.txt" afterPath="$PROJECT_DIR$/output/email223.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email224.txt" afterPath="$PROJECT_DIR$/output/email224.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email225.txt" afterPath="$PROJECT_DIR$/output/email225.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email226.txt" afterPath="$PROJECT_DIR$/output/email226.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email227.txt" afterPath="$PROJECT_DIR$/output/email227.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email228.txt" afterPath="$PROJECT_DIR$/output/email228.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email229.txt" afterPath="$PROJECT_DIR$/output/email229.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email23.txt" afterPath="$PROJECT_DIR$/output/email23.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email230.txt" afterPath="$PROJECT_DIR$/output/email230.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email231.txt" afterPath="$PROJECT_DIR$/output/email231.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email232.txt" afterPath="$PROJECT_DIR$/output/email232.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email233.txt" afterPath="$PROJECT_DIR$/output/email233.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email234.txt" afterPath="$PROJECT_DIR$/output/email234.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email235.txt" afterPath="$PROJECT_DIR$/output/email235.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email236.txt" afterPath="$PROJECT_DIR$/output/email236.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email237.txt" afterPath="$PROJECT_DIR$/output/email237.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email238.txt" afterPath="$PROJECT_DIR$/output/email238.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email239.txt" afterPath="$PROJECT_DIR$/output/email239.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email24.txt" afterPath="$PROJECT_DIR$/output/email24.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email240.txt" afterPath="$PROJECT_DIR$/output/email240.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email241.txt" afterPath="$PROJECT_DIR$/output/email241.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email242.txt" afterPath="$PROJECT_DIR$/output/email242.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email243.txt" afterPath="$PROJECT_DIR$/output/email243.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email244.txt" afterPath="$PROJECT_DIR$/output/email244.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email245.txt" afterPath="$PROJECT_DIR$/output/email245.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email246.txt" afterPath="$PROJECT_DIR$/output/email246.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email247.txt" afterPath="$PROJECT_DIR$/output/email247.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email248.txt" afterPath="$PROJECT_DIR$/output/email248.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email249.txt" afterPath="$PROJECT_DIR$/output/email249.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email25.txt" afterPath="$PROJECT_DIR$/output/email25.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email250.txt" afterPath="$PROJECT_DIR$/output/email250.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email251.txt" afterPath="$PROJECT_DIR$/output/email251.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email252.txt" afterPath="$PROJECT_DIR$/output/email252.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email253.txt" afterPath="$PROJECT_DIR$/output/email253.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email254.txt" afterPath="$PROJECT_DIR$/output/email254.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email255.txt" afterPath="$PROJECT_DIR$/output/email255.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email256.txt" afterPath="$PROJECT_DIR$/output/email256.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email257.txt" afterPath="$PROJECT_DIR$/output/email257.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email258.txt" afterPath="$PROJECT_DIR$/output/email258.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email259.txt" afterPath="$PROJECT_DIR$/output/email259.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email26.txt" afterPath="$PROJECT_DIR$/output/email26.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email260.txt" afterPath="$PROJECT_DIR$/output/email260.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email261.txt" afterPath="$PROJECT_DIR$/output/email261.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email262.txt" afterPath="$PROJECT_DIR$/output/email262.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email263.txt" afterPath="$PROJECT_DIR$/output/email263.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email264.txt" afterPath="$PROJECT_DIR$/output/email264.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email265.txt" afterPath="$PROJECT_DIR$/output/email265.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email266.txt" afterPath="$PROJECT_DIR$/output/email266.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email267.txt" afterPath="$PROJECT_DIR$/output/email267.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email268.txt" afterPath="$PROJECT_DIR$/output/email268.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email269.txt" afterPath="$PROJECT_DIR$/output/email269.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email27.txt" afterPath="$PROJECT_DIR$/output/email27.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email270.txt" afterPath="$PROJECT_DIR$/output/email270.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email271.txt" afterPath="$PROJECT_DIR$/output/email271.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email272.txt" afterPath="$PROJECT_DIR$/output/email272.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email273.txt" afterPath="$PROJECT_DIR$/output/email273.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email274.txt" afterPath="$PROJECT_DIR$/output/email274.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email275.txt" afterPath="$PROJECT_DIR$/output/email275.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email276.txt" afterPath="$PROJECT_DIR$/output/email276.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email277.txt" afterPath="$PROJECT_DIR$/output/email277.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email278.txt" afterPath="$PROJECT_DIR$/output/email278.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email279.txt" afterPath="$PROJECT_DIR$/output/email279.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email28.txt" afterPath="$PROJECT_DIR$/output/email28.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email280.txt" afterPath="$PROJECT_DIR$/output/email280.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email281.txt" afterPath="$PROJECT_DIR$/output/email281.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email282.txt" afterPath="$PROJECT_DIR$/output/email282.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email283.txt" afterPath="$PROJECT_DIR$/output/email283.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email284.txt" afterPath="$PROJECT_DIR$/output/email284.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email285.txt" afterPath="$PROJECT_DIR$/output/email285.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email286.txt" afterPath="$PROJECT_DIR$/output/email286.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email287.txt" afterPath="$PROJECT_DIR$/output/email287.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email288.txt" afterPath="$PROJECT_DIR$/output/email288.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email289.txt" afterPath="$PROJECT_DIR$/output/email289.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email29.txt" afterPath="$PROJECT_DIR$/output/email29.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email290.txt" afterPath="$PROJECT_DIR$/output/email290.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email291.txt" afterPath="$PROJECT_DIR$/output/email291.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email292.txt" afterPath="$PROJECT_DIR$/output/email292.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email293.txt" afterPath="$PROJECT_DIR$/output/email293.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email294.txt" afterPath="$PROJECT_DIR$/output/email294.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email295.txt" afterPath="$PROJECT_DIR$/output/email295.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email296.txt" afterPath="$PROJECT_DIR$/output/email296.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email297.txt" afterPath="$PROJECT_DIR$/output/email297.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email298.txt" afterPath="$PROJECT_DIR$/output/email298.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email299.txt" afterPath="$PROJECT_DIR$/output/email299.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email3.txt" afterPath="$PROJECT_DIR$/output/email3.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email30.txt" afterPath="$PROJECT_DIR$/output/email30.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email300.txt" afterPath="$PROJECT_DIR$/output/email300.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email301.txt" afterPath="$PROJECT_DIR$/output/email301.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email302.txt" afterPath="$PROJECT_DIR$/output/email302.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email303.txt" afterPath="$PROJECT_DIR$/output/email303.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email304.txt" afterPath="$PROJECT_DIR$/output/email304.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email305.txt" afterPath="$PROJECT_DIR$/output/email305.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email306.txt" afterPath="$PROJECT_DIR$/output/email306.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email307.txt" afterPath="$PROJECT_DIR$/output/email307.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email308.txt" afterPath="$PROJECT_DIR$/output/email308.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email309.txt" afterPath="$PROJECT_DIR$/output/email309.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email31.txt" afterPath="$PROJECT_DIR$/output/email31.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email310.txt" afterPath="$PROJECT_DIR$/output/email310.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email311.txt" afterPath="$PROJECT_DIR$/output/email311.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email312.txt" afterPath="$PROJECT_DIR$/output/email312.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email313.txt" afterPath="$PROJECT_DIR$/output/email313.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email314.txt" afterPath="$PROJECT_DIR$/output/email314.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email315.txt" afterPath="$PROJECT_DIR$/output/email315.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email316.txt" afterPath="$PROJECT_DIR$/output/email316.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email317.txt" afterPath="$PROJECT_DIR$/output/email317.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email318.txt" afterPath="$PROJECT_DIR$/output/email318.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email319.txt" afterPath="$PROJECT_DIR$/output/email319.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email32.txt" afterPath="$PROJECT_DIR$/output/email32.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email320.txt" afterPath="$PROJECT_DIR$/output/email320.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email321.txt" afterPath="$PROJECT_DIR$/output/email321.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email322.txt" afterPath="$PROJECT_DIR$/output/email322.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email323.txt" afterPath="$PROJECT_DIR$/output/email323.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email324.txt" afterPath="$PROJECT_DIR$/output/email324.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email325.txt" afterPath="$PROJECT_DIR$/output/email325.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email326.txt" afterPath="$PROJECT_DIR$/output/email326.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email327.txt" afterPath="$PROJECT_DIR$/output/email327.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email328.txt" afterPath="$PROJECT_DIR$/output/email328.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email329.txt" afterPath="$PROJECT_DIR$/output/email329.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email33.txt" afterPath="$PROJECT_DIR$/output/email33.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email330.txt" afterPath="$PROJECT_DIR$/output/email330.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email331.txt" afterPath="$PROJECT_DIR$/output/email331.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email332.txt" afterPath="$PROJECT_DIR$/output/email332.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email333.txt" afterPath="$PROJECT_DIR$/output/email333.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email334.txt" afterPath="$PROJECT_DIR$/output/email334.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email335.txt" afterPath="$PROJECT_DIR$/output/email335.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email336.txt" afterPath="$PROJECT_DIR$/output/email336.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email337.txt" afterPath="$PROJECT_DIR$/output/email337.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email338.txt" afterPath="$PROJECT_DIR$/output/email338.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email339.txt" afterPath="$PROJECT_DIR$/output/email339.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email34.txt" afterPath="$PROJECT_DIR$/output/email34.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email340.txt" afterPath="$PROJECT_DIR$/output/email340.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email341.txt" afterPath="$PROJECT_DIR$/output/email341.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email342.txt" afterPath="$PROJECT_DIR$/output/email342.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email343.txt" afterPath="$PROJECT_DIR$/output/email343.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email344.txt" afterPath="$PROJECT_DIR$/output/email344.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email345.txt" afterPath="$PROJECT_DIR$/output/email345.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email346.txt" afterPath="$PROJECT_DIR$/output/email346.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email347.txt" afterPath="$PROJECT_DIR$/output/email347.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email348.txt" afterPath="$PROJECT_DIR$/output/email348.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email349.txt" afterPath="$PROJECT_DIR$/output/email349.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email35.txt" afterPath="$PROJECT_DIR$/output/email35.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email350.txt" afterPath="$PROJECT_DIR$/output/email350.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email351.txt" afterPath="$PROJECT_DIR$/output/email351.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email352.txt" afterPath="$PROJECT_DIR$/output/email352.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email353.txt" afterPath="$PROJECT_DIR$/output/email353.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email354.txt" afterPath="$PROJECT_DIR$/output/email354.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email355.txt" afterPath="$PROJECT_DIR$/output/email355.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email356.txt" afterPath="$PROJECT_DIR$/output/email356.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email357.txt" afterPath="$PROJECT_DIR$/output/email357.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email358.txt" afterPath="$PROJECT_DIR$/output/email358.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email359.txt" afterPath="$PROJECT_DIR$/output/email359.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email36.txt" afterPath="$PROJECT_DIR$/output/email36.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email360.txt" afterPath="$PROJECT_DIR$/output/email360.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email361.txt" afterPath="$PROJECT_DIR$/output/email361.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email362.txt" afterPath="$PROJECT_DIR$/output/email362.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email363.txt" afterPath="$PROJECT_DIR$/output/email363.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email364.txt" afterPath="$PROJECT_DIR$/output/email364.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email365.txt" afterPath="$PROJECT_DIR$/output/email365.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email366.txt" afterPath="$PROJECT_DIR$/output/email366.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email367.txt" afterPath="$PROJECT_DIR$/output/email367.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email368.txt" afterPath="$PROJECT_DIR$/output/email368.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email369.txt" afterPath="$PROJECT_DIR$/output/email369.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email37.txt" afterPath="$PROJECT_DIR$/output/email37.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email370.txt" afterPath="$PROJECT_DIR$/output/email370.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email371.txt" afterPath="$PROJECT_DIR$/output/email371.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email372.txt" afterPath="$PROJECT_DIR$/output/email372.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email373.txt" afterPath="$PROJECT_DIR$/output/email373.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email374.txt" afterPath="$PROJECT_DIR$/output/email374.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email375.txt" afterPath="$PROJECT_DIR$/output/email375.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email376.txt" afterPath="$PROJECT_DIR$/output/email376.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email377.txt" afterPath="$PROJECT_DIR$/output/email377.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email378.txt" afterPath="$PROJECT_DIR$/output/email378.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email379.txt" afterPath="$PROJECT_DIR$/output/email379.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email38.txt" afterPath="$PROJECT_DIR$/output/email38.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email380.txt" afterPath="$PROJECT_DIR$/output/email380.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email381.txt" afterPath="$PROJECT_DIR$/output/email381.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email382.txt" afterPath="$PROJECT_DIR$/output/email382.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email383.txt" afterPath="$PROJECT_DIR$/output/email383.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email384.txt" afterPath="$PROJECT_DIR$/output/email384.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email385.txt" afterPath="$PROJECT_DIR$/output/email385.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email386.txt" afterPath="$PROJECT_DIR$/output/email386.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email387.txt" afterPath="$PROJECT_DIR$/output/email387.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email388.txt" afterPath="$PROJECT_DIR$/output/email388.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email389.txt" afterPath="$PROJECT_DIR$/output/email389.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email39.txt" afterPath="$PROJECT_DIR$/output/email39.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email390.txt" afterPath="$PROJECT_DIR$/output/email390.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email391.txt" afterPath="$PROJECT_DIR$/output/email391.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email392.txt" afterPath="$PROJECT_DIR$/output/email392.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email393.txt" afterPath="$PROJECT_DIR$/output/email393.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email394.txt" afterPath="$PROJECT_DIR$/output/email394.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email395.txt" afterPath="$PROJECT_DIR$/output/email395.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email396.txt" afterPath="$PROJECT_DIR$/output/email396.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email397.txt" afterPath="$PROJECT_DIR$/output/email397.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email398.txt" afterPath="$PROJECT_DIR$/output/email398.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email399.txt" afterPath="$PROJECT_DIR$/output/email399.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email4.txt" afterPath="$PROJECT_DIR$/output/email4.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email40.txt" afterPath="$PROJECT_DIR$/output/email40.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email400.txt" afterPath="$PROJECT_DIR$/output/email400.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email401.txt" afterPath="$PROJECT_DIR$/output/email401.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email402.txt" afterPath="$PROJECT_DIR$/output/email402.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email403.txt" afterPath="$PROJECT_DIR$/output/email403.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email404.txt" afterPath="$PROJECT_DIR$/output/email404.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email405.txt" afterPath="$PROJECT_DIR$/output/email405.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email406.txt" afterPath="$PROJECT_DIR$/output/email406.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email407.txt" afterPath="$PROJECT_DIR$/output/email407.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email408.txt" afterPath="$PROJECT_DIR$/output/email408.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email409.txt" afterPath="$PROJECT_DIR$/output/email409.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email41.txt" afterPath="$PROJECT_DIR$/output/email41.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email410.txt" afterPath="$PROJECT_DIR$/output/email410.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email411.txt" afterPath="$PROJECT_DIR$/output/email411.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email412.txt" afterPath="$PROJECT_DIR$/output/email412.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email413.txt" afterPath="$PROJECT_DIR$/output/email413.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email414.txt" afterPath="$PROJECT_DIR$/output/email414.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email415.txt" afterPath="$PROJECT_DIR$/output/email415.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email416.txt" afterPath="$PROJECT_DIR$/output/email416.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email417.txt" afterPath="$PROJECT_DIR$/output/email417.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email418.txt" afterPath="$PROJECT_DIR$/output/email418.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email419.txt" afterPath="$PROJECT_DIR$/output/email419.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email42.txt" afterPath="$PROJECT_DIR$/output/email42.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email420.txt" afterPath="$PROJECT_DIR$/output/email420.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email421.txt" afterPath="$PROJECT_DIR$/output/email421.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email422.txt" afterPath="$PROJECT_DIR$/output/email422.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email423.txt" afterPath="$PROJECT_DIR$/output/email423.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email424.txt" afterPath="$PROJECT_DIR$/output/email424.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email425.txt" afterPath="$PROJECT_DIR$/output/email425.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email426.txt" afterPath="$PROJECT_DIR$/output/email426.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email427.txt" afterPath="$PROJECT_DIR$/output/email427.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email428.txt" afterPath="$PROJECT_DIR$/output/email428.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email429.txt" afterPath="$PROJECT_DIR$/output/email429.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email43.txt" afterPath="$PROJECT_DIR$/output/email43.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email430.txt" afterPath="$PROJECT_DIR$/output/email430.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email431.txt" afterPath="$PROJECT_DIR$/output/email431.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email432.txt" afterPath="$PROJECT_DIR$/output/email432.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email433.txt" afterPath="$PROJECT_DIR$/output/email433.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email434.txt" afterPath="$PROJECT_DIR$/output/email434.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email435.txt" afterPath="$PROJECT_DIR$/output/email435.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email436.txt" afterPath="$PROJECT_DIR$/output/email436.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email437.txt" afterPath="$PROJECT_DIR$/output/email437.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email438.txt" afterPath="$PROJECT_DIR$/output/email438.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email439.txt" afterPath="$PROJECT_DIR$/output/email439.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email44.txt" afterPath="$PROJECT_DIR$/output/email44.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email440.txt" afterPath="$PROJECT_DIR$/output/email440.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email441.txt" afterPath="$PROJECT_DIR$/output/email441.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email442.txt" afterPath="$PROJECT_DIR$/output/email442.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email443.txt" afterPath="$PROJECT_DIR$/output/email443.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email444.txt" afterPath="$PROJECT_DIR$/output/email444.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email445.txt" afterPath="$PROJECT_DIR$/output/email445.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email446.txt" afterPath="$PROJECT_DIR$/output/email446.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email447.txt" afterPath="$PROJECT_DIR$/output/email447.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email448.txt" afterPath="$PROJECT_DIR$/output/email448.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email449.txt" afterPath="$PROJECT_DIR$/output/email449.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email45.txt" afterPath="$PROJECT_DIR$/output/email45.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email450.txt" afterPath="$PROJECT_DIR$/output/email450.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email451.txt" afterPath="$PROJECT_DIR$/output/email451.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email452.txt" afterPath="$PROJECT_DIR$/output/email452.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email453.txt" afterPath="$PROJECT_DIR$/output/email453.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email454.txt" afterPath="$PROJECT_DIR$/output/email454.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email455.txt" afterPath="$PROJECT_DIR$/output/email455.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email456.txt" afterPath="$PROJECT_DIR$/output/email456.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email457.txt" afterPath="$PROJECT_DIR$/output/email457.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email458.txt" afterPath="$PROJECT_DIR$/output/email458.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email459.txt" afterPath="$PROJECT_DIR$/output/email459.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email46.txt" afterPath="$PROJECT_DIR$/output/email46.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email460.txt" afterPath="$PROJECT_DIR$/output/email460.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email461.txt" afterPath="$PROJECT_DIR$/output/email461.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email462.txt" afterPath="$PROJECT_DIR$/output/email462.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email463.txt" afterPath="$PROJECT_DIR$/output/email463.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email464.txt" afterPath="$PROJECT_DIR$/output/email464.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email465.txt" afterPath="$PROJECT_DIR$/output/email465.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email466.txt" afterPath="$PROJECT_DIR$/output/email466.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email467.txt" afterPath="$PROJECT_DIR$/output/email467.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email468.txt" afterPath="$PROJECT_DIR$/output/email468.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email469.txt" afterPath="$PROJECT_DIR$/output/email469.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email47.txt" afterPath="$PROJECT_DIR$/output/email47.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email470.txt" afterPath="$PROJECT_DIR$/output/email470.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email471.txt" afterPath="$PROJECT_DIR$/output/email471.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email472.txt" afterPath="$PROJECT_DIR$/output/email472.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email473.txt" afterPath="$PROJECT_DIR$/output/email473.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email474.txt" afterPath="$PROJECT_DIR$/output/email474.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email475.txt" afterPath="$PROJECT_DIR$/output/email475.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email476.txt" afterPath="$PROJECT_DIR$/output/email476.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email477.txt" afterPath="$PROJECT_DIR$/output/email477.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email478.txt" afterPath="$PROJECT_DIR$/output/email478.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email479.txt" afterPath="$PROJECT_DIR$/output/email479.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email48.txt" afterPath="$PROJECT_DIR$/output/email48.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email480.txt" afterPath="$PROJECT_DIR$/output/email480.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email481.txt" afterPath="$PROJECT_DIR$/output/email481.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email482.txt" afterPath="$PROJECT_DIR$/output/email482.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email483.txt" afterPath="$PROJECT_DIR$/output/email483.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email484.txt" afterPath="$PROJECT_DIR$/output/email484.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email485.txt" afterPath="$PROJECT_DIR$/output/email485.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email486.txt" afterPath="$PROJECT_DIR$/output/email486.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email487.txt" afterPath="$PROJECT_DIR$/output/email487.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email488.txt" afterPath="$PROJECT_DIR$/output/email488.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email489.txt" afterPath="$PROJECT_DIR$/output/email489.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email49.txt" afterPath="$PROJECT_DIR$/output/email49.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email490.txt" afterPath="$PROJECT_DIR$/output/email490.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email491.txt" afterPath="$PROJECT_DIR$/output/email491.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email492.txt" afterPath="$PROJECT_DIR$/output/email492.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email493.txt" afterPath="$PROJECT_DIR$/output/email493.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email494.txt" afterPath="$PROJECT_DIR$/output/email494.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email495.txt" afterPath="$PROJECT_DIR$/output/email495.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email496.txt" afterPath="$PROJECT_DIR$/output/email496.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email497.txt" afterPath="$PROJECT_DIR$/output/email497.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email498.txt" afterPath="$PROJECT_DIR$/output/email498.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email499.txt" afterPath="$PROJECT_DIR$/output/email499.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email5.txt" afterPath="$PROJECT_DIR$/output/email5.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email50.txt" afterPath="$PROJECT_DIR$/output/email50.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email500.txt" afterPath="$PROJECT_DIR$/output/email500.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email51.txt" afterPath="$PROJECT_DIR$/output/email51.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email52.txt" afterPath="$PROJECT_DIR$/output/email52.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email53.txt" afterPath="$PROJECT_DIR$/output/email53.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email54.txt" afterPath="$PROJECT_DIR$/output/email54.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email55.txt" afterPath="$PROJECT_DIR$/output/email55.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email56.txt" afterPath="$PROJECT_DIR$/output/email56.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email57.txt" afterPath="$PROJECT_DIR$/output/email57.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email58.txt" afterPath="$PROJECT_DIR$/output/email58.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email59.txt" afterPath="$PROJECT_DIR$/output/email59.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email6.txt" afterPath="$PROJECT_DIR$/output/email6.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email60.txt" afterPath="$PROJECT_DIR$/output/email60.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email61.txt" afterPath="$PROJECT_DIR$/output/email61.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email62.txt" afterPath="$PROJECT_DIR$/output/email62.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email63.txt" afterPath="$PROJECT_DIR$/output/email63.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email64.txt" afterPath="$PROJECT_DIR$/output/email64.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email65.txt" afterPath="$PROJECT_DIR$/output/email65.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email66.txt" afterPath="$PROJECT_DIR$/output/email66.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email67.txt" afterPath="$PROJECT_DIR$/output/email67.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email68.txt" afterPath="$PROJECT_DIR$/output/email68.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email69.txt" afterPath="$PROJECT_DIR$/output/email69.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email7.txt" afterPath="$PROJECT_DIR$/output/email7.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email70.txt" afterPath="$PROJECT_DIR$/output/email70.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email71.txt" afterPath="$PROJECT_DIR$/output/email71.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email72.txt" afterPath="$PROJECT_DIR$/output/email72.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email73.txt" afterPath="$PROJECT_DIR$/output/email73.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email74.txt" afterPath="$PROJECT_DIR$/output/email74.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email75.txt" afterPath="$PROJECT_DIR$/output/email75.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email76.txt" afterPath="$PROJECT_DIR$/output/email76.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email77.txt" afterPath="$PROJECT_DIR$/output/email77.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email78.txt" afterPath="$PROJECT_DIR$/output/email78.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email79.txt" afterPath="$PROJECT_DIR$/output/email79.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email8.txt" afterPath="$PROJECT_DIR$/output/email8.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email80.txt" afterPath="$PROJECT_DIR$/output/email80.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email81.txt" afterPath="$PROJECT_DIR$/output/email81.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email82.txt" afterPath="$PROJECT_DIR$/output/email82.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email83.txt" afterPath="$PROJECT_DIR$/output/email83.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email84.txt" afterPath="$PROJECT_DIR$/output/email84.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email85.txt" afterPath="$PROJECT_DIR$/output/email85.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email86.txt" afterPath="$PROJECT_DIR$/output/email86.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email87.txt" afterPath="$PROJECT_DIR$/output/email87.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email88.txt" afterPath="$PROJECT_DIR$/output/email88.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email89.txt" afterPath="$PROJECT_DIR$/output/email89.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email9.txt" afterPath="$PROJECT_DIR$/output/email9.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email90.txt" afterPath="$PROJECT_DIR$/output/email90.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email91.txt" afterPath="$PROJECT_DIR$/output/email91.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email92.txt" afterPath="$PROJECT_DIR$/output/email92.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email93.txt" afterPath="$PROJECT_DIR$/output/email93.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email94.txt" afterPath="$PROJECT_DIR$/output/email94.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email95.txt" afterPath="$PROJECT_DIR$/output/email95.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email96.txt" afterPath="$PROJECT_DIR$/output/email96.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email97.txt" afterPath="$PROJECT_DIR$/output/email97.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email98.txt" afterPath="$PROJECT_DIR$/output/email98.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/email99.txt" afterPath="$PROJECT_DIR$/output/email99.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/CSVReader.java" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/CSVReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/EmailAutomator.java" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/EmailAutomator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/TemplateEditor.java" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/TemplateEditor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/CSVReaderTest.java" afterPath="$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/CSVReaderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/EmailAutomatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/EmailAutomatorTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/TemplateEditorTest.java" afterPath="$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/TemplateEditorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/checkstyle-cachefile" afterPath="$PROJECT_DIR$/target/checkstyle-cachefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/checkstyle-result.xml" afterPath="$PROJECT_DIR$/target/checkstyle-result.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/findbugsXml.xml" afterPath="$PROJECT_DIR$/target/findbugsXml.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/pmd.xml" afterPath="$PROJECT_DIR$/target/pmd.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/allclasses-frame.html" afterPath="$PROJECT_DIR$/target/site/apidocs/allclasses-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/allclasses-noframe.html" afterPath="$PROJECT_DIR$/target/site/apidocs/allclasses-noframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/constant-values.html" afterPath="$PROJECT_DIR$/target/site/apidocs/constant-values.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/deprecated-list.html" afterPath="$PROJECT_DIR$/target/site/apidocs/deprecated-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/CSVReader.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/CSVReader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/EmailAutomator.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/EmailAutomator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/TemplateEditor.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/TemplateEditor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/class-use/CSVReader.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/class-use/CSVReader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/class-use/EmailAutomator.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/class-use/EmailAutomator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/class-use/TemplateEditor.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/class-use/TemplateEditor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/package-frame.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/package-summary.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/package-tree.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/package-use.html" afterPath="$PROJECT_DIR$/target/site/apidocs/edu/neu/ccs/cs5010/package-use.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/help-doc.html" afterPath="$PROJECT_DIR$/target/site/apidocs/help-doc.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/index-all.html" afterPath="$PROJECT_DIR$/target/site/apidocs/index-all.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/index.html" afterPath="$PROJECT_DIR$/target/site/apidocs/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/apidocs/overview-tree.html" afterPath="$PROJECT_DIR$/target/site/apidocs/overview-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/checkstyle.html" afterPath="$PROJECT_DIR$/target/site/checkstyle.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/checkstyle.rss" afterPath="$PROJECT_DIR$/target/site/checkstyle.rss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/findbugs.html" afterPath="$PROJECT_DIR$/target/site/findbugs.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/findbugs.xml" afterPath="$PROJECT_DIR$/target/site/findbugs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/.sessions.html" afterPath="$PROJECT_DIR$/target/site/jacoco/.sessions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/CSVReader.html" afterPath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/CSVReader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/CSVReader.java.html" afterPath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/CSVReader.java.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/EmailAutomator.html" afterPath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/EmailAutomator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/EmailAutomator.java.html" afterPath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/EmailAutomator.java.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/index.html" afterPath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/index.source.html" afterPath="$PROJECT_DIR$/target/site/jacoco/edu.neu.ccs.cs5010/index.source.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/pmd.html" afterPath="$PROJECT_DIR$/target/site/pmd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/xref-test/allclasses-frame.html" afterPath="$PROJECT_DIR$/target/site/xref-test/allclasses-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/xref-test/edu/neu/ccs/cs5010/package-frame.html" afterPath="$PROJECT_DIR$/target/site/xref-test/edu/neu/ccs/cs5010/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/xref-test/edu/neu/ccs/cs5010/package-summary.html" afterPath="$PROJECT_DIR$/target/site/xref-test/edu/neu/ccs/cs5010/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/xref/edu/neu/ccs/cs5010/CSVReader.html" afterPath="$PROJECT_DIR$/target/site/xref/edu/neu/ccs/cs5010/CSVReader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/xref/edu/neu/ccs/cs5010/EmailAutomator.html" afterPath="$PROJECT_DIR$/target/site/xref/edu/neu/ccs/cs5010/EmailAutomator.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -572,6 +19,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="email-template.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/email-template.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="11" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="EmailAutomator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/EmailAutomator.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -609,7 +66,7 @@
       <file leaf-file-name="CSVReaderTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/CSVReaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="-229">
               <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="12" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -621,8 +78,8 @@
       <file leaf-file-name="TemplateEditor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/TemplateEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+            <state relative-caret-position="215">
+              <caret line="65" column="16" lean-forward="true" selection-start-line="65" selection-start-column="16" selection-end-line="71" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#198#199#0" expanded="true" />
@@ -635,12 +92,10 @@
       <file leaf-file-name="TemplateEditorTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/TemplateEditorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="54" lean-forward="false" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+            <state relative-caret-position="303">
+              <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#688#689#0" expanded="true" />
-                <element signature="e#749#750#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -679,6 +134,7 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/CSVReader.java" />
         <option value="$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/CSVReaderTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/TemplateEditor.java" />
+        <option value="$PROJECT_DIR$/email-template.txt" />
         <option value="$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/TemplateEditorTest.java" />
       </list>
     </option>
@@ -779,17 +235,6 @@
             </path>
             <path>
               <item name="Assignment3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Assignment3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Assignment3" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -823,7 +268,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CSVReaderTest">
+  <component name="RunManager" selected="JUnit.TemplateEditorTest">
     <configuration name="CSVReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -905,6 +350,31 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Assignment3" />
       <envs />
+    </configuration>
+    <configuration name="TemplateEditorTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="edu.neu.ccs.cs5010.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Assignment3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="edu.neu.ccs.cs5010" />
+      <option name="MAIN_CLASS_NAME" value="edu.neu.ccs.cs5010.TemplateEditorTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
     </configuration>
     <configuration name="TemplateParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
@@ -1005,12 +475,13 @@
       <properties />
       <listeners />
     </configuration>
-    <list size="5">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.TemplateParser" />
       <item index="1" class="java.lang.String" itemvalue="Application.TemplateEditor" />
       <item index="2" class="java.lang.String" itemvalue="Application.CSVReader" />
       <item index="3" class="java.lang.String" itemvalue="Application.EmailAutomator" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.CSVReaderTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.TemplateEditorTest" />
     </list>
     <recent_temporary>
       <list size="4">
@@ -1037,20 +508,11 @@
       <workItem from="1507355079230" duration="1895000" />
       <workItem from="1507401405881" duration="1678000" />
       <workItem from="1507497094156" duration="6171000" />
-      <workItem from="1507527289070" duration="35279000" />
+      <workItem from="1507527289070" duration="35970000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CSVReaderTest - 2017.10.09 at 16h 55m 12s.xml">
-      <configuration name="CSVReaderTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CSVReaderTest - 2017.10.09 at 16h 55m 55s.xml">
-      <configuration name="CSVReaderTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CSVReaderTest - 2017.10.09 at 17h 01m 47s.xml">
-      <configuration name="CSVReaderTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CSVReaderTest - 2017.10.09 at 17h 05m 18s.xml">
       <configuration name="CSVReaderTest" configurationId="JUnit" />
     </history-entry>
@@ -1060,9 +522,30 @@
     <history-entry file="CSVReaderTest - 2017.10.09 at 17h 38m 44s.xml">
       <configuration name="CSVReaderTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TemplateEditorTest - 2017.10.09 at 17h 48m 25s.xml">
+      <configuration name="TemplateEditorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateEditorTest - 2017.10.09 at 17h 50m 31s.xml">
+      <configuration name="TemplateEditorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateEditorTest - 2017.10.09 at 17h 50m 39s.xml">
+      <configuration name="TemplateEditorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateEditorTest - 2017.10.09 at 17h 51m 43s.xml">
+      <configuration name="TemplateEditorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateEditorTest - 2017.10.09 at 17h 53m 18s.xml">
+      <configuration name="TemplateEditorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateEditorTest - 2017.10.09 at 17h 53m 37s.xml">
+      <configuration name="TemplateEditorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateEditorTest - 2017.10.09 at 17h 57m 06s.xml">
+      <configuration name="TemplateEditorTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45023000" />
+    <option name="totallyTimeSpent" value="45714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="0" />
@@ -1077,7 +560,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20972222" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1244,14 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email-template.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="72" lean-forward="false" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://JavaScript-modules-diagram//Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/src/main/java/edu/neu/ccs/cs5010">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1376,16 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/EmailAutomator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="43" column="64" lean-forward="false" selection-start-line="43" selection-start-column="64" selection-end-line="43" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Flight363FromSeattleToBoston.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1399,16 +864,6 @@
         <state relative-caret-position="45">
           <caret line="3" column="115" lean-forward="false" selection-start-line="3" selection-start-column="109" selection-end-line="3" selection-end-column="115" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/CSVReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="67" column="106" lean-forward="false" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="106" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1428,9 +883,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/EmailAutomator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="43" column="64" lean-forward="false" selection-start-line="43" selection-start-column="64" selection-end-line="43" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email-template.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="11" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/CSVReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="67" column="106" lean-forward="false" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/CSVReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="-229">
           <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="12" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1440,8 +923,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/TemplateEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        <state relative-caret-position="215">
+          <caret line="65" column="16" lean-forward="true" selection-start-line="65" selection-start-column="16" selection-end-line="71" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#198#199#0" expanded="true" />
@@ -1452,12 +935,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/edu/neu/ccs/cs5010/TemplateEditorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="54" lean-forward="false" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+        <state relative-caret-position="303">
+          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#688#689#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
           </folding>
         </state>
       </provider>
