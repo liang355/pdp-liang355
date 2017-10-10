@@ -36,21 +36,21 @@ public class TemplateEditor {
         return email;
     }
 
-    public String[] getPlaceholders() {
-        List<String> stringList = new ArrayList<>();
-        StringBuilder sb;
-        String s;
-        Pattern p;
-        Matcher m;
-        p = Pattern.compile("\\[\\[.*?\\]\\]");
-        m = p.matcher(templateString);
-        while (m.find()) {
-            s = m.group();
-            sb = new StringBuilder(s);
-            stringList.add(sb.substring(2, s.length() - 2));
-        }
-        return stringList.toArray(new String[stringList.size()]);
-    }
+//    public String[] getPlaceholders() {
+//        List<String> stringList = new ArrayList<>();
+//        StringBuilder sb;
+//        String s;
+//        Pattern p;
+//        Matcher m;
+//        p = Pattern.compile("\\[\\[.*?\\]\\]");
+//        m = p.matcher(templateString);
+//        while (m.find()) {
+//            s = m.group();
+//            sb = new StringBuilder(s);
+//            stringList.add(sb.substring(2, s.length() - 2));
+//        }
+//        return stringList.toArray(new String[stringList.size()]);
+//    }
 
     public TemplateEditor(String templatePathname) {
         FileReader inputFile = null;

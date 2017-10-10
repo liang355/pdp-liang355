@@ -25,22 +25,18 @@ public class EmailAutomator {
     public void run(String templatePathname, String outputDir, String CSVPathname, String event) {
         CSVReader reader = new CSVReader(CSVPathname);
         TemplateEditor editor = new TemplateEditor(templatePathname);
-        try {
-            // 1. create mappings from CSV
-            List<Map<String, String>> mappings = reader.readCSVToMappings(event);
-            for(Map<String, String> map : mappings) {
-                // 2. make email
-                try {
-                    String email = editor.makeEmailFromTemplate(map);
-                    System.out.println(email);
-                    printEmailToFile(email, outputDir);
-                } catch (IllegalStateException ise) {
-                    System.out.println("Failed to fill all placeholders ...");
-                    ise.printStackTrace();
-                }
+        // 1. create mappings from CSV
+        List<Map<String, String>> mappings = reader.readCSVToMappings(event);
+        for(Map<String, String> map : mappings) {
+            // 2. make email
+            try {
+                String email = editor.makeEmailFromTemplate(map);
+                System.out.println(email);
+                printEmailToFile(email, outputDir);
+            } catch (IllegalStateException ise) {
+                System.out.println("Failed to fill all placeholders ...");
+                ise.printStackTrace();
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Something is wrong with CSV format: " + e);
         }
     }
 

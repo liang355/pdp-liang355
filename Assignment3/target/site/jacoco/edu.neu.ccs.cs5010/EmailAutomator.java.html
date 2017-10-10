@@ -25,32 +25,28 @@ import java.io.*;
     public void run(String templatePathname, String outputDir, String CSVPathname, String event) {
 <span class="nc" id="L26">        CSVReader reader = new CSVReader(CSVPathname);</span>
 <span class="nc" id="L27">        TemplateEditor editor = new TemplateEditor(templatePathname);</span>
-        try {
-            // 1. create mappings from CSV
-<span class="nc" id="L30">            List&lt;Map&lt;String, String&gt;&gt; mappings = reader.readCSVToMappings(event);</span>
-<span class="nc bnc" id="L31" title="All 2 branches missed.">            for(Map&lt;String, String&gt; map : mappings) {</span>
-                // 2. make email
-                try {
-<span class="nc" id="L34">                    String email = editor.makeEmailFromTemplate(map);</span>
-<span class="nc" id="L35">                    System.out.println(email);</span>
-<span class="nc" id="L36">                    printEmailToFile(email, outputDir);</span>
-<span class="nc" id="L37">                } catch (IllegalStateException ise) {</span>
-<span class="nc" id="L38">                    System.out.println(&quot;Failed to fill all placeholders ...&quot;);</span>
-<span class="nc" id="L39">                    ise.printStackTrace();</span>
-<span class="nc" id="L40">                }</span>
-<span class="nc" id="L41">            }</span>
-<span class="nc" id="L42">        } catch (IllegalArgumentException e) {</span>
-<span class="nc" id="L43">            System.out.println(&quot;Something is wrong with CSV format: &quot; + e);</span>
-<span class="nc" id="L44">        }</span>
-<span class="nc" id="L45">    }</span>
+        // 1. create mappings from CSV
+<span class="nc" id="L29">        List&lt;Map&lt;String, String&gt;&gt; mappings = reader.readCSVToMappings(event);</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        for(Map&lt;String, String&gt; map : mappings) {</span>
+            // 2. make email
+            try {
+<span class="nc" id="L33">                String email = editor.makeEmailFromTemplate(map);</span>
+<span class="nc" id="L34">                System.out.println(email);</span>
+<span class="nc" id="L35">                printEmailToFile(email, outputDir);</span>
+<span class="nc" id="L36">            } catch (IllegalStateException ise) {</span>
+<span class="nc" id="L37">                System.out.println(&quot;Failed to fill all placeholders ...&quot;);</span>
+<span class="nc" id="L38">                ise.printStackTrace();</span>
+<span class="nc" id="L39">            }</span>
+<span class="nc" id="L40">        }</span>
+<span class="nc" id="L41">    }</span>
 
     public static void main(String[] args) {
-<span class="nc" id="L48">        String CSVPathname = &quot;/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/Flight363FromSeattleToBoston.csv&quot;;</span>
-<span class="nc" id="L49">        String templatePathname = &quot;/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/email-template.txt&quot;;</span>
-<span class="nc" id="L50">        String outputDir = &quot;/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/output&quot;;</span>
-<span class="nc" id="L51">        String event = &quot;departure&quot;;</span>
-<span class="nc" id="L52">        EmailAutomator automator = new EmailAutomator();</span>
-<span class="nc" id="L53">        automator.run(templatePathname, outputDir, CSVPathname, event);</span>
-<span class="nc" id="L54">    }</span>
+<span class="nc" id="L44">        String CSVPathname = &quot;/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/Flight363FromSeattleToBoston.csv&quot;;</span>
+<span class="nc" id="L45">        String templatePathname = &quot;/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/email-template.txt&quot;;</span>
+<span class="nc" id="L46">        String outputDir = &quot;/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/output&quot;;</span>
+<span class="nc" id="L47">        String event = &quot;departure&quot;;</span>
+<span class="nc" id="L48">        EmailAutomator automator = new EmailAutomator();</span>
+<span class="nc" id="L49">        automator.run(templatePathname, outputDir, CSVPathname, event);</span>
+<span class="nc" id="L50">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

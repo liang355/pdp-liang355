@@ -9,6 +9,7 @@ public class CSVReader {
     private List<String> lines = new ArrayList<>();
     private String filename = "";
 
+    // for testing:
     public List<String> getLines() {
         return lines;
     }
@@ -64,7 +65,7 @@ public class CSVReader {
             }
             // 4. add extra entries to the map from other sources (e.g. date, filename, user input):
             // map Date
-            String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            String timeStamp = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
             map.put("Date", timeStamp);
 
             // map departure-city
