@@ -39,4 +39,37 @@ public class TemplateEditorTest {
         String actualTemplateString = editor.getTemplateString();
         assertEquals(actualTemplateString, expectedTemplateString);
     }
+
+    @Test
+    public void testMakeEmailFromTemplate() {
+        editor = new TemplateEditor(templatePathname);
+        Map<String, String> map;
+        map = new HashMap<>();
+        map.put("first_name", "James");
+        map.put("last_name", "Butt");
+        map.put("address", "6649 N Blue Gum St");
+        map.put("city", "New Orleans");
+        map.put("county", "Orleans");
+        map.put("state", "LA");
+        map.put("zip", "70116");
+        map.put("phone", "504-621-8927");
+        map.put("email", "jbutt@gmail.com");
+        map.put("rewards", "gold");
+        map.put("departure-city", "Vancouver");
+        map.put("destination-city", "Seattle");
+        map.put("event", "departure");
+        map.put("Date", new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime()));
+        String actualEmail = editor.makeEmailFromTemplate(map);
+        String expectedEmail = "2017/10/09\n" +
+                "\n" +
+                "To: jbutt@gmail.com\n" +
+                "Subject: Please accept our apologies for the departure of your flight\n" +
+                "Dear James Butt, \n" +
+                "\n" +
+                "We are very sorry for the departure of your flight from Seattle to Boston. As a valued gold  member of our club your time is important to us and we will strive to improve our service in the future, and make it on time! \n" +
+                "   \n" +
+                "Sincerely, \n" +
+                "OnTime airline customer service \n";
+        assertEquals(actualEmail, expectedEmail);
+    }
 }
