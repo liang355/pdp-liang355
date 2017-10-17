@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TemplateEditorTest {
     private static String CSVPathname = "/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/Flight3FromVancouverToSeattle.csv";
@@ -66,10 +67,21 @@ public class TemplateEditorTest {
                 "Subject: Please accept our apologies for the departure of your flight\n" +
                 "Dear James Butt, \n" +
                 "\n" +
-                "We are very sorry for the departure of your flight from Seattle to Boston. As a valued gold  member of our club your time is important to us and we will strive to improve our service in the future, and make it on time! \n" +
+                "We are very sorry for the departure of your flight from Vancouver to Seattle. As a valued gold member of our club your time is important to us and we will strive to improve our service in the future, and make it on time! \n" +
                 "   \n" +
                 "Sincerely, \n" +
                 "OnTime airline customer service \n";
-        assertEquals(actualEmail, expectedEmail);
+        String s = "2017/10/09\n" +
+                "\n" +
+                "To: jbutt@gmail.com\n" +
+                "Subject: Please accept our apologies for the departure of your flight\n" +
+                "Dear James Butt, \n" +
+                "\n" +
+                "We are very sorry for the departure of your flight from Vancouver to Seattle. As a valued gold member of our club your time is important to us and we will strive to improve our service in the future, and make it on time! \n" +
+                "   \n" +
+                "Sincerely, \n" +
+                "OnTime airline customer service \n";
+        System.out.println(actualEmail);
+        assertEquals(true, actualEmail.equals(expectedEmail));
     }
 }

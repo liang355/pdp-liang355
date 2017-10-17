@@ -41,7 +41,7 @@ public class EmailAutomator {
     }
 
     public static void main(String[] args) {
-        String CSVPathname = "/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/Flight363FromSeattleToBoston.csv";
+        String CSVPathname = "/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/Flight3FromVancouverToSeattle.csv";
         String templatePathname = "/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/email-template.txt";
         String outputDir = "/Users/yingbinliang/IdeaProjects/pdp-liang355/Assignment3/output";
         String event = "departure";
