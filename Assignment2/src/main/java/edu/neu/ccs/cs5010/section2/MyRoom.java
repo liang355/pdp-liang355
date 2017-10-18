@@ -2,7 +2,7 @@ package edu.neu.ccs.cs5010.section2;
 
 public class MyRoom implements IRoom {
     private IPatient patient = null;
-    private long finishTime = -1;
+    private long finishTime = 0;
     private long utilization = 0;
     private long rank = utilization;
 
@@ -62,6 +62,11 @@ public class MyRoom implements IRoom {
 
     @Override
     public String toString() {
-        return "[" + Long.toString(utilization) + ", " + finishTime % 1000000 + "]";
+        String patient = this.patient == null ? "null" : this.patient.toString();
+        String finishTime = String.format("%.2f", this.finishTime % 100000 / 1000f);
+        String utilization = String.format("%.2f", this.utilization / 1000f);
+
+        return String.format("[[pat:%s],[fin:%s],[uti:%s]]",
+                patient, finishTime, utilization);
     }
 }

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class MyPatient implements IPatient {
     private long arrivalTime;
-    private long examStartTime = -1;
+    private long examStartTime = 0;
     private long duration;
     private long urgency;
     private long rank = arrivalTime;
@@ -62,6 +62,11 @@ public class MyPatient implements IPatient {
 
     @Override
     public String toString() {
-        return "[" + Long.toString(urgency) + ", " + arrivalTime % 1000000 + "]";
+        String arrivalTime = String.format("%.2f", this.arrivalTime % 100000 / 1000f);
+        String duration = String.format("%.2f", this.duration / 1000f);
+        String urgency = String.format("%2d", this.urgency);
+        String startTime = String.format("%.2f", this.examStartTime % 100000 / 1000f);
+        return String.format("[[arr:%s],[dur:%s],[urg:%s],[sta:%s]]",
+                arrivalTime, duration, urgency, startTime);
     }
 }
