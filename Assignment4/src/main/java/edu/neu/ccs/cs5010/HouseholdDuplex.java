@@ -1,31 +1,36 @@
-package main.java.edu.neu.ccs.cs5010;
+package edu.neu.ccs.cs5010;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HouseholdDuplex implements Visitable{
+    private String householdName = "Duplex";
     private List<Candy> candies = new ArrayList<>();
 
     public HouseholdDuplex() {
-        candies.add(new Candy("Super size", "Toblerone"));
-        candies.add(new Candy("Super size", "Baby Ruth"));
-        candies.add(new Candy("Super size", "Almond Joy"));
+        candies.add(new Candy("Super Size", "Toblerone"));
+        candies.add(new Candy("Super Size", "Baby Ruth"));
+        candies.add(new Candy("Super Size", "Almond Joy"));
 
-        candies.add(new Candy("King size", "Twix"));
-        candies.add(new Candy("King size", "Snickers"));
-        candies.add(new Candy("King size", "Mars"));
+        candies.add(new Candy("King Size", "Twix"));
+        candies.add(new Candy("King Size", "Snickers"));
+        candies.add(new Candy("King Size", "Mars"));
 
-        candies.add(new Candy("Fun size", "Kit Kat"));
-        candies.add(new Candy("Fun size", "Whoopers"));
-        candies.add(new Candy("Fun size", "Milky Way"));
-        candies.add(new Candy("Fun size", "Crunch"));
+        candies.add(new Candy("Fun Size", "Kit Kat"));
+        candies.add(new Candy("Fun Size", "Whoopers"));
+        candies.add(new Candy("Fun Size", "Milky Way"));
+        candies.add(new Candy("Fun Size", "Crunch"));
     }
 
-    public void acceptVisitor(HouseholdVisitor visitor) {
+    public void acceptVisitor(HouseVisitor visitor) {
         visitor.visit(this);
     }
 
     public List<Candy> getCandies() {
         return candies;
+    }
+
+    public String getHouseholdName() {
+        return householdName;
     }
 }

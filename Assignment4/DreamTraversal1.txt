@@ -1,0 +1,11 @@
+Candy type, Candy size, Household type
+Super Size, Twix, Mansion
+Regular Size, Snickers, Townhome
+King Size, Mars, Duplex
+Regular Size, Kit Kat, Townhome
+Fun Size, Toblerone, Mansion
+Regular Size, Almond Joy, Townhome
+Fun Size, Baby Ruth, Mansion
+Super Size, Milky Way, Detached House
+King Size, Mars, Duplex
+Regular Size, Twix, Townhome

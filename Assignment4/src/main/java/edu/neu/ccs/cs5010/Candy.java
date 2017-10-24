@@ -1,4 +1,4 @@
-package main.java.edu.neu.ccs.cs5010;
+package edu.neu.ccs.cs5010;
 
 public class Candy {
     private String size;
@@ -19,5 +19,10 @@ public class Candy {
 
     public boolean equalsTo(Candy c) {
         return this.type.equals(c.type) && this.size.equals(c.size);
+    }
+
+    @Override
+    public String toString() {
+        return "["+ size + ", " + type + "]";
     }
 }

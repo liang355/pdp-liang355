@@ -1,12 +1,16 @@
-package main.java.edu.neu.ccs.cs5010;
+package edu.neu.ccs.cs5010;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.List;
 
-public class HouseholdVisitor implements Visitor {
+public class HouseVisitor implements Visitor {
     private boolean hasDesiredCandy = false;
     private Candy desiredCandy;
+    private String curStep = "";
 
-    public HouseholdVisitor(Candy desiredCandy) {
+    public HouseVisitor(Candy desiredCandy) {
         this.desiredCandy = desiredCandy;
     }
 
@@ -30,17 +34,21 @@ public class HouseholdVisitor implements Visitor {
         for(Candy c : household.getCandies()) {
             if(c.equalsTo(desiredCandy)) {
                 this.hasDesiredCandy = true;
-                prettyPrint(c, household);
+                prettyPrintStep(c, household);
                 break;
             }
         }
     }
 
-    private void prettyPrint(Candy candy, Visitable household) {
-        // Pretty print here
+    private void prettyPrintStep(Candy candy, Visitable household) {
+        this.curStep = candy.getSize() + ", " + candy.getType() + ", " + household.getHouseholdName() + "\n";
     }
 
-    public boolean getHasDesiredCandy() {
+    public boolean hasDesiredCandy() {
         return this.hasDesiredCandy;
+    }
+
+    public String getCurStepString() {
+        return this.curStep;
     }
 }
