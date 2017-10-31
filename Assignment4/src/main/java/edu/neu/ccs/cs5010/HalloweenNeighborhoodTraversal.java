@@ -88,7 +88,7 @@ public class HalloweenNeighborhoodTraversal {
                 CSVNames[i - 1] = args[i];
             }
         }
-        
+
         HalloweenNeighborhoodTraversal traversal = new HalloweenNeighborhoodTraversal();
         traversal.findAndPrintAllTraversals(numOfCSVs, CSVNames);
     }
