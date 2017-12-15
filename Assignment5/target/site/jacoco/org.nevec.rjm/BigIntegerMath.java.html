@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BigIntegerMath.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">org.nevec.rjm</a> &gt; <span class="el_source">BigIntegerMath.java</span></div><h1>BigIntegerMath.java</h1><pre class="source lang-java linenums">package org.nevec.rjm ;
+
+import java.lang.* ;
+import java.security.* ;
+import java.util.* ;
+import java.math.* ;
+
+
+/** BigInteger special functions and Number theory.
+* @since 2009-08-06
+* @author Richard J. Mathar
+*/
+<span class="nc" id="L13">public class BigIntegerMath</span>
+{
+
+
+
+
+
+        /** Evaluate binomial(n,k).
+        * @param n The upper index 
+        * @param k The lower index
+        * @return The binomial coefficient
+        */
+        static public BigInteger binomial(final int n, final int k)
+        {
+<span class="nc bnc" id="L27" title="All 2 branches missed.">                if ( k == 0 ) </span>
+<span class="nc" id="L28">                        return(BigInteger.ONE) ;</span>
+<span class="nc" id="L29">                BigInteger bin = new BigInteger(&quot;&quot;+n) ;</span>
+<span class="nc" id="L30">                BigInteger n2 = bin ;</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">                for(BigInteger i= new BigInteger(&quot;&quot;+(k-1)) ; i.compareTo(BigInteger.ONE) &gt;= 0 ; i = i.subtract(BigInteger.ONE) )</span>
+<span class="nc" id="L32">                        bin = bin.multiply(n2.subtract(i)) ;</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">                for(BigInteger i= new BigInteger(&quot;&quot;+k) ; i.compareTo(BigInteger.ONE) == 1 ; i = i.subtract(BigInteger.ONE) )</span>
+<span class="nc" id="L34">                        bin = bin.divide(i) ;</span>
+<span class="nc" id="L35">                return ( bin) ;</span>
+        } /* binomial */
+
+        /** Evaluate binomial(n,k).
+        * @param n The upper index 
+        * @param k The lower index
+        * @return The binomial coefficient
+        * @since 2008-10-15
+        */
+        static public BigInteger binomial(final BigInteger n, final BigInteger k)
+        {
+                /* binomial(n,0) =1 
+                */
+<span class="nc bnc" id="L48" title="All 2 branches missed.">                if ( k.compareTo(BigInteger.ZERO) == 0 ) </span>
+<span class="nc" id="L49">                        return(BigInteger.ONE) ;</span>
+
+<span class="nc" id="L51">                BigInteger bin = new BigInteger(&quot;&quot;+n) ;</span>
+
+                /* the following version first calculates n(n-1)(n-2)..(n-k+1)
+                * in the first loop, and divides this product through k(k-1)(k-2)....2
+                * in the second loop. This is rather slow and replaced by a faster version
+                * below
+                * BigInteger n2 = bin ;
+                * BigInteger i= k.subtract(BigInteger.ONE) ;
+                * for( ; i.compareTo(BigInteger.ONE) &gt;= 0 ; i = i.subtract(BigInteger.ONE) )
+                *       bin = bin.multiply(n2.subtract(i)) ;
+                * i= new BigInteger(&quot;&quot;+k) ;
+                * for( ; i.compareTo(BigInteger.ONE) == 1 ; i = i.subtract(BigInteger.ONE) )
+                *       bin = bin.divide(i) ;
+                */
+
+                /* calculate n then n(n-1)/2 then n(n-1)(n-2)(2*3) etc up to n(n-1)..(n-k+1)/(2*3*..k)
+                * This is roughly the best way to keep the individual intermediate products small
+                * and in the integer domain. First replace C(n,k) by C(n,n-k) if n-k&lt;k.
+                */
+<span class="nc" id="L70">                BigInteger truek = new BigInteger(k.toString()) ;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">                if ( n.subtract(k).compareTo(k) &lt; 0 )</span>
+<span class="nc" id="L72">                        truek = n.subtract(k) ;</span>
+
+                /* Calculate C(num,truek) where num=n and truek is the smaller of n-k and k.
+                * Have already initialized bin=n=C(n,1) above. Start definining the factorial
+                * in the denominator, named fden
+                */
+<span class="nc" id="L78">                BigInteger i = new BigInteger(&quot;2&quot;) ;</span>
+<span class="nc" id="L79">                BigInteger num = new BigInteger(n.toString()) ;</span>
+                /* a for-loop   (i=2;i&lt;= truek;i++)
+                */
+<span class="nc bnc" id="L82" title="All 2 branches missed.">                for( ; i.compareTo(truek) &lt;= 0 ; i = i.add(BigInteger.ONE) )</span>
+                {
+                        /* num = n-i+1 after this operation
+                        */
+<span class="nc" id="L86">                        num = num.subtract(BigInteger.ONE) ;</span>
+                        /* multiply by (n-i+1)/i
+                        */
+<span class="nc" id="L89">                        bin = (bin.multiply(num)).divide(i) ;</span>
+                }
+<span class="nc" id="L91">                return ( bin) ;</span>
+        } /* binomial */
+
+        /** Evaluate sigma_k(n).
+        * @param n the main argument which defines the divisors
+        * @param k the lower index, which defines the power
+        * @return The sum of the k-th powers of the positive divisors
+        */
+        static public BigInteger sigmak(final BigInteger n, final int k)
+        {
+<span class="nc" id="L101">                return (new Ifactor(n.abs())).sigma(k).n ;</span>
+        } /* sigmak */
+
+        /** Evaluate sigma(n).
+        * @param n the argument for which divisors will be searched.
+        * @return the sigma function. Sum of the positive divisors of the argument.
+        * @since 2006-08-14
+        * @author Richard J. Mathar
+        */
+        static public BigInteger sigma(int n)
+        {
+<span class="nc" id="L112">                return (new Ifactor(Math.abs(n))).sigma().n ;</span>
+        }
+
+        /** Compute the list of positive divisors.
+        * @param n The integer of which the divisors are to be found.
+        * @return The sorted list of positive divisors.
+        * @since 2010-08-27
+        * @author Richard J. Mathar
+        */
+        static public Vector&lt;BigInteger&gt; divisors(final BigInteger n)
+        {
+<span class="nc" id="L123">                return (new Ifactor(n.abs())).divisors() ;</span>
+        }
+
+        /** Evaluate sigma(n).
+        * @param n the argument for which divisors will be searched.
+        * @return the sigma function. Sum of the divisors of the argument.
+        * @since 2006-08-14
+        * @author Richard J. Mathar
+        */
+        static public BigInteger sigma(final BigInteger n)
+        {
+<span class="nc" id="L134">                return (new Ifactor(n.abs())).sigma().n ;</span>
+        }
+
+        /** Evaluate floor(sqrt(n)).
+        * @param n The non-negative argument.
+        * @return The integer square root. The square root rounded down.
+        * @since 2010-08-27
+        * @author Richard J. Mathar
+        */
+        static public int isqrt(final int n)
+        {
+<span class="nc bnc" id="L145" title="All 2 branches missed.">                if ( n &lt; 0 )</span>
+<span class="nc" id="L146">                        throw new ArithmeticException(&quot;Negative argument &quot;+ n) ;</span>
+<span class="nc" id="L147">                final double resul= Math.sqrt((double)n) ;</span>
+<span class="nc" id="L148">                return (int)Math.round(resul) ;</span>
+        }
+
+        /** Evaluate floor(sqrt(n)).
+        * @param n The non-negative argument.
+        *  Arguments less than zero throw an ArithmeticException.
+        * @return The integer square root, the square root rounded down.
+        * @since 2010-08-27
+        * @author Richard J. Mathar
+        */
+        static public long isqrt(final long n)
+        {
+<span class="nc bnc" id="L160" title="All 2 branches missed.">                if ( n &lt; 0 )</span>
+<span class="nc" id="L161">                        throw new ArithmeticException(&quot;Negative argument &quot;+ n) ;</span>
+<span class="nc" id="L162">                final double resul= Math.sqrt((double)n) ;</span>
+<span class="nc" id="L163">                return Math.round(resul) ;</span>
+        }
+
+        /** Evaluate floor(sqrt(n)).
+        * @param n The non-negative argument.
+        *  Arguments less than zero throw an ArithmeticException.
+        * @return The integer square root, the square root rounded down.
+        * @since 2011-02-12
+        * @author Richard J. Mathar
+        */
+        static public BigInteger isqrt(final BigInteger n)
+        {
+<span class="nc bnc" id="L175" title="All 2 branches missed.">                if ( n.compareTo(BigInteger.ZERO) &lt; 0 )</span>
+<span class="nc" id="L176">                        throw new ArithmeticException(&quot;Negative argument &quot;+ n.toString()) ;</span>
+                /* Start with an estimate from a floating point reduction.
+                */
+                BigInteger x  ;
+<span class="nc" id="L180">                final int bl = n.bitLength() ;</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">                if ( bl &gt; 120)</span>
+<span class="nc" id="L182">                        x = n.shiftRight(bl/2-1) ;</span>
+                else
+                {
+<span class="nc" id="L185">                        final double resul= Math.sqrt(n.doubleValue()) ;</span>
+<span class="nc" id="L186">                        x = new BigInteger(&quot;&quot;+Math.round(resul)) ;</span>
+                }
+
+<span class="nc" id="L189">                final BigInteger two = new BigInteger(&quot;2&quot;) ;</span>
+                while ( true)
+                {
+                        /* check whether the result is accurate, x^2 =n
+                        */
+<span class="nc" id="L194">                        BigInteger x2 = x.pow(2) ;</span>
+<span class="nc" id="L195">                        BigInteger xplus2 = x.add(BigInteger.ONE).pow(2) ;</span>
+<span class="nc bnc" id="L196" title="All 4 branches missed.">                        if ( x2.compareTo(n) &lt;= 0 &amp;&amp; xplus2.compareTo(n) &gt; 0)</span>
+<span class="nc" id="L197">                                return x ;</span>
+<span class="nc" id="L198">                        xplus2 = xplus2.subtract(x.shiftLeft(2)) ;</span>
+<span class="nc bnc" id="L199" title="All 4 branches missed.">                        if ( xplus2.compareTo(n) &lt;= 0 &amp;&amp; x2.compareTo(n) &gt; 0)</span>
+<span class="nc" id="L200">                                return x.subtract(BigInteger.ONE) ;</span>
+                        /* Newton algorithm. This correction is on the
+                        * low side caused by the integer divisions. So the value required
+                        * may end up by one unit too large by the bare algorithm, and this
+                        * is caught above by comparing x^2, (x+-1)^2 with n.
+                        */
+<span class="nc" id="L206">                        xplus2 = x2.subtract(n).divide(x).divide(two) ;</span>
+<span class="nc" id="L207">                        x = x.subtract(xplus2) ;</span>
+<span class="nc" id="L208">                }</span>
+        }
+
+        /** Evaluate core(n).
+        * Returns the smallest positive integer m such that n/m is a perfect square.
+        * @param n The non-negative argument.
+        * @return The square-free part of n.
+        * @since 2011-02-12
+        * @author Richard J. Mathar
+        */
+        static public BigInteger core(final BigInteger n)
+        {
+<span class="nc bnc" id="L220" title="All 2 branches missed.">                if ( n.compareTo(BigInteger.ZERO) &lt; 0 )</span>
+<span class="nc" id="L221">                        throw new ArithmeticException(&quot;Negative argument &quot;+ n) ;</span>
+<span class="nc" id="L222">                final Ifactor i = new Ifactor(n) ;</span>
+<span class="nc" id="L223">                return i.core() ;</span>
+        }
+
+        /** Minor of an integer matrix.
+        * @param A The matrix.
+        * @param r The row index of the row to be removed (0-based).
+        *   An exception is thrown if this is outside the range 0 to the upper row index of A.
+        * @param c The column index of the column to be removed (0-based).
+        *   An exception is thrown if this is outside the range 0 to the upper column index of A.
+        * @return The depleted matrix. This is not a deep copy but contains references to the original.
+        * @since 2010-08-27
+        * @author Richard J. Mathar
+        */
+        static public BigInteger[][] minor(final BigInteger[][] A, final int r, final int c) throws ArithmeticException
+        {
+                /* original row count */
+<span class="nc" id="L239">                final int rL = A.length ;</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">                if ( rL == 0 )</span>
+<span class="nc" id="L241">                        throw new ArithmeticException(&quot;zero row count in matrix&quot;) ;</span>
+<span class="nc bnc" id="L242" title="All 4 branches missed.">                if ( r &lt; 0  || r &gt;= rL)</span>
+<span class="nc" id="L243">                        throw new ArithmeticException(&quot;row number &quot;+r + &quot; out of range 0..&quot; + (rL-1)) ;</span>
+                /* original column count */
+<span class="nc" id="L245">                final int cL = A[0].length ;</span>
+<span class="nc bnc" id="L246" title="All 2 branches missed.">                if ( cL == 0 )</span>
+<span class="nc" id="L247">                        throw new ArithmeticException(&quot;zero column count in matrix&quot;) ;</span>
+<span class="nc bnc" id="L248" title="All 4 branches missed.">                if ( c &lt; 0  || c &gt;= cL)</span>
+<span class="nc" id="L249">                        throw new ArithmeticException(&quot;column number &quot;+c + &quot; out of range 0..&quot; + (cL-1)) ;</span>
+<span class="nc" id="L250">                BigInteger M[][] = new BigInteger[rL-1][cL-1] ;</span>
+<span class="nc" id="L251">                int imrow =0 ;</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">                for (int row = 0 ; row &lt; rL ; row++)</span>
+                {
+<span class="nc bnc" id="L254" title="All 2 branches missed.">                        if ( row != r)</span>
+                        {
+<span class="nc" id="L256">                                int imcol = 0 ;</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">                                for(int col = 0 ; col &lt; cL ;col++)</span>
+                                {
+<span class="nc bnc" id="L259" title="All 2 branches missed.">                                        if ( col != c )</span>
+                                        {
+<span class="nc" id="L261">                                                M[imrow][imcol] = A[row][col] ;</span>
+<span class="nc" id="L262">                                                imcol ++ ;</span>
+                                        }
+                                }
+<span class="nc" id="L265">                                imrow++ ;</span>
+                        }
+                }
+<span class="nc" id="L268">                return M ;</span>
+        }
+
+        /** Replace column of a matrix with a column vector.
+        * @param A The matrix.
+        * @param c The column index of the column to be substituted (0-based).
+        * @param v The column vector to be inserted.
+        * With the current implementation, it must be at least as long as the row count, and 
+        *  its elements that exceed that count are ignored.
+        * @return The modified matrix. This is not a deep copy but contains references to the original.
+        * @since 2010-08-27
+        * @author Richard J. Mathar
+        */
+        static private BigInteger[][] colSubs(final BigInteger[][] A, final int c, final BigInteger[] v) throws ArithmeticException
+        {
+                /* original row count */
+<span class="nc" id="L284">                final int rL = A.length ;</span>
+<span class="nc bnc" id="L285" title="All 2 branches missed.">                if ( rL == 0 )</span>
+<span class="nc" id="L286">                        throw new ArithmeticException(&quot;zero row count in matrix&quot;) ;</span>
+                /* original column count */
+<span class="nc" id="L288">                final int cL = A[0].length ;</span>
+<span class="nc bnc" id="L289" title="All 2 branches missed.">                if ( cL == 0 )</span>
+<span class="nc" id="L290">                        throw new ArithmeticException(&quot;zero column count in matrix&quot;) ;</span>
+<span class="nc bnc" id="L291" title="All 4 branches missed.">                if ( c &lt; 0  || c &gt;= cL)</span>
+<span class="nc" id="L292">                        throw new ArithmeticException(&quot;column number &quot;+c + &quot; out of range 0..&quot; + (cL-1)) ;</span>
+<span class="nc" id="L293">                BigInteger M[][] = new BigInteger[rL][cL] ;</span>
+<span class="nc bnc" id="L294" title="All 2 branches missed.">                for (int row = 0 ; row &lt; rL ; row++)</span>
+                {
+<span class="nc bnc" id="L296" title="All 2 branches missed.">                        for(int col = 0 ; col &lt; cL ;col++)</span>
+                        {
+                                /* currently, v may just be longer than the row count, and surplus
+                                * elements will be ignored. Shorter v lead to an exception.
+                                */
+<span class="nc bnc" id="L301" title="All 2 branches missed.">                                if ( col != c )</span>
+<span class="nc" id="L302">                                        M[row][col] = A[row][col] ;</span>
+                                else
+<span class="nc" id="L304">                                        M[row][col] = v[row] ;</span>
+                        }
+                }
+<span class="nc" id="L307">                return M ;</span>
+        }
+
+        /** Determinant of an integer square matrix.
+        * @param A The square matrix.
+        *  If column and row dimensions are unequal, an ArithmeticException is thrown.
+        * @return The determinant.
+        * @since 2010-08-27
+        * @author Richard J. Mathar
+        */
+        static public BigInteger det(final BigInteger[][] A) throws ArithmeticException
+        {
+<span class="nc" id="L319">                BigInteger d = BigInteger.ZERO ;</span>
+                /* row size */
+<span class="nc" id="L321">                final int rL = A.length ;</span>
+<span class="nc bnc" id="L322" title="All 2 branches missed.">                if ( rL == 0 )</span>
+<span class="nc" id="L323">                        throw new ArithmeticException(&quot;zero row count in matrix&quot;) ;</span>
+                /* column size */
+<span class="nc" id="L325">                final int cL = A[0].length ;</span>
+<span class="nc bnc" id="L326" title="All 2 branches missed.">                if ( cL != rL )</span>
+<span class="nc" id="L327">                        throw new ArithmeticException(&quot;Non-square matrix dim &quot;+rL + &quot; by &quot; + cL) ;</span>
+
+                /* Compute the low-order cases directly.
+                */
+<span class="nc bnc" id="L331" title="All 2 branches missed.">                if ( rL == 1 )</span>
+<span class="nc" id="L332">                        return A[0][0] ;</span>
+
+<span class="nc bnc" id="L334" title="All 2 branches missed.">                else if ( rL == 2)</span>
+                {
+<span class="nc" id="L336">                        d = A[0][0].multiply(A[1][1]) ;</span>
+<span class="nc" id="L337">                        return d.subtract( A[0][1].multiply(A[1][0])) ;</span>
+                }
+                else
+                {
+                        /* Work arbitrarily along the first column of the matrix */
+<span class="nc bnc" id="L342" title="All 2 branches missed.">                        for (int r = 0  ; r &lt; rL  ; r++)</span>
+                        {
+                                /* Do not consider minors that do no contribute anyway
+                                */
+<span class="nc bnc" id="L346" title="All 2 branches missed.">                                if ( A[r][0].compareTo(BigInteger.ZERO) != 0 )</span>
+                                {
+<span class="nc" id="L348">                                        final BigInteger M[][] = minor(A,r,0) ;</span>
+<span class="nc" id="L349">                                        final BigInteger m = A[r][0].multiply( det(M)) ;</span>
+                                        /* recursive call */
+<span class="nc bnc" id="L351" title="All 2 branches missed.">                                        if ( r % 2 == 0)</span>
+<span class="nc" id="L352">                                                d = d.add(m) ;</span>
+                                        else
+<span class="nc" id="L354">                                                d = d.subtract(m) ;</span>
+                                }
+                        }
+                }
+<span class="nc" id="L358">                return d;</span>
+        }
+
+        /** Solve a linear system of equations.
+        * @param A The square matrix.
+        *  If it is not of full rank, an ArithmeticException is thrown.
+        * @param rhs The right hand side. The length of this vector must match the matrix size;
+        *  else an ArithmeticException is thrown.
+        * @return The vector of x in A*x=rhs.
+        * @since 2010-08-28
+        * @author Richard J. Mathar
+        */
+        static public Rational[] solve(final BigInteger[][]A, final BigInteger[] rhs) throws ArithmeticException
+        {
+
+<span class="nc" id="L373">                final int rL = A.length ;</span>
+<span class="nc bnc" id="L374" title="All 2 branches missed.">                if ( rL == 0 )</span>
+<span class="nc" id="L375">                        throw new ArithmeticException(&quot;zero row count in matrix&quot;) ;</span>
+
+                /* column size */
+<span class="nc" id="L378">                final int cL = A[0].length ;</span>
+<span class="nc bnc" id="L379" title="All 2 branches missed.">                if ( cL != rL )</span>
+<span class="nc" id="L380">                        throw new ArithmeticException(&quot;Non-square matrix dim &quot;+rL + &quot; by &quot; + cL) ;</span>
+<span class="nc bnc" id="L381" title="All 2 branches missed.">                if ( rhs.length != rL )</span>
+<span class="nc" id="L382">                        throw new ArithmeticException(&quot;Right hand side dim &quot;+ rhs.length + &quot; unequal matrix dim &quot; + rL) ;</span>
+
+                        /* Gauss elimination 
+                        */
+<span class="nc" id="L386">                        Rational x[] = new Rational[rL] ;</span>
+
+                        /* copy of r.h.s ito a mutable Rationalright hand side
+                        */
+<span class="nc bnc" id="L390" title="All 2 branches missed.">                        for(int c = 0 ; c &lt; cL ; c++)</span>
+<span class="nc" id="L391">                                x[c] = new Rational(rhs[c]) ;</span>
+
+                        /* Create zeros downwards column c  by linear combination of row c and row r.
+                        */
+<span class="nc bnc" id="L395" title="All 2 branches missed.">                        for(int c = 0 ; c &lt; cL-1 ; c++)</span>
+                        {
+                                /* zero on the diagonal? swap with a non-zero row, searched with index r */
+<span class="nc bnc" id="L398" title="All 2 branches missed.">                                if ( A[c][c].compareTo(BigInteger.ZERO) == 0)</span>
+                                {
+<span class="nc" id="L400">                                        boolean swpd = false ;</span>
+<span class="nc bnc" id="L401" title="All 2 branches missed.">                                        for(int r=c+1; r&lt; rL ; r++)</span>
+                                        {
+<span class="nc bnc" id="L403" title="All 2 branches missed.">                                                if ( A[r][c].compareTo(BigInteger.ZERO) != 0)</span>
+                                                {
+<span class="nc bnc" id="L405" title="All 2 branches missed.">                                                        for(int cpr =c ; cpr &lt; cL; cpr++)</span>
+                                                        {
+<span class="nc" id="L407">                                                                BigInteger tmp = A[c][cpr] ;</span>
+<span class="nc" id="L408">                                                                A[c][cpr] = A[r][cpr] ;</span>
+<span class="nc" id="L409">                                                                A[r][cpr] = tmp ;</span>
+                                                        }
+<span class="nc" id="L411">                                                        Rational tmp = x[c] ;</span>
+<span class="nc" id="L412">                                                        x[c] = x[r] ;</span>
+<span class="nc" id="L413">                                                        x[r] = tmp ;</span>
+<span class="nc" id="L414">                                                        swpd = true ;</span>
+<span class="nc" id="L415">                                                        break;</span>
+                                                }
+                                        }
+                                        /* not swapped with a non-zero row: determinant zero and no solution
+                                        */
+<span class="nc bnc" id="L420" title="All 2 branches missed.">                                        if ( ! swpd)</span>
+<span class="nc" id="L421">                                                throw new ArithmeticException(&quot;Zero determinant of main matrix&quot;) ;</span>
+                                }
+                                /* create zero at A[c+1..cL-1][c] */
+<span class="nc bnc" id="L424" title="All 2 branches missed.">                                for( int r=c+1; r &lt; rL ; r++)</span>
+                                {
+                                        /* skip the cpr=c which actually sets the zero: this element is not visited again
+                                        */
+<span class="nc bnc" id="L428" title="All 2 branches missed.">                                        for(int cpr = c+1; cpr &lt; cL; cpr++)</span>
+                                        {
+<span class="nc" id="L430">                                                BigInteger tmp = A[c][c].multiply(A[r][cpr]) .subtract ( A[c][cpr].multiply(A[r][c])) ;</span>
+<span class="nc" id="L431">                                                A[r][cpr] = tmp ;</span>
+                                        }
+<span class="nc" id="L433">                                        Rational tmp = x[r].multiply(A[c][c]) .subtract ( x[c].multiply(A[r][c])) ;</span>
+<span class="nc" id="L434">                                        x[r] = tmp ;</span>
+                                }
+                        }
+<span class="nc bnc" id="L437" title="All 2 branches missed.">                        if ( A[cL-1][cL-1].compareTo(BigInteger.ZERO) == 0)</span>
+<span class="nc" id="L438">                                throw new ArithmeticException(&quot;Zero determinant of main matrix&quot;) ;</span>
+                        /* backward elimination */
+<span class="nc bnc" id="L440" title="All 2 branches missed.">                        for( int r = cL-1 ; r &gt;= 0 ; r--)</span>
+                        {
+<span class="nc" id="L442">                                x[r] = x[r].divide(A[r][r]) ;</span>
+<span class="nc bnc" id="L443" title="All 2 branches missed.">                                for(int rpr = r-1 ; rpr &gt;=0 ; rpr--)</span>
+<span class="nc" id="L444">                                        x[rpr] = x[rpr].subtract( x[r].multiply(A[rpr][r]) ) ;</span>
+                        }
+
+<span class="nc" id="L447">                        return x ;</span>
+        }
+
+        /** The lowest common multiple
+        * @param a The first argument
+        * @param b The second argument
+        * @return lcm(|a|,|b|)
+        * @since 2010-08-27
+        * @author Richard J. Mathar
+        */
+        static public BigInteger lcm(final BigInteger a, final BigInteger b)
+        {
+<span class="nc" id="L459">                BigInteger g = a.gcd(b) ;</span>
+<span class="nc" id="L460">                return a.multiply(b).abs().divide(g) ;</span>
+        }
+
+
+        /** Evaluate the value of an integer polynomial at some integer argument.
+        * @param c Represents the coefficients c[0]+c[1]*x+c[2]*x^2+.. of the polynomial
+        * @param x The abscissa point of the evaluation
+        * @return The polynomial value.
+        * @since 2010-08-27
+        * @author Richard J. Mathar
+        */
+        static public BigInteger valueOf(final Vector&lt;BigInteger&gt;c, final BigInteger x)
+        {
+<span class="nc bnc" id="L473" title="All 2 branches missed.">                if (c.size() == 0)</span>
+<span class="nc" id="L474">                        return BigInteger.ZERO ;</span>
+<span class="nc" id="L475">                BigInteger res = c.lastElement() ;</span>
+<span class="nc bnc" id="L476" title="All 2 branches missed.">                for(int i= c.size()-2 ; i &gt;=0 ; i--)</span>
+<span class="nc" id="L477">                        res = res.multiply(x).add( c.elementAt(i) ) ;</span>
+<span class="nc" id="L478">                return res ;</span>
+        }
+
+        /** The central factorial number t(n,k) number at the indices provided.
+        * @param n the first parameter, non-negative.
+        * @param k the second index, non-negative.
+        * @return t(n,k)
+        * @since 2009-08-06
+        * @author Richard J. Mathar
+        * @see &lt;a href=&quot;http://dx.doi.org/10.1080/01630568908816313&quot;&gt;P. L. Butzer et al, Num. Funct. Anal. Opt. 10 (5)( 1989) 419-488&lt;/a&gt;
+        */
+        static public Rational centrlFactNumt(int n,int k)
+        {
+<span class="nc bnc" id="L491" title="All 6 branches missed.">                if ( k &gt; n || k &lt; 0 || ( k % 2 ) != (n % 2) )</span>
+<span class="nc" id="L492">                        return Rational.ZERO ;</span>
+<span class="nc bnc" id="L493" title="All 2 branches missed.">                else if ( k == n)</span>
+<span class="nc" id="L494">                        return Rational.ONE ;</span>
+                else
+                {
+                        /* Proposition 6.2.6 */
+<span class="nc" id="L498">                        Factorial f = new Factorial() ;</span>
+<span class="nc" id="L499">                        Rational jsum = new Rational(0,1) ;</span>
+<span class="nc" id="L500">                        int kprime = n-k ;</span>
+<span class="nc bnc" id="L501" title="All 2 branches missed.">                        for ( int j =0 ; j &lt;= kprime ; j++)</span>
+                        {
+<span class="nc" id="L503">                                Rational nusum = new Rational(0,1) ;</span>
+<span class="nc bnc" id="L504" title="All 2 branches missed.">                                for(int nu =0 ; nu &lt;= j ; nu++)</span>
+                                {
+<span class="nc" id="L506">                                        Rational t = new Rational(j-2*nu,2) ;</span>
+<span class="nc" id="L507">                                        t = t.pow(kprime+j) ;</span>
+<span class="nc" id="L508">                                        t = t.multiply( binomial(j,nu) ) ;</span>
+<span class="nc bnc" id="L509" title="All 2 branches missed.">                                        if ( nu % 2 != 0 )</span>
+<span class="nc" id="L510">                                                nusum = nusum.subtract(t) ;</span>
+                                        else
+<span class="nc" id="L512">                                                nusum = nusum.add(t) ;</span>
+                                }
+<span class="nc" id="L514">                                nusum = nusum.divide( f.at(j) ).divide(n+j) ;</span>
+<span class="nc" id="L515">                                nusum = nusum.multiply( binomial(2*kprime,kprime-j) ) ;</span>
+<span class="nc bnc" id="L516" title="All 2 branches missed.">                                if ( j % 2 != 0 )</span>
+<span class="nc" id="L517">                                        jsum = jsum.subtract(nusum) ;</span>
+                                else
+<span class="nc" id="L519">                                        jsum = jsum.add(nusum) ;</span>
+                        }
+<span class="nc" id="L521">                        return jsum.multiply(k).multiply( binomial(n+kprime,k) ) ;</span>
+                }
+        } /* CentralFactNumt */
+
+        /** The central factorial number T(n,k) number at the indices provided.
+        * @param n the first parameter, non-negative.
+        * @param k the second index, non-negative.
+        * @return T(n,k)
+        * @since 2009-08-06
+        * @author Richard J. Mathar
+        * @see &lt;a href=&quot;http://dx.doi.org/10.1080/01630568908816313&quot;&gt;P. L. Butzer et al, Num. Funct. Anal. Opt. 10 (5)( 1989) 419-488&lt;/a&gt;
+        */
+        static public Rational centrlFactNumT(int n,int k)
+        {
+<span class="nc bnc" id="L535" title="All 6 branches missed.">                if ( k &gt; n || k &lt; 0 || ( k % 2 ) != (n % 2) )</span>
+<span class="nc" id="L536">                        return Rational.ZERO ;</span>
+<span class="nc bnc" id="L537" title="All 2 branches missed.">                else if ( k == n)</span>
+<span class="nc" id="L538">                        return Rational.ONE ;</span>
+                else
+                {
+                        /* Proposition 2.1 */
+<span class="nc" id="L542">                        return centrlFactNumT(n-2,k-2).add( centrlFactNumT(n-2,k).multiply(new Rational(k*k,4)) ) ;</span>
+                }
+        } /* CentralFactNumT */
+
+
+} /* BigIntegerMath */
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

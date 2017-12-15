@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RatPoly.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">org.nevec.rjm</a> &gt; <span class="el_source">RatPoly.java</span></div><h1>RatPoly.java</h1><pre class="source lang-java linenums">package org.nevec.rjm ;
+
+import java.lang.* ;
+import java.security.* ;
+import java.util.* ;
+import java.math.* ;
+
+/** A one-parameter polynomial with rational coefficients.
+* Alternatively to be interpreted as a sequence which has the polynomial as an (approximate)
+* generating function.
+* @since 2006-06-25
+* @author Richard J. Mathar
+*/
+class RatPoly
+{
+        /** The list of all coefficients, ascending exponents. Starting with a0, then a1, representing
+        * a value a0+a1*x+a2*x^2+a3*x^3+...
+        */
+        protected Vector&lt;Rational&gt; a ;
+
+        /** Default ctor.
+        * Initializes the zero-valued polynomial x=0.
+        */
+        public RatPoly()
+<span class="nc" id="L25">        {</span>
+<span class="nc" id="L26">                a = new Vector&lt;Rational&gt;() ;</span>
+<span class="nc" id="L27">        } /* ctor */</span>
+
+        /** Constructor with an explicit list of coefficients.
+        * @param L the coefficients a0, a1, a2, a3,.., A deep copy of the these is created.
+        */
+        public RatPoly(final Vector&lt;Rational&gt; L)
+<span class="nc" id="L33">        {</span>
+<span class="nc" id="L34">                a = new Vector&lt;Rational&gt;() ;</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">                for(int i=0 ; i &lt; L.size() ; i++)</span>
+<span class="nc" id="L36">                        a.add( L.elementAt(i).clone() ) ;</span>
+<span class="nc" id="L37">                simplify() ;</span>
+<span class="nc" id="L38">        } /* ctor */</span>
+
+        /** Constructor with a comma-separated list as the list of coefficients.
+        * @param L the string of the form a0,a1,a2,a3 with the coefficients
+        */
+        public RatPoly(final String L) throws NumberFormatException
+<span class="nc" id="L44">        {</span>
+<span class="nc" id="L45">                a = new Vector&lt;Rational&gt;() ;</span>
+<span class="nc" id="L46">                Scanner sc = new Scanner(L) ;</span>
+<span class="nc" id="L47">                sc.useDelimiter(&quot;,&quot;) ;</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">                while ( sc.hasNext())</span>
+                {
+<span class="nc" id="L50">                        String tok =sc.next() ;</span>
+<span class="nc" id="L51">                        a.add(new Rational(tok)) ;</span>
+<span class="nc" id="L52">                }</span>
+<span class="nc" id="L53">                simplify() ;</span>
+<span class="nc" id="L54">        } /* ctor */</span>
+
+
+        /** Constructor from a hypergeometric series.
+        * @param A the list of values in the numerator of AFB
+        * @param B the list of values in the denominator of AFB
+        * @param nmax the order of the truncated polynomial representation
+        * @since 2008-11-13
+        */
+        public RatPoly(final Vector&lt;BigInteger&gt; A, final Vector&lt;BigInteger&gt; B, int nmax)
+<span class="nc" id="L64">        {</span>
+                /* To allow common initialization with the signature below,
+                * the main body is assembled in a separate function.
+                */
+<span class="nc" id="L68">                init(A,B,nmax) ;</span>
+<span class="nc" id="L69">        }</span>
+
+
+        /** Constructor from a hypergeometric series.
+        * @param A the list of values in the numerator of AFB.
+        *   At least one of these values must be a negative integer, which implicitly determines
+        *   the order of the new polynomial.
+        * @param B the list of values in the denominator of AFB
+        * @since 2009-08-05
+        */
+        public RatPoly(final Vector&lt;BigInteger&gt; A, final Vector&lt;BigInteger&gt; B)
+<span class="nc" id="L80">        {</span>
+<span class="nc" id="L81">                BigInteger Nmax = BigInteger.ONE.negate() ;</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">                for(int j=0; j &lt; A.size() ; j++)</span>
+                {
+<span class="nc bnc" id="L84" title="All 2 branches missed.">                        if ( A.elementAt(j).compareTo(BigInteger.ZERO) &lt;= 0)</span>
+                        {
+<span class="nc bnc" id="L86" title="All 2 branches missed.">                                if  ( Nmax.compareTo(BigInteger.ZERO) &lt; 0 )</span>
+<span class="nc" id="L87">                                        Nmax = A.elementAt(j).negate() ;</span>
+                                else
+<span class="nc" id="L89">                                        Nmax = Nmax.min( A.elementAt(j).negate() ) ;</span>
+                        }
+                }
+<span class="nc bnc" id="L92" title="All 2 branches missed.">                if ( Nmax.compareTo(BigInteger.ZERO) &lt; 0 )</span>
+<span class="nc" id="L93">                        throw new ArithmeticException(&quot;Infinite Number of Terms in Series &quot;+Nmax.toString()) ;</span>
+
+<span class="nc" id="L95">                int nmax = Nmax.intValue()-1 ;</span>
+<span class="nc" id="L96">                init(A,B,nmax) ;</span>
+<span class="nc" id="L97">        } /* ctor */</span>
+
+        /** Constructor from a hypergeometric series.
+        * @param A the list of values in the numerator of AFB
+        * @param B the list of values in the denominator of AFB
+        * @param nmax the order of the truncated polynomial representation
+        * @since 2008-11-13
+        */
+        protected void init(final Vector&lt;BigInteger&gt; A, final Vector&lt;BigInteger&gt; B, int nmax)
+        {
+<span class="nc" id="L107">                a = new Vector&lt;Rational&gt;() ;</span>
+<span class="nc" id="L108">                Factorial f=new Factorial() ;</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">                for( int n=0; n &lt;= nmax ; n++)</span>
+                {
+<span class="nc" id="L111">                        Rational c = new Rational(1,1) ;</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">                        for(int j=0; j &lt; A.size() ; j++)</span>
+                        {
+<span class="nc" id="L114">                                Rational aEl = new Rational(A.elementAt(j)) ;</span>
+<span class="nc" id="L115">                                c = c.multiply(aEl.Pochhammer(n)) ;</span>
+                        }
+<span class="nc bnc" id="L117" title="All 2 branches missed.">                        for(int j=0; j &lt; B.size() ; j++)</span>
+                        {
+<span class="nc" id="L119">                                Rational bEl = new Rational(B.elementAt(j)) ;</span>
+<span class="nc" id="L120">                                c = c.divide(bEl.Pochhammer(n)) ;</span>
+                        }
+<span class="nc" id="L122">                        c =c.divide(f.at(n)) ;</span>
+<span class="nc" id="L123">                        a.add(c) ;</span>
+                }
+<span class="nc" id="L125">                simplify() ;</span>
+<span class="nc" id="L126">        } /* init */</span>
+
+
+        /** Create a copy of this.
+        * @since 2008-11-07
+        */
+        public RatPoly clone()
+        {
+<span class="nc" id="L134">                RatPoly clo = new RatPoly() ;</span>
+<span class="nc" id="L135">                clo.a = (Vector&lt;Rational&gt;)a.clone() ;</span>
+<span class="nc" id="L136">                return clo ;</span>
+        } /* clone */
+
+        /** Retrieve a polynomial coefficient.
+        * @param n the zero-based index of the coefficient. n=0 for the constant term. 
+        * @return the polynomial coefficient in front of x^n.
+        */
+        public Rational at(final int n)
+        {
+<span class="nc bnc" id="L145" title="All 2 branches missed.">                if ( n &lt; a.size())</span>
+<span class="nc" id="L146">                        return( a.elementAt(n) ) ;</span>
+                else
+<span class="nc" id="L148">                        return( new Rational(0,1) ) ;</span>
+        } /* at */
+
+        /** Horner scheme to find the function value at the argument x
+        * @param x The argument of the polynomial
+        * @param mc The context determining the precision of the value returned.
+        * @since 2008-10-26
+        */
+        public BigComplex valueOf( BigComplex x, MathContext mc)
+        {
+                /* result is initialized to zero */
+<span class="nc" id="L159">                BigComplex f = new BigComplex() ;</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">                for(int i=degree() ; i &gt;= 0 ; i--)</span>
+<span class="nc" id="L161">                        f = f.multiply(x,mc).add(a.elementAt(i).BigDecimalValue(mc)) ;</span>
+<span class="nc" id="L162">                return f ;</span>
+        } /* valueOf */
+
+        /** Horner scheme to find the function value at the argument x
+        * @param x The argument of the polynomial
+        * @since 2008-11-13
+        */
+        public Rational valueOf( Rational x)
+        {
+                /* result is initialized to zero */
+<span class="nc" id="L172">                Rational f = new Rational(0,1) ;</span>
+<span class="nc bnc" id="L173" title="All 2 branches missed.">                for(int i=degree() ; i &gt;= 0 ; i--)</span>
+<span class="nc" id="L174">                        f = f.multiply(x).add(a.elementAt(i)) ;</span>
+<span class="nc" id="L175">                return f ;</span>
+        } /* valueOf */
+
+        /** Horner scheme to find the function value at the argument x
+        * @param x The argument of the polynomial
+        * @since 2008-11-13
+        */
+        public Rational valueOf( int x)
+        {
+<span class="nc" id="L184">                return valueOf(new Rational(x,1)) ;</span>
+        } /* valueOf */
+
+        /** Horner scheme to evaluate the function at the argument x
+        * @param x The argument of the polynomial
+        * @since 2010-08-27
+        */
+        public Rational valueOf( BigInteger x)
+        {
+<span class="nc" id="L193">                return valueOf(new Rational(x)) ;</span>
+        } /* valueOf */
+
+        /* Set a polynomial coefficient.
+        * @param n the zero-based index of the coefficient. n=0 for the constant term. 
+        *  If the polynomial has not yet the degree to need this coefficient,
+        *  the intermediate coefficients are implicitly set to zero.
+        * @param value the new value of the coefficient.
+        */
+        public void set(final int n, final Rational value)
+        {
+<span class="nc bnc" id="L204" title="All 2 branches missed.">                if ( n &lt; a.size())</span>
+<span class="nc" id="L205">                        a.set(n,value) ;</span>
+                else
+                {
+                        /* fill intermediate powers with coefficients of zero
+                        */
+<span class="nc bnc" id="L210" title="All 2 branches missed.">                        while ( a.size() &lt; n )</span>
+<span class="nc" id="L211">                                a.add(new Rational(0,1)) ;</span>
+<span class="nc" id="L212">                        a.add(value) ;</span>
+                }
+<span class="nc" id="L214">        } /* set */</span>
+
+        /** Set a polynomial coefficient.
+        * @param n the zero-based index of the coefficient. n=0 for the constant term. 
+        *  If the polynomial has not yet the degree to need this coefficient,
+        *  the intermediate coefficients are implicitly set to zero.
+        * @param value the new value of the coefficient.
+        */
+        public void set(final int n, final BigInteger value)
+        {
+<span class="nc" id="L224">                Rational val2 = new Rational(value,BigInteger.ONE) ;</span>
+<span class="nc" id="L225">                set(n,val2) ;</span>
+<span class="nc" id="L226">        } /* set */</span>
+
+        /** Set a polynomial coefficient.
+        * @param n the zero-based index of the coefficient. n=0 for the constant term. 
+        *  If the polynomial has not yet the degree to need this coefficient,
+        *  the intermediate coefficients are implicitly set to zero.
+        * @param value the new value of the coefficient.
+        */
+        public void set(final int n, final int value)
+        {
+<span class="nc" id="L236">                Rational val2 = new Rational(value,1) ;</span>
+<span class="nc" id="L237">                set(n,val2) ;</span>
+<span class="nc" id="L238">        } /* set */</span>
+
+        /* Set to the taylor series of exp(x) up to degree nmax.
+        * @param nmax the maximum polynomial degree
+        */
+        public void setExp(final int nmax)
+        {
+<span class="nc" id="L245">                a.clear() ;</span>
+<span class="nc" id="L246">                Factorial factorial=new Factorial() ;</span>
+<span class="nc bnc" id="L247" title="All 2 branches missed.">                for(int n=0; n &lt;= nmax ; n++)</span>
+<span class="nc" id="L248">                        set(n, new Rational(BigInteger.ONE,factorial.at(n))) ;</span>
+<span class="nc" id="L249">        } /* setExp */</span>
+
+        /** Set to the taylor series representing 0+x.
+        */
+        public void setx()
+        {
+<span class="nc" id="L255">                a.clear() ;</span>
+                /* coefficient 0/1=0 */
+<span class="nc" id="L257">                a.add(new Rational(0,1)) ;</span>
+                /* coefficient 1/1=1 */
+<span class="nc" id="L259">                a.add(new Rational(1,1)) ;</span>
+<span class="nc" id="L260">        } /* setx */</span>
+
+        /** Count of coefficients. One more than the degree of the polynomial.
+        * @return the number of polynomial coefficients.
+        */
+        public int size()
+        {
+<span class="nc" id="L267">                return a.size() ;</span>
+        } /* size */
+
+        /** Polynomial degree.
+        * @return the polynomial degree.
+        */
+        public int degree()
+        {
+<span class="nc" id="L275">                return a.size()-1 ;</span>
+        } /* degree */
+
+        /** Lower Polynomial degree.
+        * @return The smallest exponent n such that [x^n] of the polynomial is nonzero.
+        * If the polynmial is identical zero, the result is (still) 0.
+        * @since 2010-08-27
+        */
+        public int ldegree()
+        {
+<span class="nc bnc" id="L285" title="All 2 branches missed.">                for(int n=0 ; n &lt; a.size() ; n++)</span>
+<span class="nc bnc" id="L286" title="All 2 branches missed.">                        if ( a.elementAt(n).compareTo(BigInteger.ZERO) != 0 )</span>
+<span class="nc" id="L287">                                return n;</span>
+<span class="nc" id="L288">                return 0 ;</span>
+        } /* ldegree */
+
+        /** Multiply by a constant factor.
+        * @param val the factor
+        * @return the product of this with the factor.
+        *   All coefficients of this have been multiplied individually by the factor.
+        */
+        public RatPoly multiply(final Rational val)
+        {
+<span class="nc" id="L298">                RatPoly resul = new RatPoly() ;</span>
+<span class="nc bnc" id="L299" title="All 2 branches missed.">                if ( val.compareTo(BigInteger.ZERO) != 0 )</span>
+<span class="nc bnc" id="L300" title="All 2 branches missed.">                        for(int n=0; n &lt; a.size() ; n++)</span>
+<span class="nc" id="L301">                                resul.set(n,a.elementAt(n).multiply(val) ) ;</span>
+<span class="nc" id="L302">                return resul ;</span>
+        } /* multiply */
+
+        /** Multiply by a constant factor.
+        * @param val the factor
+        * @return the product of this with the factor.
+        *   All coefficients of this have been multiplied individually by the factor.
+        * @since 2010-08-27
+        */
+        public RatPoly multiply(final BigInteger val)
+        {
+<span class="nc" id="L313">                RatPoly resul = new RatPoly() ;</span>
+<span class="nc bnc" id="L314" title="All 2 branches missed.">                if ( val.compareTo(BigInteger.ZERO) != 0 )</span>
+<span class="nc bnc" id="L315" title="All 2 branches missed.">                        for(int n=0; n &lt; a.size() ; n++)</span>
+<span class="nc" id="L316">                                resul.set(n,a.elementAt(n).multiply(val) ) ;</span>
+<span class="nc" id="L317">                return resul ;</span>
+        } /* multiply */
+
+        /** Multiply by another polynomial
+        * @param val the other polynomial
+        * @return the product of this with the other polynomial
+        */
+        public RatPoly multiply(final RatPoly val)
+        {
+<span class="nc" id="L326">                RatPoly resul = new RatPoly() ;</span>
+                /* the degree of the result is the sum of the two degrees.
+                */
+<span class="nc" id="L329">                final int nmax = degree()+val.degree() ;</span>
+<span class="nc bnc" id="L330" title="All 2 branches missed.">                for(int n=0; n &lt;= nmax ; n++)</span>
+                {
+<span class="nc" id="L332">                        Rational coef = new Rational(0,1) ;</span>
+<span class="nc bnc" id="L333" title="All 2 branches missed.">                        for(int nleft=0; nleft &lt;= n ; nleft++)</span>
+                        {
+<span class="nc" id="L335">                                coef = coef.add(at(nleft).multiply(val.at(n-nleft))) ;</span>
+                        }
+<span class="nc" id="L337">                        resul.set(n,coef) ;</span>
+                }
+<span class="nc" id="L339">                resul.simplify() ;</span>
+<span class="nc" id="L340">                return resul ;</span>
+        } /* multiply */
+
+        /** Raise to a positive power.
+        * @param n The non-negative exponent of the power
+        * @return The n-th power of this.
+        */
+        public RatPoly pow(final int n) throws ArithmeticException
+        {
+<span class="nc" id="L349">                RatPoly resul = new RatPoly(&quot;1&quot;) ;</span>
+<span class="nc bnc" id="L350" title="All 2 branches missed.">                if ( n &lt; 0 )</span>
+<span class="nc" id="L351">                        throw new ArithmeticException(&quot;negative polynomial power &quot;+n) ;</span>
+                else
+                {
+                        /* this ought probably be done with some binary representation
+                        * of the power and a smaller number of multiplications.
+                        */
+<span class="nc bnc" id="L357" title="All 2 branches missed.">                        for(int i=1 ; i &lt;= n ; i++)</span>
+<span class="nc" id="L358">                                resul = resul.multiply(this) ;</span>
+<span class="nc" id="L359">                        resul.simplify() ;</span>
+<span class="nc" id="L360">                        return resul ;</span>
+                }
+        } /* pow */
+
+        /** Raise to a rational power.
+        * The result is the taylor expansion of this, truncated at the first
+        * term that remains undetermined based on the current number of coefficients.
+        * @param r the exponent of the power
+        * @return This^r .
+        * @since 2009-05-18
+        */
+        public RatPoly pow(final Rational r) throws ArithmeticException
+        {
+                /* split (a0+a1*x+a2*x^2+...)^r = a0^r*(1+a1/a0*r+a2/a0*r^2+..)^r
+                */
+<span class="nc" id="L375">                Rational f = at(0) ;</span>
+<span class="nc" id="L376">                f = f.pow(r) ;</span>
+
+                /* scale the polynomial by division through the expansion coefficient of the absolute term
+                */
+<span class="nc" id="L380">                RatPoly red = divide(a.elementAt(0)) ;</span>
+
+                /* and remove the leading term (now equal to 1)
+                */
+<span class="nc" id="L384">                red.set(0,0) ;</span>
+
+                /* Binomial expansion of the rest. sum_{l=0..infinity} binomial(r,l)*red^l
+                */
+<span class="nc" id="L388">                RatPoly resul = new RatPoly(&quot;1&quot;) ;</span>
+
+<span class="nc" id="L390">                final int d = degree() ;</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">                for(int l=1 ; l &lt;= d ; l++)</span>
+                {
+<span class="nc" id="L393">                        final Rational b = Rational.binomial(r,l) ;</span>
+<span class="nc" id="L394">                        resul = resul.add( red.pow(l).multiply(b) ) ;</span>
+                }
+<span class="nc" id="L396">                return resul.multiply(f) ;</span>
+        } /* pow */
+
+        /** Add another polynomial
+        * @param val The other polynomial
+        * @return The sum of this and the other polynomial
+        * @since 2008-10-25
+        */
+        public RatPoly add(final RatPoly val)
+        {
+<span class="nc" id="L406">                RatPoly resul = new RatPoly() ;</span>
+                /* the degree of the result is the larger of the two degrees (before simplify() at least).
+                */
+<span class="nc bnc" id="L409" title="All 2 branches missed.">                final int nmax = (degree()&gt;val.degree()) ? degree() : val.degree() ;</span>
+<span class="nc bnc" id="L410" title="All 2 branches missed.">                for(int n=0; n &lt;= nmax ; n++)</span>
+                {
+<span class="nc" id="L412">                        Rational coef = at(n).add(val.at(n)) ;</span>
+<span class="nc" id="L413">                        resul.set(n,coef) ;</span>
+                }
+<span class="nc" id="L415">                resul.simplify() ;</span>
+<span class="nc" id="L416">                return resul ;</span>
+        } /* add */
+
+        /** Subtract another polynomial
+        * @param val The other polynomial
+        * @return The difference between this and the other polynomial
+        * @since 2008-10-25
+        */
+        public RatPoly subtract(final RatPoly val)
+        {
+<span class="nc" id="L426">                RatPoly resul = new RatPoly() ;</span>
+                /* the degree of the result is the larger of the two degrees (before simplify() at least).
+                */
+<span class="nc bnc" id="L429" title="All 2 branches missed.">                final int nmax = (degree()&gt;val.degree()) ? degree() : val.degree() ;</span>
+<span class="nc bnc" id="L430" title="All 2 branches missed.">                for(int n=0; n &lt;= nmax ; n++)</span>
+                {
+<span class="nc" id="L432">                        Rational coef = at(n).subtract(val.at(n)) ;</span>
+<span class="nc" id="L433">                        resul.set(n,coef) ;</span>
+                }
+<span class="nc" id="L435">                resul.simplify() ;</span>
+<span class="nc" id="L436">                return resul ;</span>
+        } /* subtract */
+
+        /** Divide by a constant.
+        * @param val the constant through which the coefficients will be divided.
+        * @return the Taylor expansion of this/val .
+        * @since 2009-05-18
+        */
+        public RatPoly divide(final Rational val)
+        {
+<span class="nc bnc" id="L446" title="All 2 branches missed.">                if ( val.compareTo(Rational.ZERO) != 0 )</span>
+                {
+<span class="nc" id="L448">                        RatPoly resul = new RatPoly() ;</span>
+<span class="nc bnc" id="L449" title="All 2 branches missed.">                        for(int n=0; n &lt; a.size() ; n++)</span>
+<span class="nc" id="L450">                                resul.set(n,a.elementAt(n).divide(val) ) ;</span>
+<span class="nc" id="L451">                        return resul ;</span>
+                }
+                else
+<span class="nc" id="L454">                        throw new ArithmeticException(&quot;Cannot divide &quot; + toPString() +&quot; through zero.&quot;) ;</span>
+        } /* divide */
+
+        /** Divide by another polynomial.
+        * @param val the other polynomial
+        * @param nmax the maximum degree of the Taylor expansion of the result.
+        * @return the Taylor expansion of this/val up to degree nmax.
+        */
+        public RatPoly divide(final RatPoly val,int nmax)
+        {
+<span class="nc" id="L464">                RatPoly num = this ;</span>
+<span class="nc" id="L465">                RatPoly denom = val ;</span>
+
+                /* divide by a common smallest power/degree
+                */
+<span class="nc bnc" id="L469" title="All 4 branches missed.">                while( num.at(0).compareTo(BigInteger.ZERO) == 0 &amp;&amp; denom.at(0).compareTo(BigInteger.ZERO) == 0)</span>
+                {
+<span class="nc" id="L471">                        num.a.remove(0) ;</span>
+<span class="nc" id="L472">                        denom.a.remove(0) ;</span>
+<span class="nc bnc" id="L473" title="All 4 branches missed.">                        if( num.size() &lt;= 1 || denom.size() &lt;= 1)</span>
+<span class="nc" id="L474">                                break ;</span>
+                }
+
+<span class="nc" id="L477">                RatPoly resul = new RatPoly() ;</span>
+                /* todo: If the polynomial division is exact, we could leave
+                * the loop earlier, indeed
+                */
+<span class="nc bnc" id="L481" title="All 2 branches missed.">                for(int n=0; n &lt;= nmax ; n++)</span>
+                {
+<span class="nc" id="L483">                        Rational coef = num.at(n) ;</span>
+<span class="nc bnc" id="L484" title="All 2 branches missed.">                        for(int nres=0; nres &lt; n ; nres++)</span>
+                        {
+<span class="nc" id="L486">                                coef = coef.subtract(resul.at(nres).multiply(denom.at(n-nres))) ;</span>
+                        }
+<span class="nc" id="L488">                        coef = coef.divide(denom.at(0)) ;</span>
+<span class="nc" id="L489">                        resul.set(n,coef) ;</span>
+                }
+<span class="nc" id="L491">                resul.simplify() ;</span>
+<span class="nc" id="L492">                return(resul) ;</span>
+        } /* divide */
+
+        /** Divide by another polynomial.
+        * @param val the other polynomial
+        * @return A vector with [0] containg the polynomial of degree which is the
+        *  difference of thisdegree and the degree of val. [1] the remainder polynomial.
+        * This = returnvalue[0] + returnvalue[1]/val .
+        * @since 2012-03-01
+        */
+        public RatPoly[] divideAndRemainder(final RatPoly val)
+        {
+<span class="nc" id="L504">                RatPoly[] ret = new RatPoly[2] ;</span>
+                /* remove any high-order zeros
+                */
+<span class="nc" id="L507">                RatPoly valSimpl = val.clone() ;</span>
+<span class="nc" id="L508">                valSimpl.simplify() ;</span>
+<span class="nc" id="L509">                RatPoly thisSimpl = clone() ;</span>
+<span class="nc" id="L510">                thisSimpl.simplify() ;</span>
+
+                /* catch the case with val equal to zero
+                */
+<span class="nc bnc" id="L514" title="All 4 branches missed.">                if ( valSimpl.degree() == 0 &amp;&amp; valSimpl.a.firstElement().compareTo(Rational.ZERO) == 0)</span>
+<span class="nc" id="L515">                        throw new ArithmeticException(&quot;Division through zero polynomial&quot;) ;</span>
+                /* degree of this smaller than degree of val: remainder is this
+                */
+<span class="nc bnc" id="L518" title="All 2 branches missed.">                if ( thisSimpl.degree() &lt; valSimpl.degree() )</span>
+                {
+                        /* leading polynomial equals zero 
+                        */
+<span class="nc" id="L522">                        ret[0] = new RatPoly() ;</span>
+<span class="nc" id="L523">                        ret[1] = thisSimpl ;</span>
+                }
+                else
+                {
+                        /* long division. Highest degree by dividing the highest degree
+                        * of this thru val.
+                        */
+<span class="nc" id="L530">                        ret[0] = new RatPoly() ;</span>
+<span class="nc" id="L531">                        ret[0].set(thisSimpl.degree()-valSimpl.degree(),</span>
+<span class="nc" id="L532">                                thisSimpl.a.lastElement().divide(valSimpl.a.lastElement()) ) ;</span>
+
+                        /* recurrences: build this - val*(1-termresult) and feed this
+                        * into another round of division. Have intermediate ret[0]+ret[1]/val.
+                        */
+<span class="nc" id="L537">                        ret[1] = thisSimpl.subtract( ret[0].multiply( valSimpl) );</span>
+
+                        /* any remainder left ?
+                        */
+<span class="nc bnc" id="L541" title="All 2 branches missed.">                        if ( ret[1].degree() &lt; valSimpl.degree() )</span>
+<span class="nc" id="L542">                                ;</span>
+                        else
+                        {
+<span class="nc" id="L545">                                RatPoly rem[] = ret[1].divideAndRemainder(val) ;</span>
+<span class="nc" id="L546">                                ret[0] = ret[0].add(rem[0]) ;</span>
+<span class="nc" id="L547">                                ret[1] = rem[1] ;</span>
+                        }
+                }
+<span class="nc" id="L550">                return ret ;</span>
+        } /* divideAndRemainder */
+
+        /** Print as a comma-separated list of coefficients.
+        * @return The representation a0,a1,a2,a3,...
+        * This is a sort of opposite of the ctor that takes a string as an argument.
+        * @since 2008-10-25
+        */
+        public String toString()
+        {
+<span class="nc" id="L560">                String str = new String();</span>
+<span class="nc bnc" id="L561" title="All 2 branches missed.">                for(int n=0; n &lt; a.size() ; n++)</span>
+                {
+<span class="nc bnc" id="L563" title="All 2 branches missed.">                        if ( n == 0 )</span>
+<span class="nc" id="L564">                                str += a.elementAt(n).toString() ;</span>
+                        else
+<span class="nc" id="L566">                                str += &quot;,&quot;+a.elementAt(n).toString() ;</span>
+                }
+                /* print at least a sole zero
+                */
+<span class="nc bnc" id="L570" title="All 2 branches missed.">                if (str.length() == 0)</span>
+<span class="nc" id="L571">                        str = &quot;0&quot; ;</span>
+<span class="nc" id="L572">                return str ;</span>
+        } /* toString */
+
+        /** Print as a polyomial in x.
+        * @return To representation a0+a1*x+a2*x^2+...
+        *    This does not print the terms with coefficients equal to zero.
+        * @since 2008-10-26
+        */
+        public String toPString()
+        {
+<span class="nc" id="L582">                String str = new String();</span>
+<span class="nc bnc" id="L583" title="All 2 branches missed.">                for(int n=0; n &lt; a.size() ; n++)</span>
+                {
+<span class="nc" id="L585">                        final BigInteger num = a.elementAt(n).a ;</span>
+<span class="nc bnc" id="L586" title="All 2 branches missed.">                        if ( num.compareTo(BigInteger.ZERO) != 0 )</span>
+                        {
+<span class="nc" id="L588">                                str += &quot; &quot; ;</span>
+<span class="nc bnc" id="L589" title="All 2 branches missed.">                                if ( num.compareTo(BigInteger.ZERO) &gt; 0 )</span>
+<span class="nc" id="L590">                                        str += &quot;+&quot; ;</span>
+<span class="nc" id="L591">                                str += a.elementAt(n).toString() ;</span>
+<span class="nc bnc" id="L592" title="All 2 branches missed.">                                if ( n &gt; 0 )</span>
+                                {
+<span class="nc" id="L594">                                        str += &quot;*x&quot; ;</span>
+<span class="nc bnc" id="L595" title="All 2 branches missed.">                                        if ( n &gt; 1 ) </span>
+<span class="nc" id="L596">                                                str += &quot;^&quot;+n ;</span>
+                                }
+                        }
+                }
+                /* print at least a sole zero
+                */
+<span class="nc bnc" id="L602" title="All 2 branches missed.">                if (str.length() == 0)</span>
+<span class="nc" id="L603">                        str = &quot;0&quot; ;</span>
+<span class="nc" id="L604">                return str ;</span>
+        } /* toPString */
+
+        /** Simplify the representation.
+        * Trailing values with zero coefficients (at high powers) are deleted.
+        * This modifies the polynomial on the stop (does not return another instance)
+        */
+        private void simplify()
+        {
+<span class="nc" id="L613">                int n = a.size()-1 ;</span>
+<span class="nc bnc" id="L614" title="All 2 branches missed.">                if ( n &gt;= 0)</span>
+<span class="nc bnc" id="L615" title="All 2 branches missed.">                        while( a.elementAt(n).compareTo(BigInteger.ZERO) == 0 )</span>
+                        {
+<span class="nc" id="L617">                                a.remove(n) ;</span>
+<span class="nc bnc" id="L618" title="All 2 branches missed.">                                if( --n &lt;0)</span>
+<span class="nc" id="L619">                                        break ;</span>
+                        }
+<span class="nc" id="L621">        } /* simplify */</span>
+
+        /** First derivative.
+        * @return The first derivative with respect to the indeterminate variable.
+        * @since 2008-10-26
+        */
+        public RatPoly derive()
+        {
+<span class="nc bnc" id="L629" title="All 2 branches missed.">                if ( a.size() &lt;= 1)</span>
+                        /* derivative of the constant is just zero
+                        */
+<span class="nc" id="L632">                        return new RatPoly() ;</span>
+                else
+                {       
+<span class="nc" id="L635">                        RatPoly d = new RatPoly() ;</span>
+<span class="nc bnc" id="L636" title="All 2 branches missed.">                        for(int i=1 ; i &lt;= degree() ; i++)</span>
+                        {
+<span class="nc" id="L638">                                final Rational c = a.elementAt(i).multiply(i) ;</span>
+<span class="nc" id="L639">                                d.set(i-1,c) ;</span>
+                        }
+<span class="nc" id="L641">                        return d ;</span>
+                }
+        } /* derive */
+
+        /** Scale coefficients such that the coefficient in front of the maximum degree is unity.
+        * @return The scaled polynomial
+        * @since 2008-10-26
+        */
+        public RatPoly monic()
+        {
+<span class="nc" id="L651">                RatPoly m = new RatPoly() ;</span>
+<span class="nc" id="L652">                final int d = degree() ;</span>
+<span class="nc bnc" id="L653" title="All 2 branches missed.">                for(int i=0 ; i &lt;= d ; i++)</span>
+                {
+<span class="nc" id="L655">                        final Rational c = a.elementAt(i).divide(a.elementAt(d) ) ;</span>
+<span class="nc" id="L656">                        m.set(i,c) ;</span>
+                }
+<span class="nc" id="L658">                return m ;</span>
+        } /* monic */
+
+
+        /** Mobius transform.
+        * @param maxdeg the maximum polynomial degree of the result
+        * @return the sequence of coefficients is the Mobius transform of the original sequence.
+        * @since 2008-12-02
+        */
+        public RatPoly mobiusT(int maxdeg)
+        {
+                /* Start with the polynomial 0
+                */
+<span class="nc" id="L671">                RatPoly r = new RatPoly() ;</span>
+<span class="nc bnc" id="L672" title="All 2 branches missed.">                for(int i=1; i &lt;= maxdeg; i++)</span>
+                {
+<span class="nc" id="L674">                        Rational c = new Rational() ;</span>
+<span class="nc bnc" id="L675" title="All 4 branches missed.">                        for(int d=1; d &lt;= i &amp;&amp; d &lt; a.size(); d++)</span>
+                        {
+<span class="nc bnc" id="L677" title="All 2 branches missed.">                                if (i % d == 0) </span>
+                                {
+<span class="nc" id="L679">                                        final Ifactor m = new Ifactor(i/d) ;</span>
+<span class="nc" id="L680">                                        c = c.add( a.elementAt(d).multiply( m.moebius() ) ) ;</span>
+                                }
+                        }
+<span class="nc" id="L683">                        r.set(i,c) ;</span>
+                }
+<span class="nc" id="L685">                r.simplify() ;</span>
+<span class="nc" id="L686">                return r ;</span>
+        } /* mobiusT */
+
+        /** Inverse Mobius transform.
+        * @param maxdeg the maximum polynomial degree of the result
+        * @return the sequence of coefficients is the inverse Mobius transform of the original sequence.
+        * @since 2008-12-02
+        */
+        public RatPoly mobiusTInv(int maxdeg)
+        {
+                /* Start with the polynomial 0
+                */
+<span class="nc" id="L698">                RatPoly r = new RatPoly() ;</span>
+<span class="nc bnc" id="L699" title="All 2 branches missed.">                for(int i=1; i &lt;= maxdeg; i++)</span>
+                {
+<span class="nc" id="L701">                        Rational c = new Rational() ;</span>
+<span class="nc bnc" id="L702" title="All 4 branches missed.">                        for(int d=1; d &lt;= i &amp;&amp; d &lt; a.size(); d++)</span>
+                        {
+<span class="nc bnc" id="L704" title="All 2 branches missed.">                                if (i % d == 0) </span>
+<span class="nc" id="L705">                                        c = c.add( a.elementAt(d) ) ;</span>
+                        }
+<span class="nc" id="L707">                        r.set(i,c) ;</span>
+                }
+<span class="nc" id="L709">                r.simplify() ;</span>
+<span class="nc" id="L710">                return r ;</span>
+        } /* mobiusTInv */
+
+        /** Binomial transform.
+        * @param maxdeg the maximum polynomial degree of the result
+        * @return the sequence of coefficients is the binomial transform of the original sequence.
+        * @since 2008-10-26
+        */
+        public RatPoly binomialT(int maxdeg)
+        {
+<span class="nc" id="L720">                RatPoly r = new RatPoly() ;</span>
+<span class="nc bnc" id="L721" title="All 2 branches missed.">                for(int i=0; i &lt;= maxdeg; i++)</span>
+                {
+<span class="nc" id="L723">                        Rational c = new Rational(0,1) ;</span>
+<span class="nc bnc" id="L724" title="All 4 branches missed.">                        for(int j=0; j &lt;= i &amp;&amp; j &lt; a.size(); j++)</span>
+<span class="nc" id="L725">                                c = c.add( a.elementAt(j).multiply(BigIntegerMath.binomial(i,j)) ) ;</span>
+<span class="nc" id="L726">                        r.set(i,c) ;</span>
+                }
+<span class="nc" id="L728">                r.simplify() ;</span>
+<span class="nc" id="L729">                return r ;</span>
+        } /* binomialT */
+
+        /** Inverse Binomial transform.
+        * @param maxdeg the maximum polynomial degree of the result
+        * @return the sequence of coefficients is the inverse binomial transform of the original sequence.
+        * @since 2008-10-26
+        */
+        public RatPoly binomialTInv(int maxdeg)
+        {
+<span class="nc" id="L739">                RatPoly r = new RatPoly() ;</span>
+<span class="nc bnc" id="L740" title="All 2 branches missed.">                for(int i=0; i &lt;= maxdeg; i++)</span>
+                {
+<span class="nc" id="L742">                        Rational c = new Rational(0,1) ;</span>
+<span class="nc bnc" id="L743" title="All 4 branches missed.">                        for(int j=0; j &lt;= i &amp;&amp; j &lt; a.size(); j++)</span>
+<span class="nc bnc" id="L744" title="All 2 branches missed.">                                if ( (j+i) % 2 != 0 )</span>
+<span class="nc" id="L745">                                        c = c.subtract( a.elementAt(j).multiply(BigIntegerMath.binomial(i,j)) ) ;</span>
+                                else
+<span class="nc" id="L747">                                        c = c.add( a.elementAt(j).multiply(BigIntegerMath.binomial(i,j)) ) ;</span>
+<span class="nc" id="L748">                        r.set(i,c) ;</span>
+                }
+<span class="nc" id="L750">                r.simplify() ;</span>
+<span class="nc" id="L751">                return r ;</span>
+        } /* binomialTInv */
+
+
+        /** Truncate polynomial degree.
+        * @param newdeg The maximum degree of the result.
+        * @return The polynomial with all coefficients beyond deg set to zero.
+        * If newdeg =3, for example the polynomial returned has at most degree 3.
+        * If newdeg is larger than the degree of this, zeros (at the higher orders of x)
+        * are appended. That polynomial would have formal degree larger than this.
+        * @since 2008-10-26
+        */
+        public RatPoly trunc(int newdeg)
+        {
+<span class="nc" id="L765">                RatPoly t = new RatPoly() ;</span>
+<span class="nc bnc" id="L766" title="All 2 branches missed.">                for(int i=0; i &lt;= newdeg; i++)</span>
+<span class="nc" id="L767">                        t.set(i,at(i)) ;</span>
+<span class="nc" id="L768">                t.simplify() ;</span>
+<span class="nc" id="L769">                return t ;</span>
+        } /* trunc */
+
+        /** Generate the roots of the polynomial in floating point arithmetic.
+        * @see &lt;a href=&quot;http://en.wikipedia.org/wiki/Durand-Kerner_method&quot;&gt;Durand Kerner method&lt;/a&gt;
+        * @param the number of floating point digits
+        * @since 2008-10-26
+        */
+        public Vector&lt;BigComplex&gt; roots(int digits)
+        {
+<span class="nc" id="L779">                RatPoly mon = monic() ;</span>
+
+<span class="nc" id="L781">                Random rand = new Random() ;</span>
+<span class="nc" id="L782">                MathContext mc = new MathContext(digits+3,RoundingMode.DOWN) ;</span>
+
+<span class="nc" id="L784">                Vector&lt;BigComplex&gt; res =new Vector&lt;BigComplex&gt;() ;</span>
+
+<span class="nc" id="L786">                final int d = mon.degree() ;</span>
+<span class="nc" id="L787">                double randRad =0. ;</span>
+<span class="nc bnc" id="L788" title="All 2 branches missed.">                for(int i=0 ; i &lt;= d ; i++)</span>
+                {
+                        /* scale coefficient at maximum degree */
+<span class="nc" id="L791">                        double absi = Math.abs( mon.at(i).doubleValue() ) ;</span>
+<span class="nc bnc" id="L792" title="All 2 branches missed.">                        if ( absi &gt; randRad) </span>
+<span class="nc" id="L793">                                randRad = absi ;</span>
+                }
+<span class="nc" id="L795">                randRad += 1.0 ;</span>
+
+                /* initial values randomly in radius 1+randRad
+                */
+<span class="nc bnc" id="L799" title="All 2 branches missed.">                for(int i=0 ; i &lt; d ; i++)</span>
+                {
+<span class="nc" id="L801">                        double rad = randRad*rand.nextDouble() ;</span>
+<span class="nc" id="L802">                        double phi = 2.0*3.14159*rand.nextDouble() ;</span>
+<span class="nc" id="L803">                        res.add(i, new BigComplex(rad*Math.cos(phi),rad*Math.sin(phi)) ) ;</span>
+                }
+
+                /* iterate until convr indicates that all values changed by less than the digits 
+                * precision indicates.
+                */
+<span class="nc" id="L809">                boolean convr = false ;</span>
+<span class="nc bnc" id="L810" title="All 2 branches missed.">                for(int itr =0 ; ! convr ; itr++)</span>
+                {
+<span class="nc" id="L812">                        convr = true ;</span>
+<span class="nc" id="L813">                        Vector&lt;BigComplex&gt; resPlus =new Vector&lt;BigComplex&gt;() ;</span>
+<span class="nc bnc" id="L814" title="All 2 branches missed.">                        for(int v=0 ; v &lt; d; v++)</span>
+                        {
+                                /* evaluate f(x)/(x-root1)/(x-root2)/... (x-rootdegr), Newton method
+                                */
+<span class="nc" id="L818">                                BigComplex thisx = res.elementAt(v) ;</span>
+<span class="nc" id="L819">                                BigComplex nv = mon.valueOf(thisx,mc) ;</span>
+<span class="nc bnc" id="L820" title="All 2 branches missed.">                                for(int j=0; j &lt; d ; j++)</span>
+                                {
+<span class="nc bnc" id="L822" title="All 2 branches missed.">                                        if ( j != v )</span>
+<span class="nc" id="L823">                                                nv = nv.divide(thisx.subtract(res.elementAt(j)),mc) ;</span>
+                                }
+
+                                /* is this value converged ? */
+<span class="nc bnc" id="L827" title="All 2 branches missed.">                                if ( nv.abs(mc).doubleValue() &gt;  thisx.abs(mc).doubleValue()*Math.pow(10.0,-digits) )</span>
+<span class="nc" id="L828">                                        convr =false;</span>
+        
+<span class="nc" id="L830">                                thisx = thisx.subtract(nv) ;</span>
+
+                                /* If unstable, start over */
+<span class="nc bnc" id="L833" title="All 2 branches missed.">                                if ( thisx.abs(MathContext.DECIMAL32).doubleValue() &gt; randRad )</span>
+<span class="nc" id="L834">                                        return roots(digits) ;</span>
+
+<span class="nc" id="L836">                                resPlus.add(thisx) ;</span>
+                        }
+<span class="nc" id="L838">                        res = resPlus ;</span>
+
+                }
+<span class="nc" id="L841">                return res;</span>
+        } /* roots */
+
+        /** Generate the integer roots of the polynomial.
+        * @return The vector of integer roots, with multiplicity.
+        * The shows alternatingly first a root then its multiplicty, then another root and multiplicty etc.
+        * @since 2008-10-26
+        */
+        public Vector&lt;BigInteger&gt; iroots()
+        {
+                /* The vector of the roots */
+<span class="nc" id="L852">                Vector&lt;BigInteger&gt; res =new Vector&lt;BigInteger&gt;() ;</span>
+
+<span class="nc" id="L854">                int lowd = ldegree() ;</span>
+<span class="nc bnc" id="L855" title="All 4 branches missed.">                if( lowd == 0 &amp;&amp; a.elementAt(0).compareTo(BigInteger.ZERO) == 0)</span>
+                {
+                        /* Case of polynomial identical to zero:
+                        * reported as a simple root of value 0.
+                        */
+<span class="nc" id="L860">                        res.add(BigInteger.ZERO) ;</span>
+<span class="nc" id="L861">                        res.add(BigInteger.ONE) ;</span>
+<span class="nc" id="L862">                        return res ;</span>
+                }
+
+                /* multiply all coefs with the lcm() to get an integer polynomial
+                * start with denominator of first non-zero coefficient.
+                */
+<span class="nc" id="L868">                BigInteger lcmDeno = a.elementAt(lowd).b ;</span>
+<span class="nc bnc" id="L869" title="All 2 branches missed.">                for(int i=lowd+1; i &lt; degree() ; i++)</span>
+<span class="nc" id="L870">                        lcmDeno = BigIntegerMath.lcm(lcmDeno, a.elementAt(i).b ) ;</span>
+
+                /* and eventually get the integer polynomial by ignoring the denominators
+                */
+<span class="nc" id="L874">                Vector&lt;BigInteger&gt; ipo = new Vector&lt;BigInteger&gt;() ;</span>
+<span class="nc bnc" id="L875" title="All 2 branches missed.">                for(int i=0 ; i &lt; a.size() ; i++)</span>
+                {
+<span class="nc" id="L877">                        BigInteger d = a.elementAt(i).a.multiply( lcmDeno).divide( a.elementAt(i).b)  ;</span>
+<span class="nc" id="L878">                        ipo.add(d) ;</span>
+                }
+
+<span class="nc" id="L881">                BigIntegerPoly p = new BigIntegerPoly(ipo) ;</span>
+                /* collect the integer roots (multiple roots only once). Since we
+                * removed the zero already above, cand does not contain zeros.
+                */
+<span class="nc" id="L885">                Vector&lt;BigInteger&gt; cand = p.iroots() ;</span>
+<span class="nc bnc" id="L886" title="All 2 branches missed.">                for( int i =0 ; i &lt; cand.size() ; i++)</span>
+                {
+<span class="nc" id="L888">                        final BigInteger r = cand.elementAt(i) ;</span>
+<span class="nc" id="L889">                        int deg = p.rootDeg( r) ;</span>
+<span class="nc" id="L890">                        res.add(r) ;</span>
+<span class="nc" id="L891">                        res.add(new BigInteger(&quot;&quot;+deg)) ;</span>
+                }
+
+<span class="nc" id="L894">                return res;</span>
+        } /* iroots */
+
+
+} /* RatPoly */
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

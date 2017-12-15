@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PartitionsP.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">org.nevec.rjm</a> &gt; <span class="el_source">PartitionsP.java</span></div><h1>PartitionsP.java</h1><pre class="source lang-java linenums">package org.nevec.rjm ;
+
+import java.lang.* ;
+import java.util.* ;
+import java.math.* ;
+
+/** Number of partitions.
+* @since 2008-10-15
+* @author Richard J. Mathar
+*/
+public class PartitionsP
+{
+        /**
+        * The list of all partitions as a vector.
+        */
+<span class="nc" id="L16">        static protected Vector&lt;BigInteger&gt; a = new Vector&lt;BigInteger&gt;() ;</span>
+
+        /**
+        * The maximum integer covered by the high end of the list.
+        */
+<span class="nc" id="L21">        static protected BigInteger nMax =new BigInteger(&quot;-1&quot;) ;</span>
+
+        /**
+        * Default constructor initializing a list of partitions up to 7.
+        */
+        public PartitionsP()
+<span class="nc" id="L27">        {</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">                if ( a.size() == 0 )</span>
+                {
+<span class="nc" id="L30">                        a.add(new BigInteger(&quot;&quot;+1)) ;</span>
+<span class="nc" id="L31">                        a.add(new BigInteger(&quot;&quot;+1)) ;</span>
+<span class="nc" id="L32">                        a.add(new BigInteger(&quot;&quot;+2)) ;</span>
+<span class="nc" id="L33">                        a.add(new BigInteger(&quot;&quot;+3)) ;</span>
+<span class="nc" id="L34">                        a.add(new BigInteger(&quot;&quot;+5)) ;</span>
+<span class="nc" id="L35">                        a.add(new BigInteger(&quot;&quot;+7)) ;</span>
+                }
+<span class="nc" id="L37">                nMax = new BigInteger(&quot;&quot;+(a.size()-1)) ;</span>
+<span class="nc" id="L38">        } /* ctor */</span>
+
+        /** return the number of partitions of i
+        * @param i the zero-based index into the list of partitions
+        * @return the ith partition number. This is 1 if i=0 or 1, 2 if i=2 and so forth.
+        */
+        public BigInteger at(int i)
+        {
+                /* If the current list is too small, increase in intervals
+                * of 3 until the list has at least i elements.
+                */
+<span class="nc bnc" id="L49" title="All 2 branches missed.">                while ( i &gt; nMax.intValue() )</span>
+                {
+<span class="nc" id="L51">                        growto(nMax.add(new BigInteger(&quot;&quot;+3))) ;</span>
+                }
+<span class="nc" id="L53">                return ( a.elementAt(i) ) ;</span>
+        } /* at */
+
+        /** extend the list of known partitions up to n
+        * @param n the maximum integer hashed after the call.
+        */
+        private void growto(BigInteger n)
+        {
+<span class="nc bnc" id="L61" title="All 2 branches missed.">                while( a.size() &lt;= n.intValue() )</span>
+                {
+<span class="nc" id="L63">                        BigInteger per = new BigInteger(&quot;0&quot;) ;</span>
+<span class="nc" id="L64">                        BigInteger cursiz = new BigInteger(&quot;&quot;+a.size()) ;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">                        for(int k=0; k &lt; a.size() ; k++)</span>
+                        {
+<span class="nc" id="L67">                                BigInteger tmp = a.elementAt(k).multiply(BigIntegerMath.sigma(a.size()-k)) ;</span>
+<span class="nc" id="L68">                                per = per.add(tmp) ;</span>
+                        }
+<span class="nc" id="L70">                        a.add(per.divide(cursiz)) ;</span>
+<span class="nc" id="L71">                }</span>
+<span class="nc" id="L72">                nMax = new BigInteger(&quot;&quot;+(a.size()-1)) ;</span>
+<span class="nc" id="L73">        } /* growto */</span>
+
+        /** Test program.
+        * It takes one integer argument n and prints P(n).&lt;br&gt;
+        * java -cp . org.nevec.rjm.PartitionsP n&lt;br&gt;
+        * @since 2008-10-15
+        */
+        public static void main(String[] args) throws Exception
+        {
+<span class="nc" id="L82">                PartitionsP a = new PartitionsP() ;</span>
+<span class="nc" id="L83">                int n = (new Integer(args[0])).intValue() ;</span>
+<span class="nc" id="L84">                System.out.println(&quot;P(&quot;+ n +&quot;)=&quot; + a.at(n)) ;</span>
+<span class="nc" id="L85">        }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BigComplex.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">org.nevec.rjm</a> &gt; <span class="el_source">BigComplex.java</span></div><h1>BigComplex.java</h1><pre class="source lang-java linenums">package org.nevec.rjm ;
+
+import java.lang.* ;
+import java.security.* ;
+import java.util.* ;
+import java.math.* ;
+
+
+/** Complex numbers with BigDecimal real and imaginary components
+* @since 2008-10-26
+* @author Richard J. Mathar
+*/
+public class BigComplex
+{
+        /** real part
+        */
+        BigDecimal re ;
+
+        /** imaginary part
+        */
+        BigDecimal im ;
+
+        /** The constant that equals zero
+        */
+<span class="nc" id="L25">        final static BigComplex ZERO = new BigComplex(BigDecimal.ZERO, BigDecimal.ZERO) ;</span>
+
+        /** Default ctor equivalent to zero.
+        */
+        public BigComplex()
+<span class="nc" id="L30">        {</span>
+<span class="nc" id="L31">                re= BigDecimal.ZERO ;</span>
+<span class="nc" id="L32">                im= BigDecimal.ZERO ;</span>
+<span class="nc" id="L33">        }</span>
+
+        /** ctor with real and imaginary parts
+        * @param x real part
+        * @param y imaginary part
+        */
+        public BigComplex( BigDecimal x, BigDecimal y)
+<span class="nc" id="L40">        {</span>
+<span class="nc" id="L41">                re=x ;</span>
+<span class="nc" id="L42">                im=y ;</span>
+<span class="nc" id="L43">        }</span>
+
+        /** ctor with real part.
+        * @param x real part.
+        * The imaginary part is set to zero.
+        */
+        public BigComplex( BigDecimal x )
+<span class="nc" id="L50">        {</span>
+<span class="nc" id="L51">                re=x ;</span>
+<span class="nc" id="L52">                im= BigDecimal.ZERO ;</span>
+<span class="nc" id="L53">        }</span>
+
+        /** ctor with real and imaginary parts
+        * @param x real part
+        * @param y imaginary part
+        */
+        public BigComplex( double x, double y)
+<span class="nc" id="L60">        {</span>
+<span class="nc" id="L61">                re= new BigDecimal(x) ;</span>
+<span class="nc" id="L62">                im= new BigDecimal(y) ;</span>
+<span class="nc" id="L63">        }</span>
+
+        /** Multiply with another BigComplex
+        * @param oth The BigComplex which is a factor in the product
+        * @param mc Defining precision and rounding mode
+        * @return This multiplied by oth
+        * @since 2010-07-19 implemented with 3 multiplications and 5 additions/subtractions
+        */
+        BigComplex multiply(final BigComplex oth, MathContext mc)
+        {
+<span class="nc" id="L73">                final BigDecimal a = re.add(im).multiply(oth.re) ;</span>
+<span class="nc" id="L74">                final BigDecimal b = oth.re.add(oth.im).multiply(im) ;</span>
+<span class="nc" id="L75">                final BigDecimal c = oth.im.subtract(oth.re).multiply(re) ;</span>
+<span class="nc" id="L76">                final BigDecimal x = a.subtract(b,mc) ;</span>
+<span class="nc" id="L77">                final BigDecimal y = a.add(c,mc) ;</span>
+<span class="nc" id="L78">                return new BigComplex(x,y) ;</span>
+        }
+
+        /** Add a BigDecimal
+        * @param oth the value to be added to the real part.
+        * @return this added to oth
+        */
+        BigComplex add(final BigDecimal oth)
+        {
+<span class="nc" id="L87">                final BigDecimal x = re.add(oth) ;</span>
+<span class="nc" id="L88">                return new BigComplex(x,im) ;</span>
+        }
+
+        /** Subtract another BigComplex
+        * @param oth the value to be subtracted from this.
+        * @return this minus oth
+        */
+        BigComplex subtract(final BigComplex oth)
+        {
+<span class="nc" id="L97">                final BigDecimal x = re.subtract(oth.re) ;</span>
+<span class="nc" id="L98">                final BigDecimal y = im.subtract(oth.im) ;</span>
+<span class="nc" id="L99">                return new BigComplex(x,y) ;</span>
+        }
+
+        /** Complex-conjugation
+        * @return the complex conjugate of this.
+        */
+        BigComplex conj()
+        {
+<span class="nc" id="L107">                return new BigComplex(re,im.negate()) ;</span>
+        }
+
+        /** The absolute value squared.
+        * @return The sum of the squares of real and imaginary parts.
+        * This is the square of BigComplex.abs() .
+        */
+        BigDecimal norm()
+        {
+<span class="nc" id="L116">                return re.multiply(re).add(im.multiply(im)) ;</span>
+        }
+
+        /** The absolute value.
+        * @return the square root of the sum of the squares of real and imaginary parts.
+        * @since 2008-10-27
+        */
+        BigDecimal abs(MathContext mc)
+        {
+<span class="nc" id="L125">                return BigDecimalMath.sqrt(norm(),mc) ;</span>
+        }
+
+        /** The square root.
+        * @return the square root of the this.
+        *   The branch is chosen such that the imaginary part of the result has the
+        *   same sign as the imaginary part of this.
+        * @see Tim Ahrendt, &lt;a href=&quot;http://dx.doi.org/10.1145/236869.236924&quot;&gt;Fast High-precision computation of complex square roots&lt;/a&gt;,
+        *    ISSAC 1996 p142-149.
+        * @since 2008-10-27  
+        */
+        BigComplex sqrt(MathContext mc)
+        {
+<span class="nc" id="L138">                final BigDecimal half = new BigDecimal(&quot;2&quot;) ;</span>
+                /* compute l=sqrt(re^2+im^2), then u=sqrt((l+re)/2)
+                * and v= +- sqrt((l-re)/2 as the new real and imaginary parts.
+                */
+<span class="nc" id="L142">                final BigDecimal l = abs(mc) ;</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">                if ( l.compareTo(BigDecimal.ZERO) == 0 )</span>
+<span class="nc" id="L144">                        return new BigComplex( BigDecimalMath.scalePrec(BigDecimal.ZERO,mc),</span>
+<span class="nc" id="L145">                                                BigDecimalMath.scalePrec(BigDecimal.ZERO,mc) ) ;</span>
+<span class="nc" id="L146">                final BigDecimal u = BigDecimalMath.sqrt( l.add(re).divide(half,mc), mc );</span>
+<span class="nc" id="L147">                final BigDecimal v = BigDecimalMath.sqrt( l.subtract(re).divide(half,mc), mc );</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">                if ( im.compareTo(BigDecimal.ZERO)&gt;= 0 )</span>
+<span class="nc" id="L149">                        return new BigComplex(u,v) ;</span>
+                else
+<span class="nc" id="L151">                        return new BigComplex(u,v.negate()) ;</span>
+        }
+
+        /** The inverse of this.
+        * @return 1/this
+        */
+        BigComplex inverse(MathContext mc)
+        {
+<span class="nc" id="L159">                final BigDecimal hyp = norm() ;</span>
+                /* 1/(x+iy)= (x-iy)/(x^2+y^2 */
+<span class="nc" id="L161">                return new BigComplex( re.divide(hyp,mc), im.divide(hyp,mc).negate() ) ;</span>
+        }
+
+        /** Divide through another BigComplex number.
+        * @return this/oth
+        */
+        BigComplex divide(BigComplex oth, MathContext mc)
+        {
+                /* lazy implementation: (x+iy)/(a+ib)= (x+iy)* 1/(a+ib) */
+<span class="nc" id="L170">                return multiply(oth.inverse(mc),mc) ;</span>
+        }
+
+        /** Human-readable Fortran-type display
+        * @return real and imaginary part in parenthesis, divided by a comma.
+        */
+        public String toString()
+        {
+<span class="nc" id="L178">                return &quot;(&quot;+re.toString()+&quot;,&quot;+im.toString()+&quot;)&quot; ;</span>
+        }
+
+        /** Human-readable Fortran-type display
+        * @return real and imaginary part in parenthesis, divided by a comma.
+        */
+        public String toString(MathContext mc)
+        {
+<span class="nc" id="L186">                return &quot;(&quot;+re.round(mc).toString()+&quot;,&quot;+im.round(mc).toString()+&quot;)&quot; ;</span>
+        }
+
+
+} /* BigComplex */
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

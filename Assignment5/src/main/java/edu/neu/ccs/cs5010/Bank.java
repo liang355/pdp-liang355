@@ -7,14 +7,30 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Bank {
+/**
+ * The class represent bank entity
+ */
+public class Bank implements IBank{
     private Map<Integer, ClientAccount> map = new HashMap<>(); // map<ID, ClientAccount>
 
+
+    /**
+     * register clients, create clientAccount for them
+     * @param clientID unique ID of a client
+     * @param publicKey publicKey to register
+     */
     public void register(int clientID, BigDecimal[] publicKey) {
         ClientAccount clientAccount = new ClientAccount(publicKey);
         map.put(clientID, clientAccount);
     }
 
+
+    /**
+     * verify a encryptedMessage using clientId's public key
+     * @param clientId unique ID of a client
+     * @param encryptedMessage the sigma in RSA encryption
+     * @return if this transaction failed to be verified
+     */
     public boolean verifyTransaction(int clientId, EncryptedMessage encryptedMessage) {
         BigDecimal[] publicKey = map.get(clientId).getPublicKey();
         BigDecimal b = publicKey[0];
@@ -26,10 +42,22 @@ public class Bank {
         return expectedMessage == actualMessage;
     }
 
+
+    /**
+     * get the ClientAccount object by clientId
+     * @param clientId the id of a client
+     * @return the matched ClientAccount
+     */
     public ClientAccount getAccountByClientId(int clientId) {
         return map.get(clientId);
     }
 
+
+    /**
+     * retrieve the public key
+     * @param clientId the id of a client
+     * @return the matched public key
+     */
     public BigDecimal[] getPublicKeyByClientId(int clientId) {
         return map.get(clientId).getPublicKey();
     }

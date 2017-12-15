@@ -2,7 +2,7 @@ package edu.neu.ccs.cs5010;
 
 import java.util.Arrays;
 
-public class InputParser {
+public class InputParser implements IInputParser {
     private String[] args;
     int numOfClients;
     int numOfVerifs;

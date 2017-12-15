@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EulerPhi.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">org.nevec.rjm</a> &gt; <span class="el_source">EulerPhi.java</span></div><h1>EulerPhi.java</h1><pre class="source lang-java linenums">package org.nevec.rjm ;
+
+import java.lang.* ;
+import java.util.* ;
+import java.math.* ;
+
+/** Euler totient function.
+* @see &lt;a href=&quot;http://oeis.org/A000010&quot;&gt;A000010&lt;/a&gt; in the OEIS.
+* @since 2008-10-14
+* @since 2012-03-04 Adapted to new Ifactor representation.
+* @author Richard J. Mathar
+*/
+public class EulerPhi
+{
+        /** Default constructor.
+        * Does nothing().
+        */
+        public EulerPhi()
+<span class="nc" id="L19">        {</span>
+<span class="nc" id="L20">        }</span>
+
+        /** Compute phi(n).
+        * @param n The positive argument of the function.
+        * @return phi(n)
+        */
+        public BigInteger at(int n)
+        {
+<span class="nc" id="L28">                return at(new BigInteger(&quot;&quot;+n) ) ;</span>
+        } /* at */
+
+        /** Compute phi(n).
+        * @param n The positive argument of the function.
+        * @return phi(n)
+        */
+        public BigInteger at(BigInteger n)
+        {
+<span class="nc bnc" id="L37" title="All 2 branches missed.">                if ( n.compareTo(BigInteger.ZERO) &lt;= 0 )</span>
+<span class="nc" id="L38">                        throw new ArithmeticException(&quot;negative argument &quot;+n+ &quot; of EulerPhi&quot;) ;</span>
+<span class="nc" id="L39">                Ifactor prFact = new Ifactor(n) ;</span>
+<span class="nc" id="L40">                BigInteger phi = n ;</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">                if ( n.compareTo(BigInteger.ONE) &gt; 0 )</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">                        for(int i=0 ; i &lt; prFact.primeexp.size() ; i += 2)</span>
+                        {
+<span class="nc" id="L44">                                BigInteger p = new BigInteger(prFact.primeexp.elementAt(i).toString()) ;</span>
+<span class="nc" id="L45">                                BigInteger p_1 = p.subtract(BigInteger.ONE) ;</span>
+<span class="nc" id="L46">                                phi = phi.multiply(p_1).divide(p) ;</span>
+                        }
+<span class="nc" id="L48">                return phi ;</span>
+        } /* at */
+
+        /** Test program.
+        * It takes one argument n and prints the value phi(n).&lt;br&gt;
+        * java -cp . org.nevec.rjm.EulerPhi n&lt;br&gt;
+        * @since 2006-08-14
+        */
+        public static void main(String[] args) throws ArithmeticException
+        {
+<span class="nc" id="L58">                EulerPhi a = new EulerPhi() ;</span>
+<span class="nc" id="L59">                int n = (new Integer(args[0])).intValue() ;</span>
+<span class="nc" id="L60">                System.out.println(&quot;phi(&quot;+ n + &quot;) = &quot; + a.at(n)) ;</span>
+<span class="nc" id="L61">        }</span>
+} /* EulerPhi */
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

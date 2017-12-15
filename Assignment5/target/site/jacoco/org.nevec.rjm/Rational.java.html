@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Rational.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">org.nevec.rjm</a> &gt; <span class="el_source">Rational.java</span></div><h1>Rational.java</h1><pre class="source lang-java linenums">package org.nevec.rjm ;
+
+import java.util.* ;
+import java.math.* ;
+
+/** Fractions (rational numbers).
+* They are divisions of two BigInteger numbers, reduced to coprime
+* numerator and denominator.
+* @since 2006-06-25
+* @author Richard J. Mathar
+*/
+public class Rational implements Cloneable, Comparable&lt;Rational&gt;
+{
+        /** numerator
+        */
+        BigInteger a ;
+
+        /** denominator, always larger than zero.
+        */
+        BigInteger b ;
+
+        /** The maximum and minimum value of a standard Java integer, 2^31.
+        * @since 2009-05-18
+        */
+<span class="nc" id="L25">        static public BigInteger MAX_INT = new BigInteger(&quot;2147483647&quot;) ;</span>
+<span class="nc" id="L26">        static public BigInteger MIN_INT = new BigInteger(&quot;-2147483648&quot;) ;</span>
+
+        /** The constant 1.
+        */
+<span class="nc" id="L30">        static Rational ONE = new Rational(1,1) ;</span>
+        /** The constant 0.
+        */
+<span class="nc" id="L33">        static public Rational ZERO = new Rational() ;</span>
+
+        /** The constant 1/2
+        * @since 2010-05-25
+        */
+<span class="nc" id="L38">        static public Rational HALF = new Rational(1,2) ;</span>
+
+        /** Default ctor, which represents the zero.
+        * @since 2007-11-17
+        */
+        public Rational()
+<span class="nc" id="L44">        {</span>
+<span class="nc" id="L45">                a = BigInteger.ZERO ;</span>
+<span class="nc" id="L46">                b = BigInteger.ONE ;</span>
+<span class="nc" id="L47">        }</span>
+
+        /** ctor from a numerator and denominator.
+        * @param a the numerator.
+        * @param b the denominator.
+        */
+        public Rational(BigInteger a, BigInteger b)
+<span class="nc" id="L54">        {</span>
+<span class="nc" id="L55">                this.a = a ;</span>
+<span class="nc" id="L56">                this.b = b ;</span>
+<span class="nc" id="L57">                normalize() ;</span>
+<span class="nc" id="L58">        }</span>
+
+        /** ctor from a numerator.
+        * @param a the BigInteger.
+        */
+        public Rational(BigInteger a)
+<span class="nc" id="L64">        {</span>
+<span class="nc" id="L65">                this.a = a ;</span>
+<span class="nc" id="L66">                b = new BigInteger(&quot;1&quot;) ;</span>
+<span class="nc" id="L67">        }</span>
+
+        /** ctor from a numerator and denominator.
+        * @param a the numerator.
+        * @param b the denominator.
+        */
+        public Rational(int a, int b)
+        {
+<span class="nc" id="L75">                this(new BigInteger(&quot;&quot;+a),new BigInteger(&quot;&quot;+b)) ;</span>
+<span class="nc" id="L76">        }</span>
+
+        /** ctor from an integer.
+        * @param n the integer to be represented by the new instance.
+        * @since 2010-07-18
+        */
+        public Rational(int n)
+        {
+<span class="nc" id="L84">                this(n,1) ;</span>
+<span class="nc" id="L85">        }</span>
+
+        /** ctor from a string representation.
+        * @param str the string.
+        *   This either has a slash in it, separating two integers, or, if there is no slash,
+        *   is representing the numerator with implicit denominator equal to 1.
+        * Warning: this does not yet test for a denominator equal to zero
+        */
+        public Rational(String str) throws NumberFormatException
+        {
+<span class="nc" id="L95">                this(str,10) ;</span>
+<span class="nc" id="L96">        }</span>
+
+        /** ctor from a string representation in a specified base.
+        * @param str the string.
+        *   This either has a slash in it, separating two integers, or, if there is no slash,
+        *   is just representing the numerator.
+        * @param radix the number base for numerator and denominator
+        * Warning: this does not yet test for a denominator equal to zero
+        */
+        public Rational(String str, int radix) throws NumberFormatException
+<span class="nc" id="L106">        {</span>
+<span class="nc" id="L107">                int hasslah = str.indexOf(&quot;/&quot;) ;</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">                if ( hasslah == -1 )</span>
+                {
+<span class="nc" id="L110">                        a = new BigInteger(str,radix) ;</span>
+<span class="nc" id="L111">                        b = new BigInteger(&quot;1&quot;,radix) ;</span>
+                        /* no normalization necessary here */
+                }
+                else
+                {
+                        /* create numerator and denominator separately
+                        */
+<span class="nc" id="L118">                        a = new BigInteger(str.substring(0,hasslah),radix) ;</span>
+<span class="nc" id="L119">                        b = new BigInteger(str.substring(hasslah+1),radix) ;</span>
+<span class="nc" id="L120">                        normalize() ;</span>
+                }
+<span class="nc" id="L122">        }</span>
+
+        /** Create a copy.
+        * @since 2008-11-07
+        */
+        public Rational clone()
+        {
+                /* protected access means this does not work
+                * return new Rational(a.clone(), b.clone()) ;
+                */
+<span class="nc" id="L132">                BigInteger aclon = new BigInteger(&quot;&quot;+a) ;</span>
+<span class="nc" id="L133">                BigInteger bclon = new BigInteger(&quot;&quot;+b) ;</span>
+<span class="nc" id="L134">                return new Rational(aclon,bclon) ;</span>
+        } /* Rational.clone */
+
+        /** Multiply by another fraction.
+        * @param val a second rational number.
+        * @return the product of this with the val.
+        */
+        public Rational multiply(final Rational val)
+        {
+<span class="nc" id="L143">                BigInteger num = a.multiply(val.a) ;</span>
+<span class="nc" id="L144">                BigInteger deno = b.multiply(val.b) ;</span>
+                /* Normalization to an coprime format will be done inside
+                * the ctor() and is not duplicated here.
+                */
+<span class="nc" id="L148">                return ( new Rational(num,deno) ) ;</span>
+        } /* Rational.multiply */
+
+        /** Multiply by a BigInteger.
+        * @param val a second number.
+        * @return the product of this with the value.
+        */
+        public Rational multiply(final BigInteger val)
+        {
+<span class="nc" id="L157">                Rational val2 = new Rational(val,BigInteger.ONE) ;</span>
+<span class="nc" id="L158">                return ( multiply(val2) ) ;</span>
+        } /* Rational.multiply */
+
+        /** Multiply by an integer.
+        * @param val a second number.
+        * @return the product of this with the value.
+        */
+        public Rational multiply(final int val)
+        {
+<span class="nc" id="L167">                BigInteger tmp = new BigInteger(&quot;&quot;+val) ;</span>
+<span class="nc" id="L168">                return multiply(tmp) ;</span>
+        } /* Rational.multiply */
+
+        /** Power to an integer.
+        * @param exponent the exponent.
+        * @return this value raised to the power given by the exponent.
+        *  If the exponent is 0, the value 1 is returned.
+        */
+        public Rational pow(int exponent)
+        {
+<span class="nc bnc" id="L178" title="All 2 branches missed.">                if ( exponent == 0 )</span>
+<span class="nc" id="L179">                        return new Rational(1,1) ;</span>
+
+<span class="nc" id="L181">                BigInteger num = a.pow(Math.abs(exponent)) ;</span>
+<span class="nc" id="L182">                BigInteger deno = b.pow(Math.abs(exponent)) ;</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">                if ( exponent &gt; 0 )</span>
+<span class="nc" id="L184">                        return ( new Rational(num,deno) ) ;</span>
+                else 
+<span class="nc" id="L186">                        return ( new Rational(deno,num) ) ;</span>
+        } /* Rational.pow */
+
+        /** Power to an integer.
+        * @param exponent the exponent.
+        * @return this value raised to the power given by the exponent.
+        *  If the exponent is 0, the value 1 is returned.
+        * @since 2009-05-18
+        */
+        public Rational pow(BigInteger exponent) throws NumberFormatException
+        {
+                /* test for overflow */
+<span class="nc bnc" id="L198" title="All 2 branches missed.">                if ( exponent.compareTo(MAX_INT) == 1 )</span>
+<span class="nc" id="L199">                        throw new NumberFormatException(&quot;Exponent &quot;+exponent.toString()+&quot; too large.&quot;) ;</span>
+<span class="nc bnc" id="L200" title="All 2 branches missed.">                if ( exponent.compareTo(MIN_INT) == -1 )</span>
+<span class="nc" id="L201">                        throw new NumberFormatException(&quot;Exponent &quot;+exponent.toString()+&quot; too small.&quot;) ;</span>
+
+                /* promote to the simpler interface above */
+<span class="nc" id="L204">                return pow( exponent.intValue() ) ;</span>
+        } /* Rational.pow */
+
+        /** r-th root.
+        * @param r the inverse of the exponent.
+        *  2 for the square root, 3 for the third root etc
+        * @return this value raised to the inverse power given by the root argument, this^(1/r).
+        * @since 2009-05-18
+        */
+        public Rational root(BigInteger r) throws NumberFormatException
+        {
+                /* test for overflow */
+<span class="nc bnc" id="L216" title="All 2 branches missed.">                if ( r.compareTo(MAX_INT) == 1 )</span>
+<span class="nc" id="L217">                        throw new NumberFormatException(&quot;Root &quot;+r.toString()+&quot; too large.&quot;) ;</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">                if ( r.compareTo(MIN_INT) == -1 )</span>
+<span class="nc" id="L219">                        throw new NumberFormatException(&quot;Root &quot;+r.toString()+&quot; too small.&quot;) ;</span>
+
+<span class="nc" id="L221">                int rthroot = r.intValue() ;</span>
+                /* cannot pull root of a negative value with even-valued root */
+<span class="nc bnc" id="L223" title="All 4 branches missed.">                if ( compareTo(ZERO) == -1 &amp;&amp; (rthroot % 2) ==0 )</span>
+<span class="nc" id="L224">                        throw new NumberFormatException(&quot;Negative basis &quot;+ toString()+&quot; with odd root &quot;+r.toString()) ;</span>
+
+                /* extract a sign such that we calculate |n|^(1/r), still r carrying any sign
+                */
+<span class="nc bnc" id="L228" title="All 4 branches missed.">                final boolean flipsign = ( compareTo(ZERO) == -1 &amp;&amp; (rthroot % 2) != 0) ? true : false ; </span>
+
+                /* delegate the main work to ifactor#root()
+                */
+<span class="nc" id="L232">                Ifactor num =  new Ifactor(a.abs()) ;</span>
+<span class="nc" id="L233">                Ifactor deno = new Ifactor(b) ;</span>
+<span class="nc" id="L234">                final Rational resul = num.root(rthroot).divide( deno.root(rthroot) ) ;</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">                if ( flipsign)</span>
+<span class="nc" id="L236">                        return resul.negate() ;</span>
+                else
+<span class="nc" id="L238">                        return resul ;</span>
+        } /* Rational.root */
+
+        /** Raise to a rational power.
+        * @param exponent The exponent.
+        * @return This value raised to the power given by the exponent.
+        *  If the exponent is 0, the value 1 is returned.
+        * @since 2009-05-18
+        */
+        public Rational pow(Rational exponent) throws NumberFormatException
+        {
+<span class="nc bnc" id="L249" title="All 2 branches missed.">                if ( exponent.a.compareTo(BigInteger.ZERO) == 0 )</span>
+<span class="nc" id="L250">                        return new Rational(1,1) ;</span>
+
+                /* calculate (a/b)^(exponent.a/exponent.b) as ((a/b)^exponent.a)^(1/exponent.b)
+                * = tmp^(1/exponent.b)
+                */
+<span class="nc" id="L255">                Rational tmp = pow(exponent.a) ;</span>
+<span class="nc" id="L256">                return tmp.root(exponent.b) ;</span>
+        } /* Rational.pow */
+
+        /** Divide by another fraction.
+        * @param val A second rational number.
+        * @return The value of this/val
+        */
+        public Rational divide(final Rational val)
+        {
+<span class="nc bnc" id="L265" title="All 2 branches missed.">                if( val.compareTo(Rational.ZERO) == 0 )</span>
+<span class="nc" id="L266">                        throw new ArithmeticException(&quot;Dividing &quot;+ toString() + &quot; through zero.&quot;) ;</span>
+<span class="nc" id="L267">                BigInteger num = a.multiply(val.b) ;</span>
+<span class="nc" id="L268">                BigInteger deno = b.multiply(val.a) ;</span>
+                /* Reduction to a coprime format is done inside the ctor,
+                * and not repeated here.
+                */
+<span class="nc" id="L272">                return ( new Rational(num,deno) ) ;</span>
+        } /* Rational.divide */
+
+        /** Divide by an integer.
+        * @param val a second number.
+        * @return the value of this/val
+        */
+        public Rational divide(BigInteger val)
+        {
+<span class="nc bnc" id="L281" title="All 2 branches missed.">                if( val.compareTo(BigInteger.ZERO) == 0 )</span>
+<span class="nc" id="L282">                        throw new ArithmeticException(&quot;Dividing &quot;+ toString() + &quot; through zero.&quot;) ;</span>
+<span class="nc" id="L283">                Rational val2 = new Rational(val,BigInteger.ONE) ;</span>
+<span class="nc" id="L284">                return ( divide(val2)) ;</span>
+        } /* Rational.divide */
+
+        /** Divide by an integer.
+        * @param val A second number.
+        * @return The value of this/val
+        */
+        public Rational divide(int val)
+        {
+<span class="nc bnc" id="L293" title="All 2 branches missed.">                if( val == 0 )</span>
+<span class="nc" id="L294">                        throw new ArithmeticException(&quot;Dividing &quot;+ toString() + &quot; through zero.&quot;) ;</span>
+<span class="nc" id="L295">                Rational val2 = new Rational(val,1) ;</span>
+<span class="nc" id="L296">                return ( divide(val2)) ;</span>
+        } /* Rational.divide */
+
+        /** Add another fraction.
+        * @param val The number to be added
+        * @return this+val.
+        */
+        public Rational add(Rational val)
+        {
+<span class="nc" id="L305">                BigInteger num = a.multiply(val.b).add(b.multiply(val.a)) ;</span>
+<span class="nc" id="L306">                BigInteger deno = b.multiply(val.b) ;</span>
+<span class="nc" id="L307">                return ( new Rational(num,deno) ) ;</span>
+        } /* Rational.add */
+
+        /** Add another integer.
+        * @param val The number to be added
+        * @return this+val.
+        */
+        public Rational add(BigInteger val)
+        {
+<span class="nc" id="L316">                Rational val2 = new Rational(val,BigInteger.ONE) ;</span>
+<span class="nc" id="L317">                return ( add(val2) ) ;</span>
+        } /* Rational.add */
+
+        /** Add another integer.
+        * @param val The number to be added
+        * @return this+val.
+        * @since May 26 2010
+        */
+        public Rational add(int val)
+        {
+<span class="nc" id="L327">                BigInteger val2 = a.add(b.multiply(new BigInteger(&quot;&quot;+val))) ;</span>
+<span class="nc" id="L328">                return new Rational(val2,b) ;</span>
+        } /* Rational.add */
+
+        /** Compute the negative.
+        * @return -this.
+        */
+        public Rational negate()
+        {
+<span class="nc" id="L336">                return ( new Rational(a.negate(),b) ) ;</span>
+        } /* Rational.negate */
+
+        /** Subtract another fraction.
+        * @param val the number to be subtracted from this
+        * @return this - val.
+        */
+        public Rational subtract(Rational val)
+        {
+<span class="nc" id="L345">                Rational val2 = val.negate() ;</span>
+<span class="nc" id="L346">                return ( add(val2) ) ;</span>
+        } /* Rational.subtract */
+
+        /** Subtract an integer.
+        * @param val the number to be subtracted from this
+        * @return this - val.
+        */
+        public Rational subtract(BigInteger val)
+        {
+<span class="nc" id="L355">                Rational val2 = new Rational(val,BigInteger.ONE) ;</span>
+<span class="nc" id="L356">                return ( subtract(val2) ) ;</span>
+        } /* Rational.subtract */
+
+        /** Subtract an integer.
+        * @param val the number to be subtracted from this
+        * @return this - val.
+        */
+        public Rational subtract(int val)
+        {
+<span class="nc" id="L365">                Rational val2 = new Rational(val,1) ;</span>
+<span class="nc" id="L366">                return ( subtract(val2) ) ;</span>
+        } /* Rational.subtract */
+
+        /** binomial (n choose m).
+        * @param n the numerator. Equals the size of the set to choose from.
+        * @param m the denominator. Equals the number of elements to select.
+        * @return the binomial coefficient.
+        * @since 2006-06-27
+        * @author Richard J. Mathar
+        */
+        public static Rational binomial(Rational n, BigInteger m)
+        {
+<span class="nc bnc" id="L378" title="All 2 branches missed.">                if ( m.compareTo(BigInteger.ZERO) == 0 ) </span>
+<span class="nc" id="L379">                        return Rational.ONE ;</span>
+<span class="nc" id="L380">                Rational bin = n ;</span>
+<span class="nc bnc" id="L381" title="All 2 branches missed.">                for(BigInteger i=new BigInteger(&quot;2&quot;) ; i.compareTo(m) != 1 ; i = i.add(BigInteger.ONE) )</span>
+                {
+<span class="nc" id="L383">                        bin = bin.multiply(n.subtract(i.subtract(BigInteger.ONE))).divide(i) ;</span>
+                }
+<span class="nc" id="L385">                return bin ;</span>
+        } /* Rational.binomial */
+
+        /** binomial (n choose m).
+        * @param n the numerator. Equals the size of the set to choose from.
+        * @param m the denominator. Equals the number of elements to select.
+        * @return the binomial coefficient.
+        * @since 2009-05-19
+        * @author Richard J. Mathar
+        */
+        public static Rational binomial(Rational n, int m)
+        {
+<span class="nc bnc" id="L397" title="All 2 branches missed.">                if ( m == 0 ) </span>
+<span class="nc" id="L398">                        return Rational.ONE ;</span>
+<span class="nc" id="L399">                Rational bin = n ;</span>
+<span class="nc bnc" id="L400" title="All 2 branches missed.">                for( int i=2 ; i &lt;= m ; i++ )</span>
+                {
+<span class="nc" id="L402">                        bin = bin.multiply(n.subtract(i-1)).divide(i) ;</span>
+                }
+<span class="nc" id="L404">                return bin ;</span>
+        } /* Rational.binomial */
+
+        /** Hankel's symbol (n,k)
+        * @param n the first parameter.
+        * @param k the second parameter, greater or equal to 0.
+        * @return Gamma(n+k+1/2)/k!/GAMMA(n-k+1/2)
+        * @since 2010-07-18
+        * @author Richard J. Mathar
+        */
+        public static Rational hankelSymb(Rational n, int k)
+        {
+<span class="nc bnc" id="L416" title="All 2 branches missed.">                if ( k == 0 ) </span>
+<span class="nc" id="L417">                        return Rational.ONE ;</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">                else if ( k &lt; 0)</span>
+<span class="nc" id="L419">                        throw new ArithmeticException(&quot;Negative parameter &quot;+k) ;</span>
+<span class="nc" id="L420">                Rational nkhalf = n.subtract(k).add(Rational.HALF) ;</span>
+<span class="nc" id="L421">                nkhalf = nkhalf.Pochhammer(2*k) ;</span>
+<span class="nc" id="L422">                Factorial f = new Factorial() ;</span>
+<span class="nc" id="L423">                return nkhalf.divide(f.at(k)) ;</span>
+        } /* Rational.binomial */
+
+        /** Get the numerator.
+        * @return The numerator of the reduced fraction.
+        */
+        public BigInteger numer()
+        {
+<span class="nc" id="L431">                return a ;</span>
+        }
+
+        /** Get the denominator.
+        * @return The denominator of the reduced fraction.
+        */
+        public BigInteger denom()
+        {
+<span class="nc" id="L439">                return b ;</span>
+        }
+
+        /** Absolute value.
+        * @return The absolute (non-negative) value of this.
+        */
+        public Rational abs()
+        {
+<span class="nc" id="L447">                return( new Rational(a.abs(),b.abs())) ;</span>
+        }
+
+        /** floor(): the nearest integer not greater than this.
+        * @return The integer rounded towards negative infinity.
+        */
+        public BigInteger floor()
+        {
+                /* is already integer: return the numerator
+                */
+<span class="nc bnc" id="L457" title="All 2 branches missed.">                if ( b.compareTo(BigInteger.ONE) == 0 )</span>
+<span class="nc" id="L458">                        return a;</span>
+<span class="nc bnc" id="L459" title="All 2 branches missed.">                else if ( a.compareTo(BigInteger.ZERO) &gt; 0 )</span>
+<span class="nc" id="L460">                        return a.divide(b);</span>
+                else
+<span class="nc" id="L462">                        return a.divide(b).subtract(BigInteger.ONE) ;</span>
+        } /* Rational.floor */
+
+        /** ceil(): the nearest integer not smaller than this.
+        * @return The integer rounded towards positive infinity.
+        * @since 2010-05-26
+        */
+        public BigInteger ceil()
+        {
+                /* is already integer: return the numerator
+                */
+<span class="nc bnc" id="L473" title="All 2 branches missed.">                if ( b.compareTo(BigInteger.ONE) == 0 )</span>
+<span class="nc" id="L474">                        return a;</span>
+<span class="nc bnc" id="L475" title="All 2 branches missed.">                else if ( a.compareTo(BigInteger.ZERO) &gt; 0 )</span>
+<span class="nc" id="L476">                        return a.divide(b).add(BigInteger.ONE) ;</span>
+                else
+<span class="nc" id="L478">                        return a.divide(b) ;</span>
+        } /* Rational.ceil */
+
+        /** Remove the fractional part.
+        * @return The integer rounded towards zero.
+        */
+        public BigInteger trunc()
+        {
+                /* is already integer: return the numerator
+                */
+<span class="nc bnc" id="L488" title="All 2 branches missed.">                if ( b.compareTo(BigInteger.ONE) == 0 )</span>
+<span class="nc" id="L489">                        return a;</span>
+                else 
+<span class="nc" id="L491">                        return a.divide(b);</span>
+        } /* Rational.trunc */
+
+        /** Compares the value of this with another constant.
+        * @param val the other constant to compare with
+        * @return -1, 0 or 1 if this number is numerically less than, equal to,
+        *    or greater than val.
+        */
+        public int compareTo(final Rational val)
+        {
+                /* Since we have always kept the denominators positive,
+                * simple cross-multiplying works without changing the sign.
+                */
+<span class="nc" id="L504">                final BigInteger left = a.multiply(val.b) ;</span>
+<span class="nc" id="L505">                final BigInteger right = val.a.multiply(b) ;</span>
+<span class="nc" id="L506">                return left.compareTo(right) ;</span>
+        } /* Rational.compareTo */
+
+        /** Compares the value of this with another constant.
+        * @param val the other constant to compare with
+        * @return -1, 0 or 1 if this number is numerically less than, equal to,
+        *    or greater than val.
+        */
+        public int compareTo(final BigInteger val)
+        {
+<span class="nc" id="L516">                final Rational val2 = new Rational(val,BigInteger.ONE) ;</span>
+<span class="nc" id="L517">                return ( compareTo(val2) ) ;</span>
+        } /* Rational.compareTo */
+
+        /** Return a string in the format number/denom.
+        * If the denominator equals 1, print just the numerator without a slash.
+        * @return the human-readable version in base 10
+        */
+        public String toString()
+        {
+<span class="nc bnc" id="L526" title="All 2 branches missed.">                if ( b.compareTo(BigInteger.ONE) != 0)</span>
+<span class="nc" id="L527">                        return( a.toString()+&quot;/&quot;+b.toString() ) ;</span>
+                else
+<span class="nc" id="L529">                        return a.toString() ;</span>
+        } /* Rational.toString */
+
+        /** Return a double value representation.
+        * @return The value with double precision.
+        * @since 2008-10-26
+        */
+        public double doubleValue()
+        {
+                /* To meet the risk of individual overflows of the exponents of
+                * a separate invocation a.doubleValue() or b.doubleValue(), we divide first
+                * in a BigDecimal environment and convert the result.
+                */
+<span class="nc" id="L542">                BigDecimal adivb  = (new BigDecimal(a)).divide(new BigDecimal(b), MathContext.DECIMAL128) ;</span>
+<span class="nc" id="L543">                return adivb.doubleValue() ;</span>
+        } /* Rational.doubleValue */
+
+        /** Return a float value representation.
+        * @return The value with single precision.
+        * @since 2009-08-06
+        */
+        public float floatValue()
+        {
+<span class="nc" id="L552">                BigDecimal adivb  = (new BigDecimal(a)).divide(new BigDecimal(b), MathContext.DECIMAL128) ;</span>
+<span class="nc" id="L553">                return adivb.floatValue() ;</span>
+        } /* Rational.floatValue */
+
+        /** Return a representation as BigDecimal.
+        * @param mc the mathematical context which determines precision, rounding mode etc
+        * @return A representation as a BigDecimal floating point number.
+        * @since 2008-10-26
+        */
+        public BigDecimal BigDecimalValue(MathContext mc)
+        {
+                /* numerator and denominator individually rephrased
+                */
+<span class="nc" id="L565">                BigDecimal n = new BigDecimal(a) ;</span>
+<span class="nc" id="L566">                BigDecimal d = new BigDecimal(b) ;</span>
+                /* the problem with n.divide(d,mc) is that the apparent precision might be
+                * smaller than what is set by mc if the value has a precise truncated representation.
+                * 1/4 will appear as 0.25, independent of mc
+                */
+<span class="nc" id="L571">                return BigDecimalMath.scalePrec(n.divide(d,mc),mc) ;</span>
+        } /* Rational.BigDecimalValue */
+
+        /** Return a string in floating point format.
+        * @param digits The precision (number of digits)
+        * @return The human-readable version in base 10.
+        * @since 2008-10-25
+        */
+        public String toFString(int digits)
+        {
+<span class="nc bnc" id="L581" title="All 2 branches missed.">                if ( b.compareTo(BigInteger.ONE) != 0)</span>
+                {
+<span class="nc" id="L583">                        MathContext mc = new MathContext(digits,RoundingMode.DOWN) ;</span>
+<span class="nc" id="L584">                        BigDecimal f = (new BigDecimal(a)).divide(new BigDecimal(b),mc) ;</span>
+<span class="nc" id="L585">                        return( f.toString() ) ;</span>
+                }
+                else
+<span class="nc" id="L588">                        return a.toString() ;</span>
+        } /* Rational.toFString */
+
+        /** Compares the value of this with another constant.
+        * @param val The other constant to compare with
+        * @return The arithmetic maximum of this and val.
+        * @since 2008-10-19
+        */
+        public Rational max(final Rational val)
+        {
+<span class="nc bnc" id="L598" title="All 2 branches missed.">                if ( compareTo(val) &gt; 0 )</span>
+<span class="nc" id="L599">                        return this;</span>
+                else
+<span class="nc" id="L601">                        return val;</span>
+        } /* Rational.max */
+
+        /** Compares the value of this with another constant.
+        * @param val The other constant to compare with
+        * @return The arithmetic minimum of this and val.
+        * @since 2008-10-19
+        */
+        public Rational min(final Rational val)
+        {
+<span class="nc bnc" id="L611" title="All 2 branches missed.">                if ( compareTo(val) &lt; 0 )</span>
+<span class="nc" id="L612">                        return this;</span>
+                else
+<span class="nc" id="L614">                        return val;</span>
+        } /* Rational.min */
+
+        /** Compute Pochhammer's symbol (this)_n.
+        * @param n The number of product terms in the evaluation.
+        * @return Gamma(this+n)/Gamma(this) = this*(this+1)*...*(this+n-1).
+        * @since 2008-10-25
+        */
+        public Rational Pochhammer(final BigInteger n)
+        {
+<span class="nc bnc" id="L624" title="All 2 branches missed.">                if ( n.compareTo(BigInteger.ZERO) &lt; 0 )</span>
+<span class="nc" id="L625">                        return null;</span>
+<span class="nc bnc" id="L626" title="All 2 branches missed.">                else if ( n.compareTo(BigInteger.ZERO) == 0 )</span>
+<span class="nc" id="L627">                        return Rational.ONE ;</span>
+                else
+                {
+                        /* initialize results with the current value
+                        */
+<span class="nc" id="L632">                        Rational res = new Rational(a,b) ;</span>
+<span class="nc" id="L633">                        BigInteger i = BigInteger.ONE ;</span>
+<span class="nc bnc" id="L634" title="All 2 branches missed.">                        for( ; i.compareTo(n) &lt; 0 ; i=i.add(BigInteger.ONE) )</span>
+<span class="nc" id="L635">                                res = res.multiply( add(i) ) ;</span>
+<span class="nc" id="L636">                        return res;</span>
+                }
+        } /* Rational.pochhammer */
+
+        /** Compute pochhammer's symbol (this)_n.
+        * @param n The number of product terms in the evaluation.
+        * @return Gamma(this+n)/GAMMA(this).
+        * @since 2008-11-13
+        */
+        public Rational Pochhammer(int n)
+        {
+<span class="nc" id="L647">                return Pochhammer(new BigInteger(&quot;&quot;+n)) ;</span>
+        } /* Rational.pochhammer */
+
+        /** True if the value is integer.
+        * Equivalent to the indication whether a conversion to an integer
+        * can be exact.
+        * @since 2010-05-26
+        */
+        public boolean isBigInteger()
+        {
+<span class="nc bnc" id="L657" title="All 2 branches missed.">                return ( b.abs().compareTo(BigInteger.ONE) == 0 ) ;</span>
+        } /* Rational.isBigInteger */
+
+        /** True if the value is integer and in the range of the standard integer.
+        * Equivalent to the indication whether a conversion to an integer
+        * can be exact.
+        * @since 2010-05-26
+        */
+        public boolean isInteger()
+        {
+<span class="nc bnc" id="L667" title="All 2 branches missed.">                if ( ! isBigInteger() )</span>
+<span class="nc" id="L668">                        return false;</span>
+<span class="nc bnc" id="L669" title="All 4 branches missed.">                return ( a.compareTo(MAX_INT) &lt;= 0 &amp;&amp; a.compareTo(MIN_INT) &gt;= 0 ) ;</span>
+        } /* Rational.isInteger */
+
+
+        /** Conversion to an integer value, if this can be done exactly.
+        * @since 2011-02-13
+        */
+        int intValue()
+        {
+<span class="nc bnc" id="L678" title="All 2 branches missed.">                if ( ! isInteger() )</span>
+<span class="nc" id="L679">                        throw new NumberFormatException(&quot;cannot convert &quot;+toString()+&quot; to integer.&quot;) ;</span>
+<span class="nc" id="L680">                return a.intValue() ;</span>
+        }
+
+        /** Conversion to a BigInteger value, if this can be done exactly.
+        * @since 2012-03-02
+        */
+        BigInteger BigIntegerValue()
+        {
+<span class="nc bnc" id="L688" title="All 2 branches missed.">                if ( ! isBigInteger() )</span>
+<span class="nc" id="L689">                        throw new NumberFormatException(&quot;cannot convert &quot;+toString()+&quot; to BigInteger.&quot;) ;</span>
+<span class="nc" id="L690">                return a ;</span>
+        }
+
+        /** True if the value is a fraction of two integers in the range of the standard integer.
+        * @since 2010-05-26
+        */
+        public boolean isIntegerFrac()
+        {
+<span class="nc bnc" id="L698" title="All 4 branches missed.">                return ( a.compareTo(MAX_INT) &lt;= 0 &amp;&amp; a.compareTo(MIN_INT) &gt;= 0 </span>
+<span class="nc bnc" id="L699" title="All 4 branches missed.">                        &amp;&amp; b.compareTo(MAX_INT) &lt;= 0 &amp;&amp; b.compareTo(MIN_INT) &gt;= 0 ) ;</span>
+        } /* Rational.isIntegerFrac */
+
+        /** The sign: 1 if the number is &gt;0, 0 if ==0, -1 if &lt;0
+        * @return the signum of the value.
+        * @since 2010-05-26
+        */
+        public int signum()
+        {
+<span class="nc" id="L708">                return ( b.signum() * a.signum() ) ;</span>
+        } /* Rational.signum */
+
+        /** Common lcm of the denominators of a set of rational values.
+        * @param vals The list/set of the rational values.
+        * @return LCM(denom of first, denom of second, ..,denom of last)
+        * @since 2012-03-02
+        */
+        static public BigInteger lcmDenom(final Rational[] vals)
+        {
+<span class="nc" id="L718">                BigInteger l = BigInteger.ONE ;</span>
+<span class="nc bnc" id="L719" title="All 2 branches missed.">                for(int v= 0 ; v &lt; vals.length ; v++)</span>
+<span class="nc" id="L720">                        l = BigIntegerMath.lcm(l,vals[v].b) ;</span>
+<span class="nc" id="L721">                return l ;</span>
+        } /* Rational.lcmDenom */
+
+        /** Normalize to coprime numerator and denominator.
+        * Also copy a negative sign of the denominator to the numerator.
+        * @since 2008-10-19
+        */
+        protected void normalize()
+        {
+                /* compute greatest common divisor of numerator and denominator
+                */
+<span class="nc" id="L732">                final BigInteger g = a.gcd(b) ;</span>
+<span class="nc bnc" id="L733" title="All 2 branches missed.">                if ( g.compareTo(BigInteger.ONE) &gt; 0 )</span>
+                {
+<span class="nc" id="L735">                        a = a.divide(g) ;</span>
+<span class="nc" id="L736">                        b = b.divide(g);</span>
+                }
+<span class="nc bnc" id="L738" title="All 2 branches missed.">                if ( b.compareTo(BigInteger.ZERO) == -1 )</span>
+                {
+<span class="nc" id="L740">                        a = a.negate() ;</span>
+<span class="nc" id="L741">                        b = b.negate() ;</span>
+                }
+<span class="nc" id="L743">        } /* Rational.normalize */</span>
+} /* Rational */
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

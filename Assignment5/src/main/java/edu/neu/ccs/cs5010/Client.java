@@ -8,7 +8,10 @@ import java.math.BigInteger;
 import java.math.MathContext;
 import java.util.Random;
 
-public class Client {
+/**
+ * the class that represents Client entity
+ */
+public class Client implements IClient {
     private int clientID;
     private BigInteger[] privateKey = new BigInteger[2];
     private BigDecimal[] publicKey = new BigDecimal[2];
@@ -21,6 +24,12 @@ public class Client {
     private BigInteger a;
     private BigDecimal b;
 
+
+    /**
+     * initialize the Client object
+     * @param bank the bank object
+     * @param clientID the clientId
+     */
     public Client(Bank bank, int clientID) {
         this.clientID = clientID;
         generateRSAPair();
@@ -28,11 +37,21 @@ public class Client {
         bank.register(clientID, publicKey);
     }
 
+
+    /**
+     * generate signature by using parameters a, n
+     * @param message a message to be signed
+     * @return signed message
+     */
     public BigInteger generateSig(int message) {
         BigInteger bigM = new BigInteger(String.valueOf(message));
         return bigM.modPow(a, n);
     }
 
+
+    /**
+     * internal function, basically just generate RSA pair
+     */
     private void generateRSAPair() {
         Random rand = new Random();
         p = BigInteger.probablePrime(128, new Random());
@@ -61,6 +80,11 @@ public class Client {
         this.publicKey[1] = new BigDecimal(n);
     }
 
+
+    /**
+     * getter for client Id
+     * @return
+     */
     public int getClientID() {
         return clientID;
     }

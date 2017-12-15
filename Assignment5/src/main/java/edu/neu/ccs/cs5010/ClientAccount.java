@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Random;
 
-public class ClientAccount {
+public class ClientAccount implements IClientAccount {
     // CONSTANTS:
     private static final int MAX_DEPOSIT_LIMIT = 2000;
     private static final int MAX_WITHDRAWAL_LIMIT = 3000;
@@ -15,6 +15,10 @@ public class ClientAccount {
     private int withdrawalLimit;
     private BigDecimal[] publicKey;
 
+
+    /** create ClientAccount with public key
+     * @param publicKey the public key
+     */
     public ClientAccount(BigDecimal[] publicKey) {
         Random rand = new Random();
         this.depositLimit = rand.nextInt(MAX_DEPOSIT_LIMIT) + 1; // random [1, 2000]
