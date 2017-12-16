@@ -1,10 +1,10 @@
 package edu.neu.ccs.cs5010;
 
-import java.util.List;
-
+/**
+ * The interface that is implemented by abstract class Household
+ */
 public interface Visitable {
-    public void acceptVisitor(HouseVisitor visitor);
-    public List<Candy> getCandies();
-    public String getHouseholdName();
-    public CandyTreeNode getRoot();
+    void acceptVisitor(HouseVisitor visitor);
+    String getHouseholdName();
+    CandyTreeNode getRoot();
 }
