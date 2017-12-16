@@ -3,6 +3,7 @@ package edu.neu.ccs.cs5010;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -105,16 +106,11 @@ public class HalloweenNeighborhoodTraversal {
      * @param args an array of arguments from command line
      */
     public static void main(String[] args) {
-        int numOfCSVs = 2;
-        String[] CSVNames = new String[] {"DreamCandy1.csv", "DreamCandy2.csv"};
-
-        if(args.length != 0) {
-            numOfCSVs = Integer.parseInt(args[0]);
-            CSVNames = new String[args.length - 1];
-            for(int i = 1; i < args.length; i++) {
-                CSVNames[i - 1] = args[i];
-            }
+        if(args.length == 0) {
+            throw new IllegalArgumentException();
         }
+        int numOfCSVs = Integer.parseInt(args[0]);
+        String[] CSVNames = Arrays.copyOfRange(args, 1, args.length);
 
         HalloweenNeighborhoodTraversal traversal = new HalloweenNeighborhoodTraversal();
         traversal.findAndPrintAllTraversals(numOfCSVs, CSVNames);
