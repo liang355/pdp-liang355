@@ -98,7 +98,7 @@
 <th>Errors</th>
 <th>Missing Classes</th></tr>
 <tr class="b">
-<td>25</td>
+<td>31</td>
 <td>89</td>
 <td>0</td>
 <td>0</td></tr></table></div>
@@ -172,13 +172,13 @@
 <td>Dead store to n in edu.neu.ccs.cs5010.Bank.verifyTransaction(int, EncryptedMessage)</td>
 <td>STYLE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE</a></td>
-<td><a href="./xref/edu/neu/ccs/cs5010/Bank.html#L21">21</a></td>
+<td><a href="./xref/edu/neu/ccs/cs5010/Bank.html#L37">37</a></td>
 <td>Medium</td></tr>
 <tr class="a">
 <td>edu.neu.ccs.cs5010.Bank.toString() makes inefficient use of keySet iterator instead of entrySet iterator</td>
 <td>PERFORMANCE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#WMI_WRONG_MAP_ITERATOR">WMI_WRONG_MAP_ITERATOR</a></td>
-<td><a href="./xref/edu/neu/ccs/cs5010/Bank.html#L41">41</a></td>
+<td><a href="./xref/edu/neu/ccs/cs5010/Bank.html#L69">69</a></td>
 <td>Medium</td></tr></table></div><a name="edu.neu.ccs.cs5010.ClientAccount"></a>
 <div class="section">
 <h3>edu.neu.ccs.cs5010.ClientAccount<a name="edu.neu.ccs.cs5010.ClientAccount"></a></h3>
@@ -193,13 +193,13 @@
 <td>edu.neu.ccs.cs5010.ClientAccount.getPublicKey() may expose internal representation by returning ClientAccount.publicKey</td>
 <td>MALICIOUS_CODE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EI_EXPOSE_REP">EI_EXPOSE_REP</a></td>
-<td><a href="./xref/edu/neu/ccs/cs5010/ClientAccount.html#L34">34</a></td>
+<td><a href="./xref/edu/neu/ccs/cs5010/ClientAccount.html#L38">38</a></td>
 <td>Medium</td></tr>
 <tr class="b">
 <td>new edu.neu.ccs.cs5010.ClientAccount(BigDecimal[]) may expose internal representation by storing an externally mutable object into ClientAccount.publicKey</td>
 <td>MALICIOUS_CODE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EI_EXPOSE_REP2">EI_EXPOSE_REP2</a></td>
-<td><a href="./xref/edu/neu/ccs/cs5010/ClientAccount.html#L22">22</a></td>
+<td><a href="./xref/edu/neu/ccs/cs5010/ClientAccount.html#L26">26</a></td>
 <td>Medium</td></tr></table></div><a name="edu.neu.ccs.cs5010.InputParser"></a>
 <div class="section">
 <h3>edu.neu.ccs.cs5010.InputParser<a name="edu.neu.ccs.cs5010.InputParser"></a></h3>
@@ -235,25 +235,25 @@
 <td>Boxing/unboxing to parse a primitive edu.neu.ccs.cs5010.SecureBankVerificationSimulator.processEncryptedPairs(String)</td>
 <td>PERFORMANCE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_BOXED_PRIMITIVE_FOR_PARSING">DM_BOXED_PRIMITIVE_FOR_PARSING</a></td>
-<td><a href="./xref/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html#L76">76</a></td>
+<td><a href="./xref/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html#L86">86</a></td>
 <td>High</td></tr>
 <tr class="b">
 <td>Found reliance on default encoding in edu.neu.ccs.cs5010.SecureBankVerificationSimulator.printTransactionsToFile(String, String): new java.io.PrintWriter(String)</td>
 <td>I18N</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING</a></td>
-<td><a href="./xref/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html#L141">141</a></td>
+<td><a href="./xref/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html#L156">156</a></td>
 <td>High</td></tr>
 <tr class="a">
 <td>edu.neu.ccs.cs5010.SecureBankVerificationSimulator.printTransactionsToFile(String, String) may fail to close stream</td>
 <td>BAD_PRACTICE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#OS_OPEN_STREAM">OS_OPEN_STREAM</a></td>
-<td><a href="./xref/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html#L141">141</a></td>
+<td><a href="./xref/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html#L156">156</a></td>
 <td>Medium</td></tr>
 <tr class="b">
 <td>edu.neu.ccs.cs5010.SecureBankVerificationSimulator.processEncryptedPairs(String) makes inefficient use of keySet iterator instead of entrySet iterator</td>
 <td>PERFORMANCE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#WMI_WRONG_MAP_ITERATOR">WMI_WRONG_MAP_ITERATOR</a></td>
-<td><a href="./xref/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html#L60">60</a></td>
+<td><a href="./xref/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html#L70">70</a></td>
 <td>Medium</td></tr></table></div><a name="org.nevec.rjm.BigDecimalMath"></a>
 <div class="section">
 <h3>org.nevec.rjm.BigDecimalMath<a name="org.nevec.rjm.BigDecimalMath"></a></h3>

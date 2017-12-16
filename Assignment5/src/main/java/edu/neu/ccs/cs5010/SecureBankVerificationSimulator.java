@@ -8,6 +8,11 @@ import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * The main class for running the simulation of secure communication between
+ * Client and Bank entities using RSA encryption. It has methods for 3 major steps
+ * of the simulation
+ */
 public class SecureBankVerificationSimulator {
     // Constants:
     private static final int MAX_MESSAGE_INTEGER = 30000;
@@ -19,7 +24,10 @@ public class SecureBankVerificationSimulator {
     private Set<Integer> rejectedDeposits = new HashSet<>();
     private Set<Integer> rejectedWithdrawals = new HashSet<>();
 
-    // step 1: Generating and Storing the Requested Number of Unique Bank Clients
+    /**
+     * step 1: Generating and Storing the Requested Number of Unique Bank Clients
+     * @param numOfClients the number of unique clients to generate
+     */
     private void generateRandomClients(int numOfClients) {
         bank = new Bank();
         for(int i = 0; i < numOfClients; i++) {
@@ -28,7 +36,11 @@ public class SecureBankVerificationSimulator {
         }
     }
 
-    // step 2: Generating (message, digital signature) Pairs
+    /**
+     * step 2: Generating (message, digital signature) Pairs
+     * @param numOfVerifs number of verifications, which implies number of (message, signature) pairs to generate
+     * @param fraction the fraction of invalid message to generate
+     */
     private void generateEncryptedPairs(int numOfVerifs, double fraction) {
         Random rand = new Random();
         List<Integer> keys = new ArrayList<>(clientMap.keySet());
@@ -50,7 +62,10 @@ public class SecureBankVerificationSimulator {
         }
     }
 
-    // step 3: Processing (message, digital signature) Pairs
+    /**
+     * step 3: Processing (message, digital signature) Pairs
+     * @param outputFile the file name of the output CSV file
+     */
     private void processEncryptedPairs(String outputFile) {
         StringBuilder toPrint = new StringBuilder("Transaction number, Date, " +
                 "Time, Client ID, Message, Digital signature, Verified, Transactions status\n");
@@ -136,6 +151,11 @@ public class SecureBankVerificationSimulator {
 //        }
     }
 
+    /**
+     * print all transaction records to file according to the requirements
+     * @param toPrint the file string to print to file
+     * @param outputFile the name of output file
+     */
     private void printTransactionsToFile(String toPrint, String outputFile) {
         try {
             PrintWriter out = new PrintWriter(outputFile);
@@ -147,12 +167,24 @@ public class SecureBankVerificationSimulator {
         }
     }
 
+    /**
+     * simulate three steps in RSA encryption sequentially
+     * @param numOfClients the number of clients to generate for simulation
+     * @param numOfVerifs the number of verifications to generate for simulation
+     * @param fraction the fraction of invalid message (un-encrypted)
+     * @param outputFile the name of output file
+     */
     public void runSimulation(int numOfClients, int numOfVerifs, double fraction, String outputFile) {
         generateRandomClients(numOfClients);
         generateEncryptedPairs(numOfVerifs, fraction);
         processEncryptedPairs(outputFile);
     }
 
+
+    /**
+     * The main function that takes argument from command line and triggers the simulation
+     * @param args the arguments from the command line
+     */
     public static void main(String[] args) {
         InputParser parser = new InputParser(args);
         parser.checkArgs();

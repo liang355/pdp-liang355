@@ -45,7 +45,7 @@ public class CSVReader {
             // create Candy(size, type)
             desiredCandies.add(new Candy(size, type));
         }
-        System.out.println(Arrays.toString(desiredCandies.toArray()));
+//        System.out.println(Arrays.toString(desiredCandies.toArray()));
         return desiredCandies;
     }
 

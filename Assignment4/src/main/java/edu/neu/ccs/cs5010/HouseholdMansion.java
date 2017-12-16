@@ -3,26 +3,31 @@ package edu.neu.ccs.cs5010;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HouseholdMansion implements Visitable {
+public class HouseholdMansion extends Household {
     private String householdName = "Mansion";
     private List<Candy> candies = new ArrayList<>();
+    private CandyTreeNode root = new CandyTreeNode();
 
     public HouseholdMansion() {
-        candies.add(new Candy("Super Size", "Twix"));
-        candies.add(new Candy("Super Size", "Snickers"));
-        candies.add(new Candy("Super Size", "Mars"));
+        addCandyToTreeInHouse(new Candy("Super Size", "Twix"), root);
+        addCandyToTreeInHouse(new Candy("Super Size", "Snickers"), root);
+        addCandyToTreeInHouse(new Candy("Super Size", "Mars"), root);
 
-        candies.add(new Candy("King Size", "Kit Kat"));
-        candies.add(new Candy("King Size", "Whoopers"));
-        candies.add(new Candy("King Size", "Crunch"));
+        addCandyToTreeInHouse(new Candy("King Size", "Kit Kat"), root);
+        addCandyToTreeInHouse(new Candy("King Size", "Whoopers"), root);
+        addCandyToTreeInHouse(new Candy("King Size", "Crunch"), root);
 
-        candies.add(new Candy("Fun Size", "Toblerone"));
-        candies.add(new Candy("Fun Size", "Baby Ruth"));
-        candies.add(new Candy("Fun Size", "Almond Joy"));
+        addCandyToTreeInHouse(new Candy("Fun Size", "Toblerone"), root);
+        addCandyToTreeInHouse(new Candy("Fun Size", "Baby Ruth"), root);
+        addCandyToTreeInHouse(new Candy("Fun Size", "Almond Joy"), root);
     }
 
     public void acceptVisitor(HouseVisitor visitor) {
         visitor.visit(this);
+    }
+
+    public CandyTreeNode getRoot() {
+        return root;
     }
 
     public List<Candy> getCandies() {

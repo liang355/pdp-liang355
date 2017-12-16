@@ -8,7 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The class represent bank entity
+ * The class represent bank entity, which as methods that
+ * support RSA decryption and verification
  */
 public class Bank implements IBank{
     private Map<Integer, ClientAccount> map = new HashMap<>(); // map<ID, ClientAccount>

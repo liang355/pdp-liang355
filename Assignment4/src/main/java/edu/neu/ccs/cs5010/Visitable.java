@@ -6,4 +6,5 @@ public interface Visitable {
     public void acceptVisitor(HouseVisitor visitor);
     public List<Candy> getCandies();
     public String getHouseholdName();
+    public CandyTreeNode getRoot();
 }

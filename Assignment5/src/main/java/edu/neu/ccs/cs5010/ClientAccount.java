@@ -6,6 +6,11 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * The data structure class for client account, storing
+ * deposit limit, withdrawal limit, public key. The instance of this data structure
+ * will be mapped with client Id by Bank
+ */
 public class ClientAccount implements IClientAccount {
     // CONSTANTS:
     private static final int MAX_DEPOSIT_LIMIT = 2000;
@@ -26,14 +31,26 @@ public class ClientAccount implements IClientAccount {
         this.publicKey = publicKey;
     }
 
+    /**
+     * getter for depositLimit
+     * @return deposit limit for the client account
+     */
     public int getDepositLimit() {
         return depositLimit;
     }
 
+    /**
+     * getter for withdrawalLimit
+     * @return withdrawal limit for the client account
+     */
     public int getWithdrawalLimit() {
         return withdrawalLimit;
     }
 
+    /**
+     * getter for publicKey
+     * @return
+     */
     public BigDecimal[] getPublicKey() {
         return publicKey;
     }

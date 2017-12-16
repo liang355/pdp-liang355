@@ -7,40 +7,68 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-<span class="nc" id="L10">public class Bank {</span>
-<span class="nc" id="L11">    private Map&lt;Integer, ClientAccount&gt; map = new HashMap&lt;&gt;(); // map&lt;ID, ClientAccount&gt;</span>
+/**
+ * The class represent bank entity
+ */
+<span class="nc" id="L13">public class Bank implements IBank{</span>
+<span class="nc" id="L14">    private Map&lt;Integer, ClientAccount&gt; map = new HashMap&lt;&gt;(); // map&lt;ID, ClientAccount&gt;</span>
 
+
+    /**
+     * register clients, create clientAccount for them
+     * @param clientID unique ID of a client
+     * @param publicKey publicKey to register
+     */
     public void register(int clientID, BigDecimal[] publicKey) {
-<span class="nc" id="L14">        ClientAccount clientAccount = new ClientAccount(publicKey);</span>
-<span class="nc" id="L15">        map.put(clientID, clientAccount);</span>
-<span class="nc" id="L16">    }</span>
+<span class="nc" id="L23">        ClientAccount clientAccount = new ClientAccount(publicKey);</span>
+<span class="nc" id="L24">        map.put(clientID, clientAccount);</span>
+<span class="nc" id="L25">    }</span>
 
+
+    /**
+     * verify a encryptedMessage using clientId's public key
+     * @param clientId unique ID of a client
+     * @param encryptedMessage the sigma in RSA encryption
+     * @return if this transaction failed to be verified
+     */
     public boolean verifyTransaction(int clientId, EncryptedMessage encryptedMessage) {
-<span class="nc" id="L19">        BigDecimal[] publicKey = map.get(clientId).getPublicKey();</span>
-<span class="nc" id="L20">        BigDecimal b = publicKey[0];</span>
-<span class="nc" id="L21">        BigDecimal n = publicKey[1];</span>
-<span class="nc" id="L22">        int expectedMessage = encryptedMessage.message;</span>
-<span class="nc" id="L23">        BigInteger sig = encryptedMessage.signature;</span>
-<span class="nc" id="L24">        int actualMessage = BigDecimalMath.pow(new BigDecimal(sig), b).intValue();</span>
+<span class="nc" id="L35">        BigDecimal[] publicKey = map.get(clientId).getPublicKey();</span>
+<span class="nc" id="L36">        BigDecimal b = publicKey[0];</span>
+<span class="nc" id="L37">        BigDecimal n = publicKey[1];</span>
+<span class="nc" id="L38">        int expectedMessage = encryptedMessage.message;</span>
+<span class="nc" id="L39">        BigInteger sig = encryptedMessage.signature;</span>
+<span class="nc" id="L40">        int actualMessage = BigDecimalMath.pow(new BigDecimal(sig), b).intValue();</span>
 //        System.out.println(expectedMessage + &quot;, &quot; + actualMessage);
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        return expectedMessage == actualMessage;</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        return expectedMessage == actualMessage;</span>
     }
 
+
+    /**
+     * get the ClientAccount object by clientId
+     * @param clientId the id of a client
+     * @return the matched ClientAccount
+     */
     public ClientAccount getAccountByClientId(int clientId) {
-<span class="nc" id="L30">        return map.get(clientId);</span>
+<span class="nc" id="L52">        return map.get(clientId);</span>
     }
 
+
+    /**
+     * retrieve the public key
+     * @param clientId the id of a client
+     * @return the matched public key
+     */
     public BigDecimal[] getPublicKeyByClientId(int clientId) {
-<span class="nc" id="L34">        return map.get(clientId).getPublicKey();</span>
+<span class="nc" id="L62">        return map.get(clientId).getPublicKey();</span>
     }
 
     @Override
     public String toString() {
-<span class="nc" id="L39">        StringBuilder sb = new StringBuilder();</span>
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        for(int key : map.keySet()) {</span>
-<span class="nc" id="L41">            sb.append(&quot;{&quot;).append(key).append(&quot;:&quot;).append(map.get(key)).append(&quot;}\n&quot;);</span>
-<span class="nc" id="L42">        }</span>
-<span class="nc" id="L43">        return sb.toString();</span>
+<span class="nc" id="L67">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        for(int key : map.keySet()) {</span>
+<span class="nc" id="L69">            sb.append(&quot;{&quot;).append(key).append(&quot;:&quot;).append(map.get(key)).append(&quot;}\n&quot;);</span>
+<span class="nc" id="L70">        }</span>
+<span class="nc" id="L71">        return sb.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

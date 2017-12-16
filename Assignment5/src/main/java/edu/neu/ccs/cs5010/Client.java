@@ -9,7 +9,8 @@ import java.math.MathContext;
 import java.util.Random;
 
 /**
- * the class that represents Client entity
+ * the class that represents Client entity, which has methods that
+ * support RSA encryption
  */
 public class Client implements IClient {
     private int clientID;
@@ -50,7 +51,7 @@ public class Client implements IClient {
 
 
     /**
-     * internal function, basically just generate RSA pair
+     * internal function, basically just generate RSA pairs, which includes public key and secrete key
      */
     private void generateRSAPair() {
         Random rand = new Random();
@@ -83,7 +84,7 @@ public class Client implements IClient {
 
     /**
      * getter for client Id
-     * @return
+     * @return client Id
      */
     public int getClientID() {
         return clientID;
